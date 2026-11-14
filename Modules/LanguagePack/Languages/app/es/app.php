@@ -145,7 +145,7 @@ return [
   'favicon' => 'Subir favicon',
   'addon' => 'Añadir',
   'list' => 'Lista',
-  'grid' => 'Red',
+  'grid' => 'Cuadrícula',
   'layout' => 'Disposición',
   'offlineMessage' => 'Actualmente estás fuera de línea.',
   'loadPage' => 'No pudimos cargar la página siguiente en esta conexión. Por favor intente de nuevo.',

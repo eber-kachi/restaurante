@@ -143,7 +143,8 @@ class Tables extends Component
             // First, clean up expired locks and get the result
             \App\Models\Table::cleanupExpiredLocks();
             // Then refresh the data
-            $this->refreshData();
+            $this->reservations = Reservation::where('table_id', '!=', null)->get();
+            $this->reservedTables = $this->reservations->pluck('table_id', 'reservation_date_time', 'reservation_status');
 
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('SetTable: Error in refreshDataWithCleanup', [

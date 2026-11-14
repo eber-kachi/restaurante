@@ -27,7 +27,7 @@ return [
   'settings' => 'Ajustes',
   'signOut' => 'Desconectar',
   'appUpdate' => 'Actualización de la aplicación',
-  'home' => 'Hogar',
+  'home' => 'Inicio',
   'about' => 'Acerca de',
   'contact' => 'Contacto',
   'staff' => 'Personal',
