@@ -1970,4 +1970,47 @@ return [
     ],
 
 
+
+    'defaultExpenseCategories' => [
+        'rent' => [
+            'name' => 'Rent',
+            'description' => 'Monthly rent for restaurant space',
+        ],
+        'utilities' => [
+            'name' => 'Utilities',
+            'description' => 'Electricity, water, gas, and other utilities',
+        ],
+        'salaries' => [
+            'name' => 'Salaries',
+            'description' => 'Employee salaries and wages',
+        ],
+        'ingredients' => [
+            'name' => 'Ingredients',
+            'description' => 'Food ingredients and raw materials',
+        ],
+        'equipment' => [
+            'name' => 'Equipment',
+            'description' => 'Kitchen equipment and appliances',
+        ],
+        'marketing' => [
+            'name' => 'Marketing',
+            'description' => 'Advertising and promotional expenses',
+        ],
+        'insurance' => [
+            'name' => 'Insurance',
+            'description' => 'Business insurance and liability coverage',
+        ],
+        'maintenance' => [
+            'name' => 'Maintenance',
+            'description' => 'Repairs and maintenance costs',
+        ],
+        'licenses' => [
+            'name' => 'Licenses',
+            'description' => 'Business licenses and permits',
+        ],
+        'miscellaneous' => [
+            'name' => 'Miscellaneous',
+            'description' => 'Other miscellaneous expenses',
+        ],
+    ],
 ];

@@ -291,9 +291,9 @@ class RestaurantSignup extends Component
         ]);
 
         $adminRole = Role::create(['name' => 'Admin_' . $restaurant->id, 'display_name' => 'Admin', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
-        $branchHeadRole = Role::create(['name' => 'Branch Head_' . $restaurant->id, 'display_name' => 'Jefe de sucursal', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
+        $branchHeadRole = Role::create(['name' => 'Branch Head_' . $restaurant->id, 'display_name' => 'Branch Head', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
 
-        Role::create(['name' => 'Waiter_' . $restaurant->id, 'display_name' => 'Mesero', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
+        Role::create(['name' => 'Waiter_' . $restaurant->id, 'display_name' => 'Waiter', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
         Role::create(['name' => 'Chef_' . $restaurant->id, 'display_name' => 'Chef', 'guard_name' => 'web', 'restaurant_id' => $restaurant->id]);
 
         $allPermissions = Permission::get()->pluck('name')->toArray();

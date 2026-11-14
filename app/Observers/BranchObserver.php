@@ -121,58 +121,15 @@ class BranchObserver
         /**
          * ✅ Create Default Expense Categories
          */
-        $defaultCategories = [
-            [
-                'name' => 'Rent',
-                'description' => 'Monthly rent for restaurant space',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Utilities',
-                'description' => 'Electricity, water, gas, and other utilities',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Salaries',
-                'description' => 'Employee salaries and wages',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Ingredients',
-                'description' => 'Food ingredients and raw materials',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Equipment',
-                'description' => 'Kitchen equipment and appliances',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Marketing',
-                'description' => 'Advertising and promotional expenses',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Insurance',
-                'description' => 'Business insurance and liability coverage',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Maintenance',
-                'description' => 'Repairs and maintenance costs',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Licenses',
-                'description' => 'Business licenses and permits',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Miscellaneous',
-                'description' => 'Other miscellaneous expenses',
-                'is_active' => true,
-            ],
-        ];
+        // Los nombres y descripciones se toman de los archivos de idioma (modules.defaultExpenseCategories)
+        $defaultCategories = collect([
+            'rent', 'utilities', 'salaries', 'ingredients', 'equipment',
+            'marketing', 'insurance', 'maintenance', 'licenses', 'miscellaneous',
+        ])->map(fn ($key) => [
+            'name' => __("modules.defaultExpenseCategories.{$key}.name"),
+            'description' => __("modules.defaultExpenseCategories.{$key}.description"),
+            'is_active' => true,
+        ])->all();
 
         foreach ($defaultCategories as $category) {
 
