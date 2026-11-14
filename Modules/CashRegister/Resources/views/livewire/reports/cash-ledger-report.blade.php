@@ -94,7 +94,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-blue-800 dark:text-blue-200">
-                                Total Opening Float
+                                @lang('cashregister::app.totalOpeningFloat')
                             </p>
                             <p class="text-sm text-blue-600 dark:text-blue-400">
                                 {{ currency_format($summary['total_opening_float'], restaurant()->currency_id) }}
@@ -110,7 +110,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-green-800 dark:text-green-200">
-                                Total Cash Sales
+                                @lang('cashregister::app.totalCashSales')
                             </p>
                             <p class="text-sm text-green-600 dark:text-green-400">
                                 {{ currency_format($summary['total_cash_sales'], restaurant()->currency_id) }}
@@ -126,7 +126,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
-                                Total Cash In
+                                @lang('cashregister::app.totalCashIn')
                             </p>
                             <p class="text-sm text-yellow-600 dark:text-yellow-400">
                                 {{ currency_format($summary['total_cash_in'], restaurant()->currency_id) }}
@@ -142,7 +142,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-red-800 dark:text-red-200">
-                                Total Cash Out
+                                @lang('cashregister::app.totalCashOut')
                             </p>
                             <p class="text-sm text-red-600 dark:text-red-400">
                                 {{ currency_format($summary['total_cash_out'], restaurant()->currency_id) }}
@@ -158,37 +158,37 @@
                     <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Date
+                                @lang('cashregister::app.date')
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cashier
+                                @lang('cashregister::app.cashierCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Opening Float
+                                @lang('cashregister::app.openingFloatCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cash Sales
+                                @lang('cashregister::app.cashSalesLabel')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cash In
+                                @lang('cashregister::app.cashIn')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cash Out
+                                @lang('cashregister::app.cashOutLabel')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Safe Drops
+                                @lang('cashregister::app.safeDrops')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Expected Cash
+                                @lang('cashregister::app.expectedCashCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Counted Cash
+                                @lang('cashregister::app.countedCash')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Discrepancy
+                                @lang('cashregister::app.discrepancyCol')
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Status
+                                @lang('cashregister::app.status')
                             </th>
                         </tr>
                     </thead>
@@ -258,19 +258,19 @@
             <div class="mt-6 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div class="text-center">
-                        <p class="text-gray-600 dark:text-gray-400">Total Sessions</p>
+                        <p class="text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalSessions')</p>
                         <p class="font-semibold text-gray-900 dark:text-white">{{ $summary['total_sessions'] }}</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-gray-600 dark:text-gray-400">Total Expected</p>
+                        <p class="text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalExpected')</p>
                         <p class="font-semibold text-gray-900 dark:text-white">{{ currency_format($summary['total_expected_cash'], restaurant()->currency_id) }}</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-gray-600 dark:text-gray-400">Total Counted</p>
+                        <p class="text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalCounted')</p>
                         <p class="font-semibold text-gray-900 dark:text-white">{{ currency_format($summary['total_counted_cash'], restaurant()->currency_id) }}</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-gray-600 dark:text-gray-400">Total Discrepancy</p>
+                        <p class="text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalDiscrepancy')</p>
                         <p class="font-semibold {{ $summary['total_discrepancy'] >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }}">
                             {{ $summary['total_discrepancy'] >= 0 ? '+' : '' }}{{ currency_format($summary['total_discrepancy'], restaurant()->currency_id) }}
                         </p>
@@ -286,7 +286,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No Data Available</h3>
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     No cash register sessions found for the selected criteria.
                 </p>

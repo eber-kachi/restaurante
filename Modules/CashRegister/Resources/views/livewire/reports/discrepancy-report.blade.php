@@ -110,7 +110,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
-                                Medium Discrepancy (50-199)
+                                @lang('cashregister::app.mediumDiscrepancy')
                             </p>
                             <p class="text-sm text-yellow-600 dark:text-yellow-400">
                                 {{ $sessions->filter(function($s) { return abs($s->discrepancy) >= 50 && abs($s->discrepancy) < 200; })->count() }} sessions
@@ -126,7 +126,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-green-800 dark:text-green-200">
-                                Low Discrepancy (< 50)
+                                @lang('cashregister::app.lowDiscrepancy')
                             </p>
                             <p class="text-sm text-green-600 dark:text-green-400">
                                 {{ $sessions->filter(function($s) { return abs($s->discrepancy) < 50; })->count() }} sessions
@@ -142,25 +142,25 @@
                     <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Date
+                                @lang('cashregister::app.date')
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cashier
+                                @lang('cashregister::app.cashierCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Expected
+                                @lang('cashregister::app.expectedCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Counted
+                                @lang('cashregister::app.countedCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Diff
+                                @lang('cashregister::app.diffCol')
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Status
+                                @lang('cashregister::app.status')
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Manager Note
+                                @lang('cashregister::app.managerNote')
                             </th>
                         </tr>
                     </thead>
@@ -215,7 +215,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No Data Available</h3>
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     No closed cash register sessions found for the selected criteria.
                 </p>

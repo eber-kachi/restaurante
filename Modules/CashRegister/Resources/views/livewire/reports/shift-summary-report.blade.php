@@ -94,13 +94,13 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-blue-800 dark:text-blue-200">
-                                Total Sessions
+                                @lang('cashregister::app.totalSessions')
                             </p>
                             <p class="text-sm text-blue-600 dark:text-blue-400">
                                 {{ $summary['total_shifts'] }}
                             </p>
                             <p class="text-xs text-blue-500 dark:text-blue-300">
-                                All periods
+                                @lang('cashregister::app.allPeriods')
                             </p>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-green-800 dark:text-green-200">
-                                Completed Sessions
+                                @lang('cashregister::app.completedSessions')
                             </p>
                             <p class="text-sm text-green-600 dark:text-green-400">
                                 {{ $summary['completed_shifts'] }}
@@ -132,13 +132,13 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
-                                Pending Sessions
+                                @lang('cashregister::app.pendingSessions')
                             </p>
                             <p class="text-sm text-yellow-600 dark:text-yellow-400">
                                 {{ $summary['pending_shifts'] }}
                             </p>
                             <p class="text-xs text-yellow-500 dark:text-yellow-300">
-                                Awaiting approval
+                                @lang('cashregister::app.awaitingApproval')
                             </p>
                         </div>
                     </div>
@@ -151,13 +151,13 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-purple-800 dark:text-purple-200">
-                                Open Sessions
+                                @lang('cashregister::app.openSessions')
                             </p>
                             <p class="text-sm text-purple-600 dark:text-purple-400">
                                 {{ $summary['open_shifts'] }}
                             </p>
                             <p class="text-xs text-purple-500 dark:text-purple-300">
-                                Currently active
+                                @lang('cashregister::app.currentlyActive')
                             </p>
                         </div>
                     </div>
@@ -167,23 +167,23 @@
             <!-- Performance Metrics -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Average Session Duration</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.averageSessionDuration')</p>
                     <p class="text-lg font-semibold text-gray-900 dark:text-white">
                         @if($summary['average_duration_minutes'] > 0)
                             {{ floor($summary['average_duration_minutes'] / 60) }}h {{ $summary['average_duration_minutes'] % 60 }}m
                         @else
-                            Open Session
+                            @lang('cashregister::app.openSession')
                         @endif
                     </p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Total Opening Float</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalOpeningFloat')</p>
                     <p class="text-lg font-semibold text-gray-900 dark:text-white">
                         {{ currency_format($summary['total_opening_float'], restaurant()->currency_id) }}
                     </p>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Total Discrepancy</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.totalDiscrepancy')</p>
                     <p class="text-lg font-semibold {{ $summary['total_discrepancy'] >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }}">
                         {{ $summary['total_discrepancy'] >= 0 ? '+' : '' }}{{ currency_format($summary['total_discrepancy'], restaurant()->currency_id) }}
                     </p>
@@ -196,31 +196,31 @@
                     <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Date
+                                @lang('cashregister::app.date')
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Cashier
+                                @lang('cashregister::app.cashierCol')
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Session Type
+                                @lang('cashregister::app.sessionType')
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Duration
+                                @lang('cashregister::app.duration')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Opening Float
+                                @lang('cashregister::app.openingFloatCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Expected Cash
+                                @lang('cashregister::app.expectedCashCol')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Counted Cash
+                                @lang('cashregister::app.countedCash')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Discrepancy
+                                @lang('cashregister::app.discrepancyCol')
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Status
+                                @lang('cashregister::app.status')
                             </th>
                         </tr>
                     </thead>
@@ -277,10 +277,10 @@
 
             <!-- Session Performance Summary -->
             <div class="mt-6 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                <h4 class="text-md font-semibold text-gray-900 dark:text-white mb-4">Session Performance Summary</h4>
+                <h4 class="text-md font-semibold text-gray-900 dark:text-white mb-4">@lang('cashregister::app.sessionPerformanceSummary')</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div>
-                        <p class="text-gray-600 dark:text-gray-400 mb-2">Session Distribution by Type:</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">@lang('cashregister::app.sessionDistributionByType'):</p>
                         <div class="space-y-1">
                             @php
                                 $sessionTypes = $shifts->groupBy(function($shift) { return $this->getSessionType($shift); });
@@ -294,7 +294,7 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-gray-600 dark:text-gray-400 mb-2">Cashier Performance:</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">@lang('cashregister::app.cashierPerformance'):</p>
                         <div class="space-y-1">
                             @php
                                 $cashierSessions = $shifts->groupBy('opened_by');
@@ -321,7 +321,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No Data Available</h3>
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     No cash register shifts found for the selected criteria.
                 </p>

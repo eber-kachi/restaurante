@@ -49,7 +49,7 @@
                         </x-select>
                     @endif
                     <x-select class="text-sm w-full" wire:model.live='branchId'>
-                        <option value="">All Branches</option>
+                        <option value="">@lang('cashregister::app.allBranches')</option>
                         @foreach($branches as $branch)
                             <option value="{{ $branch->id }}">{{ $branch->name }}</option>
                         @endforeach
@@ -79,16 +79,16 @@
         @endphp
         @if($openSessions->count() > 0)
         <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-6">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Active Open Registers</h3>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">@lang('cashregister::app.activeOpenRegisters')</h3>
             <div class="overflow-x-auto mb-2">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Branch</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Cashier</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Opened At</th>
-                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Action</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">@lang('cashregister::app.branchCol')</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">@lang('cashregister::app.cashierCol')</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">@lang('cashregister::app.openedAtHeader')</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">@lang('cashregister::app.action')</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -100,7 +100,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ optional($s->opened_at)->timezone(timezone())->format('d M Y, h:i A') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                     <button wire:click="$set('selectedSessionId', {{ $s->id }})" class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
-                                        View X-Report
+                                        @lang('cashregister::app.viewXReport')
                                     </button>
                                 </td>
                             </tr>
@@ -119,7 +119,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            X Report (Mid-Shift Snapshot)
+                            @lang('cashregister::app.xReportHeader')
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
                             Generated: {{ $reportData['generated_at']->timezone(timezone())->format('d M Y, h:i A') }}
@@ -146,17 +146,17 @@
                     <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Metric
+                                @lang('cashregister::app.metric')
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                Amount
+                                @lang('cashregister::app.amount')
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Opening Float
+                                @lang('cashregister::app.openingFloatCol')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                 {{ currency_format($reportData['opening_float'], restaurant()->currency_id) }}
@@ -164,7 +164,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Cash Sales
+                                @lang('cashregister::app.cashSalesLabel')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                 {{ currency_format($reportData['cash_sales'], restaurant()->currency_id) }}
@@ -172,7 +172,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Change Given
+                                @lang('cashregister::app.changeGiven')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                 -{{ currency_format($reportData['change_given'], restaurant()->currency_id) }}
@@ -180,7 +180,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Cash-In
+                                @lang('cashregister::app.cashIn')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600 dark:text-green-400 text-right">
                                 {{ currency_format($reportData['cash_in'], restaurant()->currency_id) }}
@@ -188,7 +188,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Cash-Out
+                                @lang('cashregister::app.cashOutLabel')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                 -{{ currency_format($reportData['cash_out'], restaurant()->currency_id) }}
@@ -196,7 +196,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Safe Drops
+                                @lang('cashregister::app.safeDrops')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                 -{{ currency_format($reportData['safe_drops'], restaurant()->currency_id) }}
@@ -204,7 +204,7 @@
                         </tr>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
-                                Refunds (Cash)
+                                @lang('cashregister::app.refundsCash')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                 -{{ currency_format($reportData['refunds'], restaurant()->currency_id) }}
@@ -212,7 +212,7 @@
                         </tr>
                         <tr class="bg-gray-50 dark:bg-gray-700">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">
-                                Expected Drawer Cash
+                                @lang('cashregister::app.expectedDrawerCash')
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white text-right">
                                 {{ currency_format($reportData['expected_cash'], restaurant()->currency_id) }}
@@ -235,7 +235,7 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900 dark:text-white">
-                                Session Status: 
+                                @lang('cashregister::app.sessionStatus'):
                                 <span class="capitalize">@lang('app.' . $reportData['session']->status)</span>
                             </p>
                             <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -249,7 +249,7 @@
                             <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
                             </svg>
-                            Print Report
+                            @lang('cashregister::app.printReport')
                         </button>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No Data Available</h3>
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     No cash register sessions found for the selected criteria.
                 </p>
