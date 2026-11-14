@@ -170,15 +170,6 @@
                             @lang('modules.menu.typeDrink')
                         </label>
                     </li>
-                    <li>
-                        <input type="radio" id="typeHalal" name="itemType" value="halal" class="hidden peer"
-                            wire:model='itemType'>
-                        <label for="typeHalal"
-                            class="inline-flex items-center justify-between w-full p-2  bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-skin-base peer-checked:border-skin-base peer-checked:text-gray-900 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 text-sm font-medium">
-                            <img src="{{ asset('img/halal.svg') }}" class="h-5 mr-1" />
-                             @lang('modules.menu.typeHalal')
-                        </label>
-                    </li>
                       <li>
                         <input type="radio" id="typeOther" name="itemType" value="other" class="hidden peer"
                             wire:model='itemType'>
