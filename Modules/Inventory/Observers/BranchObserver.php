@@ -12,13 +12,13 @@ class BranchObserver
     public function created(Branch $branch): void
     {
 
-        foreach (Unit::UNITS as $unit) {
+        foreach (Unit::defaults() as $unit) {
             Unit::firstOrCreate(array_merge($unit, [
                 'branch_id' => $branch->id
             ]));
         }
 
-        foreach (InventoryItemCategory::CATEGORIES as $category) {
+        foreach (InventoryItemCategory::defaults() as $category) {
             InventoryItemCategory::firstOrCreate([
                 'branch_id' => $branch->id,
                 'name' => $category

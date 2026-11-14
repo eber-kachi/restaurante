@@ -32,4 +32,17 @@ class Unit extends Model
         ['name' => 'Package', 'symbol' => 'pkg'],
         ['name' => 'Can', 'symbol' => 'can'],
     ];
+
+    /**
+     * Unidades predeterminadas con el nombre traducido al idioma activo.
+     * UNITS conserva los nombres en inglés como identificador estable
+     * (p. ej. para la migración que traduce los datos existentes).
+     */
+    public static function defaults(): array
+    {
+        return array_map(fn ($unit) => [
+            'name' => __('inventory::modules.defaultUnits.' . strtolower($unit['name'])),
+            'symbol' => $unit['symbol'],
+        ], self::UNITS);
+    }
 }

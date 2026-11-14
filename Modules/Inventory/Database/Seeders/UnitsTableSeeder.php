@@ -10,7 +10,7 @@ class UnitsTableSeeder extends Seeder
     public function run(): void
     {
 
-        foreach (Unit::UNITS as $unit) {
+        foreach (Unit::defaults() as $unit) {
             Unit::firstOrCreate(array_merge($unit, [
                 'branch_id' => 1 // Assuming branch_id 1 exists
             ]));

@@ -10,7 +10,7 @@ class InventoryItemCategoriesTableSeeder extends Seeder
     public function run(): void
     {
 
-        foreach (InventoryItemCategory::CATEGORIES as $category) {
+        foreach (InventoryItemCategory::defaults() as $category) {
             InventoryItemCategory::firstOrCreate([
                 'branch_id' => 1,
                 'name' => $category
