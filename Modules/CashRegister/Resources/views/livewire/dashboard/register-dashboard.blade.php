@@ -1,6 +1,6 @@
 <div class="space-y-4">
     <div class="flex items-center justify-between">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Statistics</h3>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">@lang('cashregister::app.dashboardStatistics')</h3>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -8,12 +8,12 @@
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">Total Cash Sales Today</div>
+                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">@lang('cashregister::app.totalCashSalesToday')</div>
                     <div class="mt-1 text-3xl font-bold text-gray-900 dark:text-white">{{ currency_format($totalCashSalesToday, restaurant()->currency_id) }}</div>
                     @php $pct = round($pctCashToday, 1); @endphp
                     <div class="mt-1 text-xs">
                         <span class="font-medium {{ $pct >= 0 ? 'text-green-600' : 'text-rose-600' }}">{{ $pct >= 0 ? '▲' : '▼' }} {{ abs($pct) }}%</span>
-                        <span class="text-gray-500">vs yesterday</span>
+                        <span class="text-gray-500">@lang('cashregister::app.vsYesterday')</span>
                     </div>
                 </div>
                 <div class="w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center justify-center shadow">
@@ -32,12 +32,12 @@
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">Safe Drops Today</div>
+                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">@lang('cashregister::app.safeDropsToday')</div>
                     <div class="mt-1 text-3xl font-bold text-gray-900 dark:text-white">{{ currency_format($safeDropsToday, restaurant()->currency_id) }}</div>
                     @php $pctS = round($pctSafeDropToday, 1); @endphp
                     <div class="mt-1 text-xs">
                         <span class="font-medium {{ $pctS >= 0 ? 'text-green-600' : 'text-rose-600' }}">{{ $pctS >= 0 ? '▲' : '▼' }} {{ abs($pctS) }}%</span>
-                        <span class="text-gray-500">vs yesterday</span>
+                        <span class="text-gray-500">@lang('cashregister::app.vsYesterday')</span>
                     </div>
                 </div>
                 <div class="w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center justify-center shadow">
@@ -50,9 +50,9 @@
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">Sessions with Discrepancy (7 days)</div>
+                    <div class="text-sm font-medium text-gray-600 dark:text-gray-300">@lang('cashregister::app.sessionsWithDiscrepancy7Days')</div>
                     <div class="mt-1 text-3xl font-bold text-gray-900 dark:text-white">{{ $sessionsWithDiscrepancy7Days }}</div>
-                    <div class="mt-1 text-xs text-gray-500">+0.0% vs last week</div>
+                    <div class="mt-1 text-xs text-gray-500">+0.0% @lang('cashregister::app.vsLastWeek')</div>
                 </div>
                 <div class="w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 flex items-center justify-center shadow">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M8.257 3.099c.765-1.36 2.721-1.36 3.486 0l6.518 11.59c.75 1.335-.213 3.011-1.743 3.011H3.482c-1.53 0-2.493-1.676-1.743-3.011L8.257 3.1zM11 14a1 1 0 10-2 0 1 1 0 002 0zm-1-2a1 1 0 01-1-1V7a1 1 0 112 0v4a1 1 0 01-1 1z"/></svg>
@@ -62,24 +62,24 @@
 
         <!-- Largest Cash-Out Reason -->
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
-            <div class="text-sm font-medium text-gray-600 dark:text-gray-300">Largest Cash-Out Reason (30 days)</div>
+            <div class="text-sm font-medium text-gray-600 dark:text-gray-300">@lang('cashregister::app.largestCashOutReason30Days')</div>
             <div class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">{{ $largestCashOutReason }}</div>
             <div class="mt-1 text-2xl font-bold text-gray-900 dark:text-white">{{ currency_format($largestCashOutAmount, restaurant()->currency_id) }}</div>
             <div class="mt-1 text-xs">
                 @php $pct = round($pctLargestCashOut30, 1); @endphp
                 <span class="font-medium {{ $pct >= 0 ? 'text-green-600' : 'text-rose-600' }}">{{ $pct >= 0 ? '▲' : '▼' }} {{ abs($pct) }}%</span>
-                <span class="text-gray-500">vs previous 30 days</span>
+                <span class="text-gray-500">@lang('cashregister::app.vsPrevious30Days')</span>
             </div>
         </div>
 
         <!-- Average Discrepancy -->
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
-            <div class="text-sm font-medium text-gray-600 dark:text-gray-300">Average Discrepancy per Session (30 days)</div>
+            <div class="text-sm font-medium text-gray-600 dark:text-gray-300">@lang('cashregister::app.avgDiscrepancyPerSession30Days')</div>
             <div class="mt-1 text-3xl font-bold text-gray-900 dark:text-white">{{ currency_format($avgDiscrepancy30Days, restaurant()->currency_id) }}</div>
             <div class="mt-1 text-xs">
                 @php $pct2 = round($pctAvgDisc30, 1); @endphp
                 <span class="font-medium {{ $pct2 >= 0 ? 'text-rose-600' : 'text-green-600' }}">{{ $pct2 >= 0 ? '▲' : '▼' }} {{ abs($pct2) }}%</span>
-                <span class="text-gray-500">vs previous 30 days</span>
+                <span class="text-gray-500">@lang('cashregister::app.vsPrevious30Days')</span>
             </div>
         </div>
     </div>

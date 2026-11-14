@@ -193,4 +193,13 @@ return [
     'sessionSummary' => 'Resumen de la sesión',
     'transactionLogs' => 'Registros de transacciones',
     'cashInOutSafeDropTab' => 'Entradas/Salidas/Depósitos a caja fuerte',
+    'dashboardStatistics' => 'Estadísticas',
+    'totalCashSalesToday' => 'Ventas en efectivo de hoy',
+    'safeDropsToday' => 'Depósitos en caja fuerte de hoy',
+    'sessionsWithDiscrepancy7Days' => 'Sesiones con diferencias (7 días)',
+    'largestCashOutReason30Days' => 'Mayor motivo de salida de efectivo (30 días)',
+    'avgDiscrepancyPerSession30Days' => 'Diferencia promedio por sesión (30 días)',
+    'vsYesterday' => 'vs ayer',
+    'vsLastWeek' => 'vs la semana pasada',
+    'vsPrevious30Days' => 'vs los 30 días anteriores',
 ];

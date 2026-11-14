@@ -1,9 +1,10 @@
-<?php 
+<?php
+
 return [
-  'denominationCreated' => 'Denomination created successfully!',
-  'denominationUpdated' => 'Denomination updated successfully!',
-  'denominationDeleted' => 'Denomination deleted successfully!',
-  'denominationsDeleted' => ':count denominations deleted successfully!',
-  'denominationStatusUpdated' => 'Denomination status updated to :status!',
-  'errorOccurred' => 'An error occurred. Please try again.',
+    'denominationCreated' => '¡Denominación creada correctamente!',
+    'denominationUpdated' => '¡Denominación actualizada correctamente!',
+    'denominationDeleted' => '¡Denominación eliminada correctamente!',
+    'denominationsDeleted' => '¡:count denominaciones eliminadas correctamente!',
+    'denominationStatusUpdated' => '¡Estado de la denominación actualizado a :status!',
+    'errorOccurred' => 'Ocurrió un error. Por favor, intenta de nuevo.',
 ];
