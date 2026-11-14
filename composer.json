@@ -76,6 +76,9 @@
             "Database\\Seeders\\": "database/seeders/",
             "Modules\\": "Modules/"
         },
+        "exclude-from-classmap": [
+            "/Modules/RestA33pi/"
+        ],
         "files": [
             "app/Helper/start.php"
         ]
