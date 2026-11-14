@@ -23,7 +23,8 @@ class RecipesList extends Component
     public $perPage = 10;
     public $page = 1;
     public $showAddRecipe = false;
-    public $isEditing = false;
+    public array $recipeToEdit = [];
+    public int $recipeFormVersion = 0;
     public $confirmDeleteRecipe = false;
     public $recipeToDelete = null;
 
@@ -271,28 +272,26 @@ class RecipesList extends Component
 
     public function addRecipe()
     {
-        $this->isEditing = false;
+        $this->recipeToEdit = [];
+        $this->recipeFormVersion++;
         $this->showAddRecipe = true;
-        $this->dispatch('showRecipeForm');
     }
 
     public function editRecipe($recipeId, $variationId = null, $modifierOptionId = null)
     {
-        $this->isEditing = true;
+        $this->recipeToEdit = [
+            'recipeId' => $recipeId,
+            'variationId' => $variationId,
+            'modifierOptionId' => $modifierOptionId,
+        ];
+        $this->recipeFormVersion++;
         $this->showAddRecipe = true;
-        
-        // Pass the appropriate parameters based on what we're editing
-        if ($modifierOptionId) {
-            $this->dispatch('editRecipe', $recipeId, $variationId, $modifierOptionId);
-        } else {
-            $this->dispatch('editRecipe', $recipeId, $variationId);
-        }
     }
 
     public function closeModal()
     {
         $this->showAddRecipe = false;
-        $this->isEditing = false;
+        $this->recipeToEdit = [];
     }
 
     public function showDeleteRecipe($recipeId, $variationId = null, $modifierOptionId = null)
