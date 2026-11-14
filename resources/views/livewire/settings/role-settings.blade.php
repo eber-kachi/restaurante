@@ -17,7 +17,7 @@
                         <th scope="col"
                         class="py-2.5 px-4 text-xs font-medium ltr:text-left rtl:text-right text-gray-500 uppercase dark:text-gray-400">
                             <div class="text-xs font-light">@lang('app.role')</div>
-                            <div class="text-sm font-medium">{{ ($item->display_name) }}</div>
+                            <div class="text-sm font-medium">{{ $item->translated_name }}</div>
                         </th>           
                     @endforeach
                 </tr>     
@@ -129,7 +129,7 @@
                                                 <div class="flex items-center space-x-2">
                                                     <h3 class="text-sm font-medium text-gray-900 dark:text-white {{ $isProtected ? '' : 'cursor-pointer hover:text-blue-600 dark:hover:text-blue-400' }}" 
                                                          @if(!$isProtected) wire:click="startInlineEdit({{ $role->id }}, '{{ $role->display_name }}')" @endif>
-                                                        {{ $role->display_name }}
+                                                        {{ $role->translated_name }}
                                                     </h3>
                                                     @if(!$isProtected)
                                                         <svg class="w-4 h-4 text-gray-400 cursor-pointer hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" wire:click="startInlineEdit({{ $role->id }}, '{{ $role->display_name }}')">
@@ -180,7 +180,7 @@
                             <x-select class="mt-1 block w-full" wire:model="copyFromRole">
                                 <option value="">@lang('app.dontCopyPermissions')</option>
                                 @foreach ($roles as $role)
-                                    <option value="{{ $role->id }}">{{ __($role->display_name) }}</option>
+                                    <option value="{{ $role->id }}">{{ $role->translated_name }}</option>
                                 @endforeach
                             </x-select>
                         </div>
@@ -235,7 +235,7 @@
                         <option value="">{{ __("app.selectRole") }}</option>
                         @foreach ($roles as $role)
                             @if($role->id != $deletingRoleId)
-                                <option value="{{ $role->id }}">{{ $role->display_name }}</option>
+                                <option value="{{ $role->id }}">{{ $role->translated_name }}</option>
                             @endif
                         @endforeach
                     </x-select>
