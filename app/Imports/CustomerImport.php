@@ -37,7 +37,7 @@ class CustomerImport implements ToCollection, WithHeadingRow, WithChunkReading, 
         foreach ($rows as $index => $row) {
             try {
                 // Convert row to array for easier handling
-                $rowData = $row->toArray();
+                $rowData = CustomerImportHeadings::normalize($row->toArray());
 
                 // Skip if required fields are empty
                 if (empty($rowData['name']) && empty($rowData['phone']) && empty($rowData['email'])) {

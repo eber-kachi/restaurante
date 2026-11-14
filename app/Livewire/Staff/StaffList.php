@@ -20,6 +20,9 @@ class StaffList extends Component
 
     public function exportStaffList()
     {
+        abort_if(!in_array('Staff', restaurant_modules()), 403);
+        abort_if(!user_can('Show Staff Member'), 403);
+
         if (!in_array('Export Report', restaurant_modules())) {
             $this->dispatch('showUpgradeLicense');
         } else {

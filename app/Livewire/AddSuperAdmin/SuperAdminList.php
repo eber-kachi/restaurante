@@ -23,11 +23,9 @@ class SuperAdminList extends Component
 
     public function exportStaffList()
     {
-        if (!in_array('Export Report', restaurant_modules())) {
-            $this->dispatch('showUpgradeLicense');
-        } else {
-            return Excel::download(new StaffExport, 'superadmin-users-' . now()->toDateTimeString() . '.xlsx');
-        }
+        abort_if(!is_null(user()->restaurant_id), 403);
+
+        return Excel::download(new SuperAdminExport, 'superadmin-users-' . now()->toDateTimeString() . '.xlsx');
     }
 
     public function render()

@@ -32,7 +32,7 @@ class StaffExport implements WithMapping, FromCollection, WithHeadings, WithStyl
         return [
             $customer->name,
             $customer->email,
-            $customer->getRoleNames()[0]
+            $customer->getRoleNames()->first()
         ];
     }
 
@@ -56,11 +56,17 @@ class StaffExport implements WithMapping, FromCollection, WithHeadings, WithStyl
 
     public function collection()
     {
+        // Mismo alcance que StaffTable: solo personal del restaurante actual.
+        // Sin el filtro restaurant_id, orWhereNull(branch_id) traería administradores
+        // y superadmins de otros restaurantes.
         return User::withoutGlobalScope(BranchScope::class)
-            ->where(function($q) {
+            ->where(function ($q) {
                 return $q->where('branch_id', branch()->id)
                     ->orWhereNull('branch_id');
-            })->get();
+            })
+            ->where('restaurant_id', restaurant()->id)
+            ->with('roles')
+            ->get();
     }
 
 }
