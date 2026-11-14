@@ -2,7 +2,7 @@
 return [
   'close' => 'Cerca',
   'cancel' => 'Cancelar',
-  'save' => 'Ahorrar',
+  'save' => 'Guardar',
   'saved' => 'Guardado',
   'saving' => 'Ahorro...',
   'saveTax' => 'Ahorrar impuestos',
@@ -13,7 +13,7 @@ return [
   'decline' => 'Rechazar',
   'update' => 'Actualizar',
   'updating' => 'Actualización ...',
-  'delete' => 'Borrar',
+  'delete' => 'Eliminar',
   'deleteUser' => 'Eliminar usuario',
   'action' => 'Acción',
   'submit' => 'Entregar',

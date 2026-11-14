@@ -65,7 +65,7 @@
                 >
                     <option value="">{{ __('inventory::modules.recipe.select_modifier_option') }}</option>
                     @foreach($availableModifierOptions as $modifierOption)
-                        <option value="{{ $modifierOption->id }}">{{ $modifierOption->name }} ({{ $modifierOption->modifierGroup->name ?? 'Modifier' }})</option>
+                        <option value="{{ $modifierOption->id }}">{{ $modifierOption->name }} ({{ $modifierOption->modifierGroup->name ?? __('inventory::modules.recipe.modifier_option') }})</option>
                     @endforeach
                 </select>
             @endif
@@ -183,10 +183,10 @@
     <!-- Save Button -->
     <div class="mt-6 flex justify-end gap-3">
         <x-secondary-button wire:click="$dispatch('closeAddRecipeModal')">
-            {{ __('Cancel') }}
+            {{ __('app.cancel') }}
         </x-secondary-button>
         <x-button type="submit">
-            {{ $isEditing ? __('Update') : __('Save') }}
+            {{ $isEditing ? __('app.update') : __('app.save') }}
         </x-button>
     </div>
 </form>

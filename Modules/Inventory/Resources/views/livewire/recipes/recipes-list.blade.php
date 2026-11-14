@@ -289,7 +289,7 @@
             </x-secondary-button>
 
             <x-danger-button class="ml-3" wire:click="deleteRecipe" wire:loading.attr="disabled">
-                {{ __('Delete') }}
+                {{ __('app.delete') }}
             </x-danger-button>
         </x-slot>
     </x-confirmation-modal>

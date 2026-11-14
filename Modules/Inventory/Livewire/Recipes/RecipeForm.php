@@ -40,6 +40,20 @@ class RecipeForm extends Component
 
     protected $listeners = ['showRecipeForm', 'editRecipe'];
 
+    protected function validationAttributes()
+    {
+        return [
+            'recipeType' => __('inventory::modules.recipe.recipe_type'),
+            'menuItemId' => __('inventory::modules.recipe.menu_item'),
+            'selectedVariationId' => __('inventory::modules.recipe.variation'),
+            'selectedModifierOptionId' => __('inventory::modules.recipe.modifier_option'),
+            'ingredients' => __('inventory::modules.recipe.ingredients'),
+            'ingredients.*.inventory_item_id' => __('inventory::modules.recipe.ingredient'),
+            'ingredients.*.quantity' => __('inventory::modules.recipe.quantity'),
+            'ingredients.*.unit_id' => __('inventory::modules.recipe.unit'),
+        ];
+    }
+
     protected function rules()
     {
         $rules = [
