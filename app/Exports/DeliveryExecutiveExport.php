@@ -20,9 +20,9 @@ class DeliveryExecutiveExport implements WithMapping, FromCollection, WithHeadin
     public function headings(): array
     {
         return [
-            'User',
-            'Phone',
-            'Total Orders'
+            __('modules.staff.name'),
+            __('modules.customer.phone'),
+            __('modules.order.totalOrder')
         ];
     }
 
