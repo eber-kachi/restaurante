@@ -74,7 +74,7 @@ return [
   'loading' => 'Cargando...',
   'profileInfo' => 'Información de perfil',
   'fullName' => 'Tu nombre completo',
-  'role' => 'Role',
+  'role' => 'Rol',
   'permission' => 'Permiso',
   'user' => 'Usuario',
   'minutes' => 'Minutos',

@@ -1,6 +1,7 @@
-<?php 
+<?php
+
 return [
-  'languagePublished' => 'Language pack published successfully.',
-  'allLanguagePublished' => 'All language packs published successfully.',
-  'moduleActivatedNote' => 'You have activated the Language Pack module. Please publish your languages from :link.',
+    'languagePublished' => 'El paquete de idioma se publicó correctamente.',
+    'allLanguagePublished' => 'Todos los paquetes de idioma se publicaron correctamente.',
+    'moduleActivatedNote' => 'Activaste el módulo Language Pack. Publica tus idiomas desde :link.',
 ];

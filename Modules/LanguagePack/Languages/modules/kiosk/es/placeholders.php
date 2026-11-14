@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 return [
-  'search_menu_items' => 'Search menu items...',
+    'search_menu_items' => 'Buscar artículos del menú...',
 ];

@@ -63,7 +63,7 @@ return new class extends Migration
         foreach ($branches as $branch) {
             // Create default KOT place
             $kotPlace = $branch->kotPlaces()->create([
-                'name' => 'Default Kitchen',
+                'name' => 'Cocina principal',
                 'branch_id' => $branch->id,
                 'printer_id' => null,
                 'type' => 'food',
@@ -78,7 +78,7 @@ return new class extends Migration
 
             // Create default Order place
             $orderPlace = $branch->orderPlaces()->create([
-                'name' => 'Default POS Terminal',
+                'name' => 'Terminal POS principal',
                 'branch_id' => $branch->id,
                 'printer_id' => null,
                 'type' => 'vegetarian',
@@ -89,7 +89,7 @@ return new class extends Migration
             try {
                 // Create printer
                 $printer = $branch->printerSettings()->create([
-                    'name' => 'Default Thermal Printer',
+                    'name' => 'Impresora térmica principal',
                     'restaurant_id' => $branch->restaurant_id,
                     'branch_id' => $branch->id,
                     'is_active' => true,

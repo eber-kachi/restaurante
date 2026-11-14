@@ -1,4 +1,5 @@
 <?php
+
 return [
     'searchUnit' => 'Buscar unidad por nombre o símbolo',
     'unitNamePlaceholder' => 'Introduce el nombre de la unidad (ej. Kilogramo, Litro, etc.)',
@@ -8,11 +9,10 @@ return [
     'selectCategory' => 'Seleccionar categoría',
     'selectUnit' => 'Seleccionar unidad',
     'thresholdQuantityPlaceholder' => 'Introduce la cantidad umbral (ej. 10, 20, etc.)',
-    'searchInventoryItem' => 'Buscar artículo de inventario por nombre',
     'itemCategoryNamePlaceholder' => 'Introduce el nombre de la categoría del artículo (ej. Comida, Bebida, etc.)',
     'searchItemCategory' => 'Buscar categoría de artículo por nombre',
     'selectSupplier' => 'Seleccionar proveedor',
     'selectExpiryDate' => 'Seleccionar fecha de caducidad',
     'reorderQuantityPlaceholder' => 'Introduce la cantidad de reorden (ej. 10, 20, etc.)',
-
+    'itemDescriptionPlaceholder' => 'ej. Albahaca orgánica del Proveedor A, bolsas de 1 kg envasadas al vacío',
 ];

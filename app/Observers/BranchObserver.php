@@ -67,7 +67,7 @@ class BranchObserver
 
         // Create Kitchen place
         $kotPlace = $branch->kotPlaces()->create([
-            'name' => 'Default Kitchen',
+            'name' => __('modules.settings.defaultKitchen'),
             'branch_id' => $branch->id,
             'printer_id' => null, // Will update after printer is created
             'type' => 'food',
@@ -80,7 +80,7 @@ class BranchObserver
 
         // Create default order place
         $orderPlace = $branch->orderPlaces()->create([
-            'name' => 'Default POS Terminal',
+            'name' => __('modules.settings.defaultPosTerminal'),
             'branch_id' => $branch->id,
             'printer_id' => null, // Will update after printer is created
             'type' => 'vegetarian',
@@ -90,7 +90,7 @@ class BranchObserver
 
         // Create printer and assign KOT and Order place IDs
         $printer = $branch->printerSettings()->create([
-            'name' => 'Default Thermal Printer',
+            'name' => __('modules.settings.defaultThermalPrinter'),
             'restaurant_id' => $branch->restaurant_id,
             'branch_id' => $branch->id,
             'is_active' => true,
@@ -101,7 +101,7 @@ class BranchObserver
         ]);
 
         // Ensure default order types are not duplicated for this branch
-        $defaultOrderTypes = ['Dine In', 'Delivery', 'Pickup'];
+        $defaultOrderTypes = [__('modules.order.dine_in'), __('modules.order.delivery'), __('modules.order.pickup')];
         $defaultOrderTypesSlug = ['dine_in', 'delivery', 'pickup'];
 
         foreach ($defaultOrderTypes as $index => $type) {
