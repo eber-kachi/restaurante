@@ -11,9 +11,9 @@ enum DeliveryFeeType: string
     public static function labels(): array
     {
         return [
-            self::FIXED->value => 'Fixed Rate',
-            self::TIERED->value => 'Distance Tiers',
-            self::PER_DISTANCE->value => 'Per Distance Rate'
+            self::FIXED->value => 'Tarifa fija',
+            self::TIERED->value => 'Tramos de distancia',
+            self::PER_DISTANCE->value => 'Tarifa por distancia'
         ];
     }
 }
