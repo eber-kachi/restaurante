@@ -15,9 +15,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class RecipeForm extends Component
 {
     use LivewireAlert;
-    public $showModal = false;
     public $isEditing = false;
-    public $recipeId;
     public $menuItemId;
     public $ingredients = [];
 
@@ -38,7 +36,6 @@ class RecipeForm extends Component
     public $hasModifierOptions = false;
     public $recipeType = 'menu_item'; // 'menu_item' or 'modifier_option'
 
-    protected $listeners = ['showRecipeForm', 'editRecipe'];
 
     protected function validationAttributes()
     {
@@ -98,7 +95,7 @@ class RecipeForm extends Component
         $this->validate($rules);
     }
 
-    public function mount()
+    public function mount(array $recipeToEdit = [])
     {
         // Get menu items that don't have recipes or have variations without recipes
         $this->availableMenuItems = MenuItem::where('is_available', 1)
@@ -135,56 +132,16 @@ class RecipeForm extends Component
         $this->availableInventoryItems = InventoryItem::with('unit')
             ->get(['id', 'name', 'unit_id']);
 
-        $this->ingredients = [
-            $this->getEmptyIngredient()
-        ];
+        if ($recipeToEdit !== []) {
+            $this->loadRecipeForEditing(...$recipeToEdit);
+        } else {
+            $this->ingredients = [$this->getEmptyIngredient()];
+        }
     }
 
-    public function showRecipeForm()
-    {
-        // Refresh available menu items when showing form
-        $this->availableMenuItems = MenuItem::where('is_available', 1)
-            ->where('branch_id', branch()->id)
-            ->where(function ($query) {
-                // Case 1: Menu items without variations that don't have a base recipe
-                $query->where(function ($subQuery) {
-                    $subQuery->whereDoesntHave('variations')
-                        ->whereDoesntHave('recipes', function ($recipeQuery) {
-                            $recipeQuery->whereNull('menu_item_variation_id');
-                        });
-                })
-                // Case 2: Menu items with variations where at least one variation doesn't have a recipe
-                ->orWhereHas('variations', function ($variationQuery) {
-                    $variationQuery->whereDoesntHave('recipes');
-                });
-            })
-            ->get(['id', 'item_name']);
-
-        // Refresh available modifier options
-        $this->availableModifierOptions = ModifierOption::where('is_available', 1)
-            ->whereNotIn('id', function ($query) {
-                $query->select('modifier_option_id')
-                    ->from('recipes')
-                    ->whereNotNull('modifier_option_id');
-            })
-            ->whereHas('modifierGroup', function ($query) {
-                $query->where('branch_id', branch()->id);
-            })
-            ->with('modifierGroup')
-            ->get(['id', 'name', 'modifier_group_id']);
-
-        $this->reset(['menuItemId', 'selectedVariationId', 'selectedModifierOptionId', 'ingredients', 'isEditing', 'recipeId', 'menuItemVariations', 'hasVariations']);
-        $this->recipeType = 'menu_item'; // Set default recipe type
-        $this->ingredients = [
-            $this->getEmptyIngredient()
-        ];
-        $this->showModal = true;
-    }
-
-    public function editRecipe($recipeId, $variationId = null, $modifierOptionId = null)
+    private function loadRecipeForEditing($recipeId, $variationId = null, $modifierOptionId = null)
     {
         $this->isEditing = true;
-        $this->recipeId = $recipeId;
 
         if ($modifierOptionId) {
             // Editing a modifier option recipe
@@ -195,11 +152,7 @@ class RecipeForm extends Component
             $modifierOption = ModifierOption::with('modifierGroup')
                 ->where('id', $modifierOptionId)
                 ->where('is_available', 1)
-                ->first();
-
-            if (!$modifierOption) {
-                return;
-            }
+                ->firstOrFail();
 
             // Set available modifier options to include only this one
             $this->availableModifierOptions = collect([
@@ -231,11 +184,7 @@ class RecipeForm extends Component
                 ->where('id', $recipeId)
                 ->where('is_available', 1)
                 ->where('branch_id', branch()->id)
-                ->first();
-
-            if (!$menuItem) {
-                return;
-            }
+                ->firstOrFail();
 
             // Set the menu item ID
             $this->menuItemId = $recipeId;
@@ -276,8 +225,6 @@ class RecipeForm extends Component
                     ];
                 })->toArray();
         }
-
-        $this->showModal = true;
     }
 
     public function updatedMenuItemId($value)

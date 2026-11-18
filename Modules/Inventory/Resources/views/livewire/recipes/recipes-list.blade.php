@@ -19,7 +19,7 @@
 
                 @if(user_can('Create Recipe'))
                 <!-- Add Recipe Button -->
-                <x-button  wire:click="$set('showAddRecipe', true)"  type="button" class="inline-flex gap-1 items-center" >
+                <x-button  wire:click="addRecipe"  type="button" class="inline-flex gap-1 items-center" >
                     <svg class=" h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -241,7 +241,7 @@
                             <div class="mt-6">
                                 <button 
                                     type="button" 
-                                    wire:click="$set('showAddRecipe', true)"
+                                    wire:click="addRecipe"
                                     class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-900"
                                 >
                                     <svg class="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,13 +264,18 @@
         @endif
     </div>
 
-    <x-right-modal wire:model="showAddRecipe">
+    <x-right-modal wire:model.live="showAddRecipe">
         <x-slot name="title">
-            {{ $isEditing ? __('inventory::modules.recipe.edit_recipe') : __('inventory::modules.recipe.add_recipe') }}
+            {{ $recipeToEdit !== [] ? __('inventory::modules.recipe.edit_recipe') : __('inventory::modules.recipe.add_recipe') }}
         </x-slot>
 
         <x-slot name="content">
-            <livewire:inventory::recipes.recipe-form />
+            @if ($showAddRecipe)
+                <livewire:inventory::recipes.recipe-form
+                    :recipe-to-edit="$recipeToEdit"
+                    :key="'recipe-form-' . $recipeFormVersion"
+                />
+            @endif
         </x-slot>
     </x-right-modal>
 
