@@ -182,8 +182,12 @@
                         <span class="text-sm font-medium text-purple-700 dark:text-purple-200">
                             @lang('modules.report.taxMode')
                         </span>
-                        <span class="text-sm font-bold text-purple-800 dark:text-purple-200 capitalize">
-                            {{ $taxMode }}
+                        <span class="text-sm font-bold text-purple-800 dark:text-purple-200">
+                            {{ match ($taxMode) {
+                                'order' => __('modules.settings.taxModeOrder'),
+                                'item' => __('modules.settings.taxModeItem'),
+                                default => ucfirst($taxMode),
+                            } }}
                         </span>
                     </div>
                     <div class="flex items-center justify-between rounded-lg bg-purple-100/50 p-3 dark:bg-purple-900/20">
