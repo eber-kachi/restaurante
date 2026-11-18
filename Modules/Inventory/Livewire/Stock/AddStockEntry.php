@@ -220,7 +220,7 @@ class AddStockEntry extends Component
     {
         $this->inventoryItem = $itemId;
         $inventoryItem = InventoryItem::find($itemId);
-        $this->unitPurchasePrice = $inventoryItem->unit_purchase_price;
+        $this->unitPurchasePrice = (float) $inventoryItem->unit_purchase_price;
         $this->supplier = $inventoryItem->preferred_supplier_id;
     }
 

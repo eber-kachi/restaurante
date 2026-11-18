@@ -31,6 +31,21 @@ class LanguageSetting extends BaseModel
         'zh-TW' => '中國人'
     ];
 
+    /**
+     * Idiomas activos como [código => nombre]. Usa el nombre nativo (p. ej. "Español")
+     * y, si no existe, el nombre guardado en la base de datos ("Spanish").
+     * Solo para mostrar en pantalla; la lógica debe usar el código del idioma.
+     */
+    public static function nativeNames(?iterable $languages = null): array
+    {
+        $languages = collect($languages ?? languages());
+
+        return $languages->mapWithKeys(fn ($lang) => [
+            $lang->language_code => self::LANGUAGES_TRANS[$lang->language_code] ?? $lang->language_name,
+        ])->toArray();
+    }
+
+
     const LANGUAGES = [
         [
             'language_code' => 'en',

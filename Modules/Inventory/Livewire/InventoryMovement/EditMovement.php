@@ -30,7 +30,7 @@ class EditMovement extends Component
         $this->supplier = $movement->supplier_id;
         $this->wasteReason = $movement->waste_reason;
         $this->branch = $movement->transfer_branch_id;
-        $this->unitPurchasePrice = $movement->unit_purchase_price;
+        $this->unitPurchasePrice = (float) $movement->unit_purchase_price;
         $this->expirationDate = $movement->expiration_date ? $movement->expiration_date->format('Y-m-d') : null;
         $this->suppliers = Supplier::all();
         $this->branches = Branch::where('id', '!=', branch()->id)->get();

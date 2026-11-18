@@ -19,7 +19,7 @@ class AddItemCategory extends Component
 
     public function mount()
     {
-        $this->languages = languages()->pluck('language_name', 'language_code')->toArray();
+        $this->languages = \App\Models\LanguageSetting::nativeNames();
         $this->translations = array_fill_keys(array_keys($this->languages), '');
         $this->globalLocale = global_setting()->locale;
         $this->currentLanguage = $this->globalLocale;

@@ -191,7 +191,7 @@ class ManagePurchaseOrder extends Component
         $inventoryItem = InventoryItem::with(['unit', 'category'])->find($item['inventoryItemId']);
 
         if ($inventoryItem) {
-            $this->items[$index]['unitPrice'] = $inventoryItem->unit_purchase_price;
+            $this->items[$index]['unitPrice'] = (float) $inventoryItem->unit_purchase_price;
             $this->items[$index]['preview'] = $this->formatPreview($inventoryItem);
         } else {
             $this->items[$index]['preview'] = null;

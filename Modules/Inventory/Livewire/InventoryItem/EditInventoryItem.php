@@ -44,7 +44,7 @@ class EditInventoryItem extends Component
         $this->thresholdQuantity = $inventoryItem->threshold_quantity;
         $this->preferredSupplier = $inventoryItem->preferred_supplier_id;
         $this->reorderQuantity = $inventoryItem->reorder_quantity;
-        $this->unitPurchasePrice = $inventoryItem->unit_purchase_price;
+        $this->unitPurchasePrice = (float) $inventoryItem->unit_purchase_price;
         $this->description = $inventoryItem->description;
         $this->itemCategories = InventoryItemCategory::all();
         $this->units = Unit::all();

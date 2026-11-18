@@ -18,7 +18,7 @@ class EditItemCategory extends Component
 
     public function mount()
     {
-        $this->languages = collect(languages())->pluck('language_name', 'language_code')->toArray();
+        $this->languages = \App\Models\LanguageSetting::nativeNames();
         $this->globalLocale = global_setting()->locale;
         $this->currentLanguage = $this->globalLocale;
         // Load existing translations
