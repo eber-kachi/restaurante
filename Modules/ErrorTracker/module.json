@@ -1,0 +1,11 @@
+{
+    "name": "ErrorTracker",
+    "alias": "errortracker",
+    "description": "Self-hosted error tracking (Sentry-like). Captures unhandled exceptions and error logs in production and emails every superadmin.",
+    "keywords": ["errors", "monitoring", "sentry"],
+    "priority": 100,
+    "providers": [
+        "Modules\\ErrorTracker\\Providers\\ErrorTrackerServiceProvider"
+    ],
+    "files": []
+}

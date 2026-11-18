@@ -1,0 +1,15 @@
+{
+    "name": "restaurante/error-tracker",
+    "description": "Self-hosted error tracking module",
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ErrorTracker\\": ""
+        }
+    }
+}
