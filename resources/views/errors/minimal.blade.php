@@ -54,13 +54,13 @@
                         <a href="{{ url('/') }}"
                         class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-md hover:bg-primary-50 transition-colors duration-200">
                             @yield('home_icon')
-                            Return Home
+                            @lang('views_front.common.return_home')
                         </a>
 
                         <button onclick="history.back()"
                                 class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-600 bg-white border-2 border-primary-600 rounded-md hover:bg-primary-50 transition-colors duration-200">
                             @yield('back_icon')
-                            Go Back
+                            @lang('views_front.common.go_back')
                         </button>
                     </div>
                 </div>

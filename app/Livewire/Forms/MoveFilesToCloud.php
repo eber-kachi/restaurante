@@ -55,6 +55,7 @@ class MoveFilesToCloud extends Component
             try {
                 unlink($filePath);
             } catch (\Throwable $th) {
+                report($th);
                 return true;
             }
         }

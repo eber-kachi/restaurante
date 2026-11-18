@@ -266,6 +266,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError('testRazorpayKey', 'Invalid Razorpay key or secret.');
                 }
             } catch (\Exception $e) {
+                report($e);
                 $this->addError('razorpayKey', 'Invalid Razorpay key or secret.');
                 $this->addError('testRazorpayKey', 'Invalid Razorpay key or secret.');
             }
@@ -327,6 +328,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError('testStripeKey', 'Invalid Stripe key or secret.');
                 }
             } catch (\Exception $e) {
+                report($e);
                 $this->addError('stripeKey', 'Invalid Stripe key or secret.');
                 $this->addError('testStripeKey', 'Invalid Stripe key or secret.');
             }
@@ -390,6 +392,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError('testFlutterwaveKey', 'Invalid Flutterwave key or secret.');
                 }
             } catch (\Exception $e) {
+                report($e);
                 $this->addError('flutterwaveKey', 'Invalid Flutterwave key or secret.');
                 $this->addError('testFlutterwaveKey', 'Invalid Flutterwave key or secret.');
             }
@@ -452,6 +455,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError('testPaypalClientId', 'Invalid Paypal client id or secret.');
                 }
             } catch (\Exception $e) {
+                report($e);
                 $this->addError('paypalClientId', 'Invalid Paypal client id or secret.');
                 $this->addError('testPaypalClientId', 'Invalid Paypal client id or secret.');
             }
@@ -563,6 +567,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError('testPaystackKey', 'Invalid Paystack key or secret.');
                 }
             } catch (\Exception $e) {
+                report($e);
                 $this->addError('paystackKey', 'Invalid Paystack key or secret.');
                 $this->addError('testPaystackKey', 'Invalid Paystack key or secret.');
             }
@@ -649,6 +654,7 @@ class SuperadminPaymentSettings extends Component
             $field = $this->xenditMode === 'live' ? 'liveXenditPublicKey' : 'testXenditPublicKey';
             $this->addError($field, 'Invalid Xendit key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $field = $this->xenditMode === 'live' ? 'liveXenditPublicKey' : 'testXenditPublicKey';
             $this->addError($field, 'Error: ' . $e->getMessage());
         }
@@ -705,6 +711,7 @@ class SuperadminPaymentSettings extends Component
                     $this->addError($field, $errorMessage);
                 }
             } catch (\Exception $e) {
+                report($e);
                 $configError = 1;
                 $field = $this->paddleMode == 'live' ? 'livePaddleApiKey' : 'testPaddleApiKey';
                 $this->addError($field, 'Error connecting to Paddle: ' . $e->getMessage());

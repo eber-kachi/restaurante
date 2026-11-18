@@ -276,7 +276,7 @@
     @endif
 
     <div class="footer">
-        <div>Generated on {{ now(timezone())->format('F d, Y \a\t H:i:s') }}</div>
+        <div>{{ __('inventory::modules.purchaseOrder.pdf.generated_on', ['date' => now(timezone())->format('F d, Y H:i:s')]) }}</div>
     </div>
 </body>
 </html> 

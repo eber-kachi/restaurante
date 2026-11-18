@@ -13,9 +13,9 @@ class="min-h-screen flex items-center justify-center bg-white">
    <div class="flex items-center justify-between mb-8">
        <button @click="currentScreen = 'menu'" 
                class="text-gray-500 hover:text-gray-700 font-medium text-lg transition-colors duration-200">
-           ← Back to Menu
+           ← {{ __('kiosk::modules.customisation.back_to_menu') }}
        </button>
-       <h1 class="text-2xl font-bold text-gray-900">Customize Your Item</h1>
+       <h1 class="text-2xl font-bold text-gray-900">{{ __('kiosk::modules.customisation.customize_item') }}</h1>
        <div></div>
    </div>
 
@@ -35,14 +35,14 @@ class="min-h-screen flex items-center justify-center bg-white">
    <div class="space-y-6">
        <!-- Size/Variants -->
        <div x-show="selectedItem.variants && selectedItem.variants.length > 0">
-           <h3 class="text-lg font-semibold text-gray-900 mb-4">Choose Size</h3>
+           <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('kiosk::modules.customisation.choose_size') }}</h3>
            <div class="grid grid-cols-2 gap-4">
                <template x-for="variant in selectedItem.variants" :key="variant.id">
                    <button @click="selectVariant(variant)"
                            :class="{'bg-skin-base text-white': selectedVariant === variant.id, 'bg-gray-100 text-gray-700 hover:bg-gray-200': selectedVariant !== variant.id}"
                            class="p-4 rounded-lg font-medium transition-all duration-200 text-left">
                        <div class="font-bold" x-text="variant.name"></div>
-                       <div class="text-sm" x-text="variant.price > 0 ? '+$' + variant.price : 'No extra cost'"></div>
+                       <div class="text-sm" x-text="variant.price > 0 ? '+$' + variant.price : @js(__('kiosk::modules.customisation.no_extra_cost'))"></div>
                    </button>
                </template>
            </div>
@@ -50,7 +50,7 @@ class="min-h-screen flex items-center justify-center bg-white">
 
        <!-- Add-ons -->
        <div x-show="selectedItem.addons && selectedItem.addons.length > 0">
-           <h3 class="text-lg font-semibold text-gray-900 mb-4">Add-ons</h3>
+           <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('kiosk::modules.customisation.add_ons') }}</h3>
            <div class="space-y-3">
                <template x-for="addon in selectedItem.addons" :key="addon.id">
                    <label class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
@@ -70,7 +70,7 @@ class="min-h-screen flex items-center justify-center bg-white">
 
        <!-- Remove ingredients -->
        <div x-show="selectedItem.removals && selectedItem.removals.length > 0">
-           <h3 class="text-lg font-semibold text-gray-900 mb-4">Remove ingredients</h3>
+           <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('kiosk::modules.customisation.remove_ingredients') }}</h3>
            <div class="space-y-3">
                <template x-for="removal in selectedItem.removals" :key="removal.id">
                    <label class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
@@ -87,7 +87,7 @@ class="min-h-screen flex items-center justify-center bg-white">
 
        <!-- Quantity -->
        <div>
-           <h3 class="text-lg font-semibold text-gray-900 mb-4">Quantity</h3>
+           <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('kiosk::modules.customisation.quantity') }}</h3>
            <div class="flex items-center justify-center space-x-6">
                <button @click="decreaseQuantity()" 
                        class="w-12 h-12 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-200">
@@ -108,7 +108,7 @@ class="min-h-screen flex items-center justify-center bg-white">
        <!-- Total Price -->
        <div class="bg-gray-50 rounded-lg p-4">
            <div class="flex justify-between items-center">
-               <span class="text-lg font-semibold text-gray-900">Total Price:</span>
+               <span class="text-lg font-semibold text-gray-900">{{ __('kiosk::modules.customisation.total_price') }}</span>
                <span class="text-2xl font-bold text-gray-900" x-text="'$' + totalItemPrice"></span>
            </div>
        </div>
@@ -117,11 +117,11 @@ class="min-h-screen flex items-center justify-center bg-white">
        <div class="flex space-x-4">
            <button @click="addToCartFromCustomization()"
                 class="flex-1 bg-skin-base text-white py-4 rounded-lg font-bold text-lg hover:bg-skin-base transition-all duration-200">
-               Add to Cart
+               {{ __('kiosk::modules.customisation.add_to_cart') }}
            </button>
            <button @click="currentScreen = 'menu'"
                    class="flex-1 border-2 border-gray-300 text-gray-700 py-4 rounded-lg font-medium text-lg hover:bg-gray-50 transition-colors duration-200">
-               Cancel
+               {{ __('kiosk::modules.customisation.cancel') }}
            </button>
        </div>
    </div>

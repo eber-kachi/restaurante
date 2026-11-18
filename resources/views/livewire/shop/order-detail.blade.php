@@ -300,7 +300,7 @@
                                                 <span class="font-medium">
                                                     {{ currency_format(($item->price + $item->modifierOptions->sum('price')) - ($item->tax_amount / $item->quantity), $restaurant->currency_id) }}
                                                 </span>
-                                                <span class="text-gray-400 dark:text-gray-500">+ tax</span>
+                                                <span class="text-gray-400 dark:text-gray-500">@lang('views_front.order.plus_tax')</span>
                                                 <span class="text-gray-400 dark:text-gray-500">=</span>
                                             @endif
                                             <span class="font-medium">
@@ -716,7 +716,7 @@
 
                     <div class="flex items-center mt-2">
                         @if ($showQrCode)
-                            <img src="{{ $paymentGateway->qr_code_image_url }}" alt="QR Code Preview"
+                            <img src="{{ $paymentGateway->qr_code_image_url }}" alt="{{ __('views_front.shop.qr_code_preview') }}"
                                 class="object-cover rounded-md h-30 w-30">
                         @else
                             <span class="p-3 font-bold text-gray-700 rounded dark:text-gray-400">@lang('modules.billing.accountDetails')</span>
@@ -938,7 +938,7 @@
                             <button type="button"
                                 wire:click="$set('tipAmount', 0)"
                                 class="text-gray-400 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-                                title="Clear amount">
+                                title="{{ __('views_front.order.clear_amount') }}">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
@@ -1009,7 +1009,7 @@
                             },
                             "modal": {
                                 "ondismiss": function() {
-                                    if (confirm("Are you sure, you want to close the form?")) {
+                                    if (confirm(@js(__('views_front.shop.confirm_close_form')))) {
                                         txt = "You pressed OK!";
                                         console.log("Checkout form closed by the user");
                                     } else {

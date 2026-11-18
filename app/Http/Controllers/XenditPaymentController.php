@@ -70,6 +70,7 @@ class XenditPaymentController extends Controller
 
             return response()->json(['message' => 'Xendit PAID processed']);
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['message' => 'Error handling PAID', 'error' => $e->getMessage()], 400);
         }
     }
@@ -87,6 +88,7 @@ class XenditPaymentController extends Controller
 
             return response()->json(['message' => "Xendit {$status} processed"]);
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['message' => 'Error handling failure', 'error' => $e->getMessage()], 400);
         }
     }

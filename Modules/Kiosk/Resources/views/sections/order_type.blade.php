@@ -11,8 +11,8 @@
              class="min-h-screen flex items-center justify-center bg-white">
             <div class="w-full max-w-4xl px-8">
                 <div class="text-center mb-12">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-4">How would you like to order?</h1>
-                    <p class="text-xl text-gray-600">Choose your dining preference</p>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('kiosk::modules.order_type.heading') }}</h1>
+                    <p class="text-xl text-gray-600">{{ __('kiosk::modules.order_type.subheading') }}</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -24,8 +24,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Dine-In</h3>
-                        <p class="text-gray-600">Enjoy your meal in our restaurant</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ __('kiosk::modules.order_type.dine_in') }}</h3>
+                        <p class="text-gray-600">{{ __('kiosk::modules.order_type.dine_in_desc') }}</p>
                     </button>
 
                     <!-- Takeaway -->
@@ -36,8 +36,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Takeaway</h3>
-                        <p class="text-gray-600">Pick up your order to go</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ __('kiosk::modules.order_type.takeaway') }}</h3>
+                        <p class="text-gray-600">{{ __('kiosk::modules.order_type.takeaway_desc') }}</p>
                     </button>
 
                     <!-- Delivery -->
@@ -48,8 +48,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Delivery</h3>
-                        <p class="text-gray-600">Get it delivered to your door</p>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ __('kiosk::modules.order_type.delivery') }}</h3>
+                        <p class="text-gray-600">{{ __('kiosk::modules.order_type.delivery_desc') }}</p>
                     </button>
                 </div>
 
@@ -57,7 +57,7 @@
                 <div class="text-center mt-12">
                     <button @click="currentScreen = 'welcome'" 
                             class="text-gray-500 hover:text-gray-700 font-medium text-lg transition-colors duration-200">
-                        Back
+                        {{ __('kiosk::modules.order_type.back') }}
                     </button>
                 </div>
             </div>

@@ -2427,6 +2427,7 @@ class PosProxyController extends Controller
                         })
                         ->groupBy('order_id');
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order charges hydrate failed', ['order_ids' => $orderIds, 'message' => $e->getMessage()]);
                     $chargesByOrder = collect();
                 }
@@ -2479,6 +2480,7 @@ class PosProxyController extends Controller
                         })
                         ->groupBy('order_id');
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order taxes hydrate failed', ['order_ids' => $orderIds, 'message' => $e->getMessage()]);
                     $taxesByOrder = collect();
                 }
@@ -2500,6 +2502,7 @@ class PosProxyController extends Controller
                         ->get()
                         ->keyBy('id');
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Orders customer lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2515,6 +2518,7 @@ class PosProxyController extends Controller
                         ->get()
                         ->keyBy('id');
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Orders table lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2534,6 +2538,7 @@ class PosProxyController extends Controller
                             return [$exec->id => $exec];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Orders delivery exec lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2549,6 +2554,7 @@ class PosProxyController extends Controller
                         ->get()
                         ->keyBy('id');
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Orders order type lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2753,6 +2759,7 @@ class PosProxyController extends Controller
                             ];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order items fallback failed', ['order_id' => $id, 'message' => $e->getMessage()]);
                     $items = collect();
                 }
@@ -2797,6 +2804,7 @@ class PosProxyController extends Controller
                             ];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order split items fallback failed', ['order_id' => $id, 'message' => $e->getMessage()]);
                 }
             }
@@ -2832,6 +2840,7 @@ class PosProxyController extends Controller
                             ];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order KOT fallback failed', ['order_id' => $id, 'message' => $e->getMessage()]);
                 }
             }
@@ -2866,6 +2875,7 @@ class PosProxyController extends Controller
                             ];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order charges fallback failed', ['order_id' => $id, 'message' => $e->getMessage()]);
                     $charges = collect();
                 }
@@ -2913,6 +2923,7 @@ class PosProxyController extends Controller
                             ];
                         });
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order taxes fallback failed', ['order_id' => $id, 'message' => $e->getMessage()]);
                     $taxes = collect();
                 }
@@ -2929,6 +2940,7 @@ class PosProxyController extends Controller
                         ->where('id', $row->customer_id)
                         ->first();
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order customer lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2944,6 +2956,7 @@ class PosProxyController extends Controller
                         ->where('id', $row->table_id)
                         ->first();
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order table lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2965,6 +2978,7 @@ class PosProxyController extends Controller
                         ]);
                     }
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order delivery exec lookup failed', ['error' => $e->getMessage()]);
                 }
             }
@@ -2980,6 +2994,7 @@ class PosProxyController extends Controller
                         ->where('id', $row->order_type_id)
                         ->first();
                 } catch (\Throwable $e) {
+                    report($e);
                     Log::warning('Order type lookup failed', ['error' => $e->getMessage()]);
                 }
             }

@@ -302,6 +302,7 @@ class Setting extends Component
                     'http_status' => $response->status(),
                 ];
             } catch (\Throwable $e) {
+                report($e);
                 $this->results[] = [
                     'label' => $endpoint['label'],
                     'status' => 'fail',

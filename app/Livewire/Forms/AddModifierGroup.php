@@ -440,6 +440,7 @@ class AddModifierGroup extends Component
             ]);
 
         } catch (\Exception $e) {
+            report($e);
             DB::rollBack();
             $this->alert('error', __('messages.somethingWentWrong'), [
                 'toast' => true,

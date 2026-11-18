@@ -93,6 +93,7 @@ class StripeController extends Controller
 
             return redirect()->route('order_success', $payment->order->uuid);
         } catch (Error $e) {
+            report($e);
             http_response_code(500);
             logger(json_encode(['error' => $e->getMessage()]));
         }
@@ -130,6 +131,7 @@ class StripeController extends Controller
             try {
                 $stripe->prices->retrieve($priceId);
             } catch (\Stripe\Exception\InvalidRequestException $e) {
+                report($e);
                 return redirect()->route('dashboard')->with([
                     'flash.banner' => $e->getMessage(),
                     'flash.bannerStyle' => 'danger'
@@ -282,6 +284,7 @@ class StripeController extends Controller
 
             return redirect()->route('dashboard')->with('livewire', true);
         } catch (\Exception $e) {
+            report($e);
             logger(['error' => $e->getMessage()]);
             return redirect()->route('dashboard')->with([
                 'flash.banner' => __('messages.paymentError'),

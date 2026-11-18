@@ -210,6 +210,7 @@ class PaypalController extends Controller
         try {
             $output = $plan->create($this->_api_context);
         } catch (\Exception $ex) {
+            report($ex);
 
             if (\Config::get('app.debug')) {
                 \Session::put('error', $ex->getMessage());
@@ -237,6 +238,7 @@ class PaypalController extends Controller
             $newPlan = Plan::get($output->getId(), $this->_api_context);
 
         } catch (\Exception $ex) {
+            report($ex);
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
                 return Redirect::route('dashboard');
@@ -272,6 +274,7 @@ class PaypalController extends Controller
             $approvalUrl = $agreement->getApprovalLink();
 
         } catch (\Exception $ex) {
+            report($ex);
 
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
@@ -430,6 +433,7 @@ class PaypalController extends Controller
                 ]);
 
             } catch (PayPalConnectionException $ex) {
+                report($ex);
                 $errCode = $ex->getCode();
                 $errData = json_decode($ex->getData());
 

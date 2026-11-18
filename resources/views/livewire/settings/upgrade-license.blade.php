@@ -73,7 +73,7 @@
             },
             "modal": {
                 "ondismiss": function() {
-                    if (confirm("Are you sure, you want to close the form?")) {
+                    if (confirm(@js(__('views_admin.upgrade_license.confirm_close')))) {
                         console.log("Checkout form closed by the user");
                     } else {
                         console.log("Complete the Payment")

@@ -76,10 +76,10 @@
                     </div>
                     <div class="md:col-span-1 text-right space-y-1 mt-4 md:mt-0">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Total Sessions: {{ $sessions->count() }}
+                            @lang('cashregister::app.totalSessions'): {{ $sessions->count() }}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Sessions with Discrepancy: {{ $sessions->where('discrepancy', '!=', 0)->count() }}
+                            @lang('cashregister::app.sessionsWithDiscrepancy'): {{ $sessions->where('discrepancy', '!=', 0)->count() }}
                         </p>
                     </div>
                 </div>
@@ -94,10 +94,10 @@
                         </div>
                         <div class="ml-3">
                             <p class="text-sm font-medium text-red-800 dark:text-red-200">
-                                High Discrepancy (≥ 200)
+                                @lang('cashregister::app.highDiscrepancy')
                             </p>
                             <p class="text-sm text-red-600 dark:text-red-400">
-                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) >= 200; })->count() }} sessions
+                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) >= 200; })->count() }} @lang('cashregister::app.sessions')
                             </p>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                 @lang('cashregister::app.mediumDiscrepancy')
                             </p>
                             <p class="text-sm text-yellow-600 dark:text-yellow-400">
-                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) >= 50 && abs($s->discrepancy) < 200; })->count() }} sessions
+                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) >= 50 && abs($s->discrepancy) < 200; })->count() }} @lang('cashregister::app.sessions')
                             </p>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                                 @lang('cashregister::app.lowDiscrepancy')
                             </p>
                             <p class="text-sm text-green-600 dark:text-green-400">
-                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) < 50; })->count() }} sessions
+                                {{ $sessions->filter(function($s) { return abs($s->discrepancy) < 50; })->count() }} @lang('cashregister::app.sessions')
                             </p>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                                     {{ $session->closed_at->timezone(timezone())->format('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $session->cashier->name ?? 'N/A' }}
+                                    {{ $session->cashier->name ?? __('cashregister::app.notAvailable') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                     {{ currency_format($session->expected_cash, restaurant()->currency_id) }}
@@ -217,7 +217,7 @@
                 </div>
                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    No closed cash register sessions found for the selected criteria.
+                    @lang('cashregister::app.noClosedSessions')
                 </p>
             </div>
         </div>

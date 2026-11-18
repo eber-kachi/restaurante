@@ -130,6 +130,7 @@ class BillingSettings extends Component
                     default => session()->flash('error', __('messages.invalidGateway')),
                 };
             } catch (\Exception $e) {
+                report($e);
                 session()->flash('error', $gatewayName . ' Error: ' . $e->getMessage());
             }
         }
@@ -271,6 +272,7 @@ class BillingSettings extends Component
                 $this->alert('error', __('messages.cancelFailed') . ': ' . $response->json('message'));
             }
         } catch (\Exception $e) {
+            report($e);
             // Handle exceptions and show error alert
             $this->alert('error', __('messages.errorOccurred') . ': ' . $e->getMessage());
         }
@@ -386,6 +388,7 @@ class BillingSettings extends Component
 
             }
             catch (\Exception $e) {
+                report($e);
                 $restaurant = Restaurant::find(restaurant()->id);
                     if ($cancelType) {
                         $this->updateSubscription($restaurant);
@@ -498,6 +501,7 @@ class BillingSettings extends Component
             $this->alert('error', __('messages.cancelFailed') . ': ' . $errorMessage);
         }
     } catch (\Exception $e) {
+        report($e);
         $this->alert('error', __('messages.errorOccurred') . ': ' . $e->getMessage());
     }
 

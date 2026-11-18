@@ -58,7 +58,7 @@
                                                 </div>
                                                 <div class="ml-4">
                                                     <p class="text-base font-semibold {{ !$isFree ? 'text-skin-base dark:text-blue-300' : 'text-gray-900 dark:text-gray-100' }}">@lang('modules.package.paidPlan')</p>
-                                                    <p class="text-sm {{ !$isFree ? 'text-skin-base dark:text-blue-400' : 'text-gray-500 dark:text-gray-400' }}">Full access to all features</p>
+                                                    <p class="text-sm {{ !$isFree ? 'text-skin-base dark:text-blue-400' : 'text-gray-500 dark:text-gray-400' }}">@lang('views_admin.package_form.full_access')</p>
                                                 </div>
                                             </div>
                                             @if(!$isFree)
@@ -87,7 +87,7 @@
                                                 </div>
                                                 <div class="ml-4">
                                                     <p class="text-base font-semibold {{ $isFree ? 'text-skin-base dark:text-blue-300' : 'text-gray-900 dark:text-gray-100' }}">@lang('modules.package.freePlan')</p>
-                                                    <p class="text-sm {{ $isFree ? 'text-skin-base dark:text-blue-400' : 'text-gray-500 dark:text-gray-400' }}">Limited access to basic features</p>
+                                                    <p class="text-sm {{ $isFree ? 'text-skin-base dark:text-blue-400' : 'text-gray-500 dark:text-gray-400' }}">@lang('views_admin.package_form.limited_access')</p>
                                                 </div>
                                             </div>
                                             @if($isFree)
@@ -183,7 +183,7 @@
                                         </div>
                                         <div class="ml-3">
                                             <p class="text-sm text-yellow-800 dark:text-yellow-200">
-                                                <strong>Currency cannot be changed</strong> because restaurants have already subscribed to this package. To change the currency, you would need to migrate existing subscribers to a new package.
+                                                {!! __('views_admin.package_form.currency_locked') !!}
                                             </p>
                                         </div>
                                     </div>

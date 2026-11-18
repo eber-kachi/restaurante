@@ -240,14 +240,13 @@
                                             :value="$orderType->order_type_name" 
                                             class="!mb-1 font-medium" />
                                         <p class="text-sm text-gray-500 dark:text-gray-400">
-                                            Enable token numbers for {{ $orderType->order_type_name }} orders. 
-                                            Tokens will be displayed on order details and reset daily.
+                                            {{ __('views_admin.order_settings.token_help', ['name' => $orderType->order_type_name]) }}
                                         </p>
                                     </div>
                                 </div>
                             @empty
                                 <div class="p-4 text-center text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                                    No order types found for this branch.
+                                    @lang('views_admin.order_settings.no_order_types')
                                 </div>
                             @endforelse
                         </div>

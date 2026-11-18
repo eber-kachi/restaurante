@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>KOT Preview</title>
+  <title>@lang('views_front.kot.preview')</title>
 
   <style>
 
@@ -17,7 +17,7 @@
   </div>
 
   <div style="text-align: center; padding: 20px; display: none;">
-    <p>Generating and saving KOT image...</p>
+    <p>@lang('views_front.kot.generating')</p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>

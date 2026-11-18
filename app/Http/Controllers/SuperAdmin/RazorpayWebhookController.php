@@ -146,6 +146,7 @@ class RazorpayWebhookController extends Controller
             $api = new Api($apiKey, $secretKey);
             $payment = $api->payment->fetch($razorpayPaymentId);
         } catch (\Exception $e) {
+            report($e);
 
             return;
         }
@@ -216,6 +217,7 @@ class RazorpayWebhookController extends Controller
 
             return response('Webhook Handled', 200);
         } catch (\Exception $e) {
+            report($e);
             //
             // Capture will fail if the payment is already captured
             //

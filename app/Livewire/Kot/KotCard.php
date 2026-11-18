@@ -200,6 +200,7 @@ class KotCard extends Component
                             break;
                     }
                 } catch (\Throwable $e) {
+                    report($e);
                     $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                         'toast' => true,
                         'position' => 'top-end',
@@ -230,6 +231,7 @@ class KotCard extends Component
                         break;
                 }
             } catch (\Throwable $e) {
+                report($e);
                 $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                     'toast' => true,
                     'position' => 'top-end',

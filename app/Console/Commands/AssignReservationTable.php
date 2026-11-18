@@ -68,6 +68,7 @@ class AssignReservationTable extends Command
 
             $this->info("Total tables processed: {$processedTables}");
         } catch (\Exception $e) {
+            report($e);
             $this->error('Error occurred: ' . $e->getMessage());
             return Command::FAILURE;
         }

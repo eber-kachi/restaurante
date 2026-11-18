@@ -67,6 +67,7 @@ class PaypalPaymentController extends Controller
 
             return response()->json(['message' => 'Payment failed event processed']);
             } catch (\Exception $e) {
+            report($e);
             return response()->json(['message' => 'Error handling payment failed event', 'error' => $e->getMessage()], 400);
             }
         }
@@ -105,6 +106,7 @@ class PaypalPaymentController extends Controller
 
                 return response()->json(['message' => 'Capture event processed successfully']);
             } catch (\Exception $e) {
+                report($e);
                 return response()->json(['message' => 'Error handling capture event', 'error' => $e->getMessage()], 400);
             }
         }

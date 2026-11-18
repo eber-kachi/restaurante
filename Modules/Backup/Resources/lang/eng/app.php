@@ -138,4 +138,10 @@ return [
     'updating' => 'Updating...',
     'saving' => 'Saving...',
     'storage' => 'Stored On',
+    'syncSummary' => 'Sync: :created new, :updated updated, :deleted removed',
+    'allBackupsSynchronized' => 'All backups synchronized',
+    'syncingBackups' => 'Syncing backups...',
+    'creatingShort' => 'Creating...',
+    'noDataChangesDetected' => 'No data changes detected since last backup.',
+    'tabsLabel' => 'Tabs',
 ];

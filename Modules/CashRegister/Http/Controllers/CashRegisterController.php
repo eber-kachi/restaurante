@@ -90,6 +90,7 @@ class CashRegisterController extends Controller
                 'print_job_id' => $printJob->id
             ]);
         } catch (\Exception $e) {
+            report($e);
 
             return response()->json([
                 'success' => false,

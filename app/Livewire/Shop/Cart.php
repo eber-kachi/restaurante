@@ -888,6 +888,7 @@ class Cart extends Component
                 return redirect()->route('flutterwave.failed')->withErrors(['error' => 'Payment initiation failed', 'message' => $responseData]);
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
@@ -1053,6 +1054,7 @@ class Cart extends Component
                 return redirect()->route('paystack.failed');
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
@@ -1115,6 +1117,7 @@ class Cart extends Component
                 return redirect()->route('xendit.failed');
             }
         } catch (\Exception $e) {
+            report($e);
             session()->flash('error', 'Xendit payment error: ' . $e->getMessage());
             return redirect()->route('xendit.failed');
         }
@@ -1433,6 +1436,7 @@ class Cart extends Component
                                
                         }
                     } catch (\Throwable $e) {
+                        report($e);
                         $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                             'toast' => true,
                             'position' => 'top-end',
@@ -1464,6 +1468,7 @@ class Cart extends Component
                     default:
                 }
             } catch (\Throwable $e) {
+                report($e);
                 $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                     'toast' => true,
                     'position' => 'top-end',

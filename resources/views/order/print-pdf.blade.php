@@ -455,7 +455,7 @@
             @if ($order->status != 'paid' && $receiptSettings->show_payment_qr_code)
                 <div class="qr_code">
                     <p>@lang('modules.settings.payFromYourPhone')</p>
-                    <img src="{{ $receiptSettings->payment_qr_code_url }}" alt="QR Code">
+                    <img src="{{ $receiptSettings->payment_qr_code_url }}" alt="{{ __('views_front.common.qr_code') }}">
                     <p>@lang('modules.settings.scanQrCode')</p>
                 </div>
             @endif

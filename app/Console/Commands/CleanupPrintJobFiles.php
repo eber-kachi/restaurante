@@ -81,6 +81,7 @@ class CleanupPrintJobFiles extends Command
                 $this->info("No files older than " . self::CUTOFF_TIME . " minutes found.");
             }
         } catch (\Exception $e) {
+            report($e);
             $this->error("Error during cleanup: " . $e->getMessage());
             return 1;
         }

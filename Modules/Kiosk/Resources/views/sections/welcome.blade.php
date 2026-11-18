@@ -14,14 +14,14 @@
             <div class="w-28 h-28 rounded-lg mx-auto mb-6 flex items-center justify-center">
                 <img src="{{  $restaurant->logo_url }}" alt="{{ $restaurant->name }}" class="w-full h-full object-cover">
             </div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-3">Welcome to {{ $restaurant->name }}</h1>
-            <p class="text-lg text-gray-500">Touch to Start</p>
+            <h1 class="text-3xl font-bold text-gray-900 mb-3">{{ __('kiosk::modules.welcome.title', ['name' => $restaurant->name]) }}</h1>
+            <p class="text-lg text-gray-500">{{ __('kiosk::modules.welcome.touch_to_start') }}</p>
         </div>
 
         <!-- Start Button -->
         <button @click="startOrder()" 
                 class="w-full bg-skin-base text-white py-6 px-8 rounded-lg font-bold text-2xl transition-all duration-200 hover:bg-skin-base/80 active:scale-95">
-            Start Order
+            {{ __('kiosk::modules.welcome.start_order') }}
         </button>
     </div>
 </div>

@@ -229,6 +229,7 @@ class PayfastController extends Controller
 
             return Redirect::route('dashboard');
         } catch (\Exception $e) {
+            report($e);
             return redirect()->route('dashboard')->with([
                 'flash.banner' => __('messages.paymentError'),
                 'flash.bannerStyle' => 'danger'

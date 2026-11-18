@@ -28,7 +28,7 @@
                                 wire:click='setReservationTable({{ $item->id }})'
                             @endif
                             wire:key='table-{{ $item->id . microtime() }}'
-                            title="{{ !$isAvailable && $item->status == 'active' ? 'Table is already reserved for this time' : '' }}">
+                            title="{{ !$isAvailable && $item->status == 'active' ? __('views_front.table.already_reserved') : '' }}">
                                 <div class="p-3">
                                     <div class="flex flex-col space-y-2 items-center justify-center">
                                         @if ($item->status == 'inactive')

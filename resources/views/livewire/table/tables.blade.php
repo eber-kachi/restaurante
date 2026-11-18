@@ -268,7 +268,7 @@
                                             @else
                                                 <!-- Other users can only see the lock status -->
                                                 <div class="bg-orange-500 text-white p-1 rounded-full shadow cursor-help hover:shadow-md transition-all duration-200"
-                                                    title="@lang('modules.table.locked') by {{ $item->tableSession?->lockedByUser->name ?? 'Unknown' }} at {{ $item->tableSession->locked_at->format('H:i') }}">
+                                                    title="{{ __('views_front.table.locked_by_at', ['name' => $item->tableSession?->lockedByUser->name ?? __('views_front.common.unknown'), 'time' => $item->tableSession->locked_at->format('H:i')]) }}">
                                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1"/>
                                                     </svg>
@@ -376,7 +376,7 @@
                                             @else
                                                 <!-- Other users can only see the lock status -->
                                                 <div class="bg-orange-500 text-white p-1 rounded-full shadow cursor-help hover:shadow-md transition-all duration-200"
-                                                    title="@lang('modules.table.locked') by {{ $item->tableSession?->lockedByUser->name ?? 'Unknown' }} at {{ $item->tableSession->locked_at->format('H:i') }}">
+                                                    title="{{ __('views_front.table.locked_by_at', ['name' => $item->tableSession?->lockedByUser->name ?? __('views_front.common.unknown'), 'time' => $item->tableSession->locked_at->format('H:i')]) }}">
                                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1"/>
                                                     </svg>

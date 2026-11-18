@@ -102,6 +102,7 @@ class ViewPngController extends Controller
                 'h'    => $img->height(),
             ]);
         } catch (\Exception $e) {
+            report($e);
 
             return response()->json([
                 'ok' => false,

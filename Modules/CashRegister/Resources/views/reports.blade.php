@@ -12,12 +12,12 @@
 
     <div class="p-4" x-data="{tab:'x'}">
         <div class="border-b dark:border-gray-700">
-            <nav class="-mb-px flex flex-wrap gap-2" aria-label="Tabs">
+            <nav class="-mb-px flex flex-wrap gap-2" aria-label="{{ __('cashregister::app.tabs') }}">
                 <button @click="tab='x'" :class="tab==='x' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.xReportTab')</button>
                 <button @click="tab='z'" :class="tab==='z' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.zReportTab')</button>
                 <button @click="tab='disc'" :class="tab==='disc' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.discrepancyTab')</button>
                 <button @click="tab='ledger'" :class="tab==='ledger' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.cashLedgerTab')</button>
-                <button @click="tab='summary'" :class="tab==='summary' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.cashInOutTab')/Safe-drop</button>
+                <button @click="tab='summary'" :class="tab==='summary' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.cashInOutSafeDropTab')</button>
                 <button @click="tab='shift'" :class="tab==='shift' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.sessionSummaryTab')</button>
             </nav>
         </div>

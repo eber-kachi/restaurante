@@ -130,4 +130,10 @@ return [
     'updating' => 'Actualizando...',
     'saving' => 'Guardando...',
     'storage' => 'Almacenado en',
+    'syncSummary' => 'Sincronización: :created nuevas, :updated actualizadas, :deleted eliminadas',
+    'allBackupsSynchronized' => 'Todas las copias de seguridad están sincronizadas',
+    'syncingBackups' => 'Sincronizando copias de seguridad...',
+    'creatingShort' => 'Creando...',
+    'noDataChangesDetected' => 'No se detectaron cambios en los datos desde la última copia de seguridad.',
+    'tabsLabel' => 'Pestañas',
 ];

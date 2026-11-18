@@ -1492,6 +1492,7 @@ class Pos extends Component
                         //         break;
                         // }
                     } catch (\Throwable $e) {
+                        report($e);
                         Log::info($e->getMessage());
                         $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                             'toast' => true,
@@ -1591,6 +1592,7 @@ class Pos extends Component
                                 break;
                         }
                     } catch (\Throwable $e) {
+                        report($e);
                         $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                             'toast' => true,
                             'position' => 'top-end',
@@ -1625,6 +1627,7 @@ class Pos extends Component
                         break;
                 }
             } catch (\Throwable $e) {
+                report($e);
                 $this->alert('error', __('messages.printerNotConnected') . ' ' . $e->getMessage(), [
                     'toast' => true,
                     'position' => 'top-end',

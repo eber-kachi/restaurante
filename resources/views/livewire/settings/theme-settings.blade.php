@@ -195,7 +195,7 @@
                             <span class="text-sm text-gray-500 dark:text-gray-400">{{ $themeColor }}</span>
                             <input type="color"
                                 class="p-1 h-8 w-12 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700"
-                                id="themeColor" title="Choose your color" wire:model='themeColor'>
+                                id="themeColor" title="{{ __('views_admin.theme_settings.choose_color') }}" wire:model='themeColor'>
                         </div>
                     </div>
                     <div class="mt-4 space-y-6">

@@ -1,5 +1,5 @@
 <?php 
 return [
-  'kitchen' => 'Kitchen',
-  'kitchenPlaces' => 'Kitchens',
+  'kitchen' => 'Cocina',
+  'kitchenPlaces' => 'Cocinas',
 ];

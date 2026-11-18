@@ -253,6 +253,7 @@ class CustomModuleController extends Controller
                 $this->modulePurchaseVerified(strtolower($moduleName), $setting->purchase_code);
             }
         } catch (\Exception $e) {
+            report($e);
             logger($e->getMessage());
         }
     }

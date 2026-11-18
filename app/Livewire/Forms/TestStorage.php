@@ -20,6 +20,7 @@ class TestStorage extends Component
         try {
             $filename = Files::uploadLocalOrS3($this->file, '/');
         } catch (\Exception $e) {
+            report($e);
             $this->addError('file_error', $e->getMessage());
             return true;
         }

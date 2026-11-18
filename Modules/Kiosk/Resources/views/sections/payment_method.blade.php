@@ -12,14 +12,14 @@
              class="min-h-screen flex items-center justify-center bg-white">
             <div class="w-full max-w-6xl px-6">
                 <div class="text-center mb-12">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Payment Method</h1>
-                    <p class="text-xl text-gray-600">Choose your preferred payment method</p>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ __('kiosk::modules.payment.heading') }}</h1>
+                    <p class="text-xl text-gray-600">{{ __('kiosk::modules.payment.subheading') }}</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <!-- Order Summary -->
                     <div class="bg-white border border-gray-200 rounded-lg p-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ __('kiosk::modules.payment.order_summary') }}</h2>
                         <div class="space-y-3 mb-6">
                             <template x-for="item in cart" :key="item.id">
                                 <div class="flex justify-between text-lg">
@@ -30,15 +30,15 @@
                         </div>
                         <div class="border-t border-gray-200 pt-6 space-y-3">
                             <div class="flex justify-between text-lg">
-                                <span class="text-gray-600">Subtotal</span>
+                                <span class="text-gray-600">{{ __('kiosk::modules.cart.subtotal') }}</span>
                                 <span x-text="'$' + subtotal"></span>
                             </div>
                             <div class="flex justify-between text-lg">
-                                <span class="text-gray-600">Tax (8%)</span>
+                                <span class="text-gray-600">{{ __('kiosk::modules.cart.tax_percent') }}</span>
                                 <span x-text="'$' + tax"></span>
                             </div>
                             <div class="flex justify-between text-2xl font-bold text-gray-900 border-t border-gray-200 pt-3">
-                                <span>Total</span>
+                                <span>{{ __('kiosk::modules.cart.total') }}</span>
                                 <span x-text="'$' + total"></span>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
 
                     <!-- Payment Methods -->
                     <div class="bg-white border border-gray-200 rounded-lg p-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Payment Method</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">{{ __('kiosk::modules.payment.heading') }}</h2>
                         
                         <div class="space-y-4">
                             <!-- Credit/Debit Card -->
@@ -60,7 +60,7 @@
                                         </svg>
                                     </div>
                                     <div class="text-left">
-                                        <div class="font-bold text-gray-900 text-lg">Credit/Debit Card</div>
+                                        <div class="font-bold text-gray-900 text-lg">{{ __('kiosk::modules.payment.card') }}</div>
                                         <div class="text-gray-600">Visa, Mastercard, Amex</div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="text-left">
                                         <div class="font-bold text-gray-900 text-lg">McDonald's App Wallet</div>
-                                        <div class="text-gray-600">App balance & rewards</div>
+                                        <div class="text-gray-600">{{ __('kiosk::modules.payment.wallet_desc') }}</div>
                                     </div>
                                 </div>
                                 <svg x-show="paymentMethod === 'wallet'" class="w-8 h-8 text-skin-base" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,8 +120,8 @@
                                         </svg>
                                     </div>
                                     <div class="text-left">
-                                        <div class="font-bold text-gray-900 text-lg">Cash</div>
-                                        <div class="text-gray-600">Pay at counter</div>
+                                        <div class="font-bold text-gray-900 text-lg">{{ __('kiosk::modules.payment.cash') }}</div>
+                                        <div class="text-gray-600">{{ __('kiosk::modules.payment.cash_desc') }}</div>
                                     </div>
                                 </div>
                                 <svg x-show="paymentMethod === 'cash'" class="w-8 h-8 text-skin-base" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,11 +136,11 @@
                                     :disabled="!paymentMethod"
                                     :class="{'opacity-50 cursor-not-allowed': !paymentMethod}"
                                     class="w-full bg-skin-base text-white py-6 rounded-lg font-bold text-xl transition-all duration-200 hover:bg-skin-base">
-                                Pay Now
+                                {{ __('kiosk::modules.payment.pay_now') }}
                             </button>
                             <button @click="currentScreen = 'customer-info'" 
                                     class="w-full border-2 border-gray-300 text-gray-700 py-4 rounded-lg font-medium text-lg hover:bg-gray-50 transition-colors duration-200">
-                                Back
+                                {{ __('kiosk::modules.payment.back') }}
                             </button>
                         </div>
                     </div>

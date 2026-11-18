@@ -132,6 +132,7 @@ class EmailSettings extends Component
                 'message' => __('messages.smtpSuccess')
             ];
         } catch (TransportException | \Exception $e) {
+            report($e);
             $this->emailSetting->verified = 0;
             $this->emailSetting->save();
 
@@ -153,6 +154,7 @@ class EmailSettings extends Component
             $this->testEmailStatus = 'success';
             $this->testEmailMessage = __('messages.testEmailSuccess');
         } catch (\Exception $e) {
+            report($e);
             $this->testEmailStatus = 'error';
             $this->testEmailMessage = 'Failed to send test email: ' . $e->getMessage();
         }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ restaurant()->name }} - Z-Report</title>
+    <title>{{ restaurant()->name }} - {{ __('cashregister::app.zReportTab') }}</title>
     <style>
         * {
             margin: 0;
@@ -114,15 +114,15 @@
             </div>
             <div class="info-line">
                 <span>@lang('cashregister::app.branch')</span>
-                <span>{{ $reportData['session']->branch->name ?? 'N/A' }}</span>
+                <span>{{ $reportData['session']->branch->name ?? __('cashregister::app.notAvailable') }}</span>
             </div>
             <div class="info-line">
                 <span>@lang('cashregister::app.register')</span>
-                <span>{{ $reportData['session']->register->name ?? 'N/A' }}</span>
+                <span>{{ $reportData['session']->register->name ?? __('cashregister::app.notAvailable') }}</span>
             </div>
             <div class="info-line">
                 <span>@lang('cashregister::app.cashier')</span>
-                <span>{{ $reportData['session']->cashier->name ?? 'N/A' }}</span>
+                <span>{{ $reportData['session']->cashier->name ?? __('cashregister::app.notAvailable') }}</span>
             </div>
             @if($reportData['session']->closed_at)
             <div class="info-line">

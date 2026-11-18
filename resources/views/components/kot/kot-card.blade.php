@@ -144,7 +144,7 @@
                                 <div class="flex flex-col">
                                     <div class="flex items-center gap-1 text-xs text-gray-900 dark:text-white">
                                         @if ($item->status == 'cooking')
-                                            <img src="{{ asset('img/cooking-icon.svg') }}" alt="cooking" class="w-6 h-6">
+                                            <img src="{{ asset('img/cooking-icon.svg') }}" alt="{{ __('views_front.kot.cooking') }}" class="w-6 h-6">
                                         @endif
 
                                         {{ $item->quantity }} x
@@ -173,7 +173,7 @@
                                     @endif
                                     @if($item->note)
                                         <div class="mt-1 text-xs italic text-gray-500 dark:text-gray-400">
-                                            <span class="font-medium">Note:</span> {{ $item->note }}
+                                            <span class="font-medium">@lang('views_front.kot.note')</span> {{ $item->note }}
                                         </div>
                                     @endif
                                 </div>
@@ -234,7 +234,7 @@
                 wire:loading.attr="disabled"
                 wire:loading.class="opacity-50 cursor-not-allowed"
                 class="relative inline-flex items-center justify-center rounded-md border border-skin-base bg-transparent px-2 py-1 text-sm font-medium text-skin-base transition hover:bg-skin-muted focus:outline-none focus:ring-2 focus:ring-skin-base focus:ring-offset-2"
-                title="{{ $kotPlace->printerSetting->name ?? 'No printer assigned' }}">
+                title="{{ $kotPlace->printerSetting->name ?? __('views_front.kot.no_printer') }}">
 
                 <!-- Loading Spinner -->
                 <div wire:loading wire:target="printKot({{ $kot->id }})" class="absolute inset-0 flex items-center justify-center text-center">
@@ -263,7 +263,7 @@
             </button>
                 @if ($kot->status == 'pending_confirmation')
                     <x-secondary-button wire:click="changeKotStatus('in_kitchen')">
-                        <img src="{{ asset('img/cooking-icon.svg') }}" alt="cooking" class="w-6 h-6 mr-1">
+                        <img src="{{ asset('img/cooking-icon.svg') }}" alt="{{ __('views_front.kot.cooking') }}" class="w-6 h-6 mr-1">
                         @lang('modules.order.start_cooking')
                     </x-secondary-button>
                 @endif

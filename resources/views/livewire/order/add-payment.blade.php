@@ -297,7 +297,7 @@
                                     @for($i = 1; $i <= $numberOfSplits; $i++)
                                         <div class="flex items-center gap-1">
                                             <div class="px-4 py-2 rounded-lg text-sm border">
-                                                <span>Split {{ $i }}</span>
+                                                <span>{{ __('views_front.order.split_n', ['number' => $i]) }}</span>
                                             </div>
                                             @if($numberOfSplits > 2)
                                                 <button wire:click="removeSplit({{ $i }})"
@@ -312,14 +312,14 @@
                                 </div>
                                 <button wire:click="addNewSplit"
                                     class="px-3 py-2 text-sm border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 shrink-0">
-                                    + New Split
+                                    + @lang('modules.order.newSplit')
                                 </button>
                             </div>
                             <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 content-start mt-2">
                                 @for($i = 1; $i <= $numberOfSplits; $i++)
                                     <div class="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-600 rounded-lg">
                                         <div class="flex-1 flex justify-between items-center gap-3">
-                                            <span>Split {{ $i }}</span>
+                                            <span>{{ __('views_front.order.split_n', ['number' => $i]) }}</span>
                                             <input type="number"  readonly
                                                 wire:model.live="splits.{{ $i }}.amount"
                                                 class="w-32 rounded-lg border-gray-300 text-right"
@@ -346,7 +346,7 @@
                                     @foreach($customSplits as $splitNumber)
                                         <div class="flex items-center gap-1">
                                             <div class="px-4 py-2 rounded-lg text-sm border">
-                                                <span>Split {{ $splitNumber }}</span>
+                                                <span>{{ __('views_front.order.split_n', ['number' => $splitNumber]) }}</span>
                                             </div>
                                             @if(count($customSplits) > 2)
                                                 <button wire:click="removeCustomSplit({{ $splitNumber }})"
@@ -361,14 +361,14 @@
                                 </div>
                                 <button wire:click="addNewCustomSplit"
                                     class="px-3 py-2 text-sm border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 shrink-0">
-                                    + New Split
+                                    + @lang('modules.order.newSplit')
                                 </button>
                             </div>
                             <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 content-start mt-2">
                                 @foreach($customSplits as $splitNumber)
                                     <div class="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-600 rounded-lg">
                                         <div class="flex-1 flex justify-between items-center gap-3">
-                                            <span>Split {{ $splitNumber }}</span>
+                                            <span>{{ __('views_front.order.split_n', ['number' => $splitNumber]) }}</span>
                                             <input type="number" min="0" step="0.01"
                                                 wire:model.live="splits.{{ $splitNumber }}.amount" wire:keyup="updateBalanceAmount"
                                                 class="w-32 rounded-lg border-gray-300 text-right"
@@ -398,7 +398,7 @@
                                             <button wire:click="$set('activeSplitId', {{ $splitId }})"
                                                 class="px-4 py-2 rounded-lg text-sm font-medium
                                                 {{ $activeSplitId === $splitId ? 'bg-skin-base text-white' : 'border hover:bg-gray-50 dark:hover:bg-gray-700' }}">
-                                                <span>Split {{ $splitId }}</span>
+                                                <span>{{ __('views_front.order.split_n', ['number' => $splitId]) }}</span>
                                             </button>
                                             @if(count($splits) > 1 && $splitId !== 1)
                                                 <button wire:click="removeItemSplit({{ $splitId }})"
@@ -456,11 +456,11 @@
                                                     </span>
                                                     <div class="flex items-center gap-2 mt-1">
                                                         <!-- Quantity controls -->
-                                                        <button wire:click="addItemToSplit({{ $item['id'] }}, {{ $activeSplitId }}, 1)" class="px-2 py-1 border rounded hover:bg-gray-100" title="Add 1">
+                                                        <button wire:click="addItemToSplit({{ $item['id'] }}, {{ $activeSplitId }}, 1)" class="px-2 py-1 border rounded hover:bg-gray-100" title="{{ __('views_front.order.add_one') }}">
                                                             +
                                                         </button>
                                                         <span class="text-sm">{{ $item['remaining'] }}</span>
-                                                        <button wire:click="addItemToSplit({{ $item['id'] }}, {{ $activeSplitId }}, {{ $item['remaining'] }})" class="px-2 py-1 border rounded hover:bg-gray-100" title="Add All">
+                                                        <button wire:click="addItemToSplit({{ $item['id'] }}, {{ $activeSplitId }}, {{ $item['remaining'] }})" class="px-2 py-1 border rounded hover:bg-gray-100" title="{{ __('views_front.order.add_all') }}">
                                                             @lang('modules.order.all')
                                                         </button>
                                                     </div>
@@ -758,7 +758,7 @@
                             <button type="button"
                                 wire:click="$set('tipAmount', 0)"
                                 class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-                                title="Clear amount">
+                                title="{{ __('views_front.order.clear_amount') }}">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                 </svg>

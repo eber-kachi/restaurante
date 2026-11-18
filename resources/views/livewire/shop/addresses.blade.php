@@ -85,7 +85,7 @@
                                     {{ $address->address }}
                                 </p>
                                 <div class="mt-1 text-xs text-gray-400">
-                                    Lat: {{ $address->lat }}, Lng: {{ $address->lng }}
+                                    {{ __('views_front.shop.lat_lng', ['lat' => $address->lat, 'lng' => $address->lng]) }}
                                 </div>
                             </div>
                             <div class="flex space-x-2">

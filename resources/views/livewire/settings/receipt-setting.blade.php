@@ -162,7 +162,7 @@
                                                 <img src="{{ $paymentQrCode }}" alt="QR Code"
                                                     class="h-24 w-24 object-contain">
                                             @else
-                                                <span class="text-gray-500 dark:text-gray-400">No QR Code</span>
+                                                <span class="text-gray-500 dark:text-gray-400">@lang('views_admin.receipt_setting.no_qr_code')</span>
                                             @endif
                                         </div>
 
@@ -287,7 +287,7 @@
                                                     <div class="restaurant-info">@lang('modules.customer.phone'):
                                                         {{ restaurant()->phone_number }}</div>
                                                     @if ($restaurantTax)
-                                                        <div class="restaurant-info">Tax ID: SAMPLE-TAX-ID</div>
+                                                        <div class="restaurant-info">@lang('views_admin.receipt_setting.sample_tax_id')</div>
                                                     @endif
                                                 </div>
 
@@ -314,19 +314,19 @@
 
                                                     @if ($waiter)
                                                         <div class="summary-row">
-                                                            <span>@lang('modules.order.waiter'): John Smith</span>
+                                                            <span>@lang('modules.order.waiter'): @lang('views_admin.receipt_setting.sample_waiter')</span>
                                                         </div>
                                                     @endif
 
                                                     @if ($customerName)
                                                         <div class="summary-row">
-                                                            <span>@lang('modules.customer.customer'): Jane Doe</span>
+                                                            <span>@lang('modules.customer.customer'): @lang('views_admin.receipt_setting.sample_customer')</span>
                                                         </div>
                                                     @endif
 
                                                     @if ($customerAddress)
                                                         <div class="summary-row">
-                                                            <span>@lang('modules.customer.customerAddress'): 123 Sample Street</span>
+                                                            <span>@lang('modules.customer.customerAddress'): @lang('views_admin.receipt_setting.sample_address')</span>
                                                         </div>
                                                     @endif
                                                 </div>
@@ -343,13 +343,13 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="qty">2</td>
-                                                            <td class="description">Sample Item 1</td>
+                                                            <td class="description">@lang('views_admin.receipt_setting.sample_item_1')</td>
                                                             <td class="price">{{ currency_format(10, restaurant()->currency_id) }}</td>
                                                             <td class="amount">{{ currency_format(20, restaurant()->currency_id) }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="qty">1</td>
-                                                            <td class="description">Sample Item 2</td>
+                                                            <td class="description">@lang('views_admin.receipt_setting.sample_item_2')</td>
                                                             <td class="price">{{ currency_format(15, restaurant()->currency_id) }}</td>
                                                             <td class="amount">{{ currency_format(15, restaurant()->currency_id) }}</td>
                                                         </tr>
@@ -364,7 +364,7 @@
 
                                                     @if ($restaurantTax)
                                                         <div class="summary-row">
-                                                            <span>Tax (10%):</span>
+                                                            <span>@lang('views_admin.receipt_setting.sample_tax'):</span>
                                                             <span>{{ currency_format(3.5, restaurant()->currency_id) }}</span>
                                                         </div>
                                                     @endif
@@ -399,12 +399,12 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td class="qty">{{ currency_format(20, restaurant()->currency_id) }}</td>
-                                                                            <td class="payment-method">cash</td>
+                                                                            <td class="payment-method">@lang('modules.order.cash')</td>
                                                                             <td class="price">{{ now()->subMinutes(10)->format('d M, Y h:i A') }}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="qty">{{ currency_format(18.5, restaurant()->currency_id) }}</td>
-                                                                            <td class="payment-method">upi</td>
+                                                                            <td class="payment-method">@lang('modules.order.upi')</td>
                                                                             <td class="price">{{ now()->subMinutes(5)->format('d M, Y h:i A') }}</td>
                                                                         </tr>
                                                                     </tbody>

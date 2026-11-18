@@ -57,6 +57,7 @@ class FlutterwavePaymentController extends Controller
                     return response()->json(['message' => 'Event not processed'], 400);
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['message' => 'An error occurred', 'error' => $e->getMessage()], 500);
         }
     }

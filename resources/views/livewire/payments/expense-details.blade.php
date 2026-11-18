@@ -42,7 +42,7 @@
             @endif
             <p class="border-b pb-2 border-gray-300 dark:border-gray-600">
                 <strong class="text-gray-600 dark:text-gray-400">@lang('modules.expenses.description'):</strong> <br>
-                <span class="block mt-1 text-gray-700 dark:text-gray-300">{{ $description ?? 'No description provided' }}</span>
+                <span class="block mt-1 text-gray-700 dark:text-gray-300">{{ $description ?? __('app.noDescription') }}</span>
             </p>
 
             <!-- Receipt Preview -->
@@ -51,11 +51,11 @@
                     <strong class="text-gray-600 dark:text-gray-400">@lang('modules.expenses.receiptPreview'):</strong>
                     <div class="mt-2">
                         @if (Str::endsWith($existingReceiptUrl, ['.jpg', '.jpeg', '.png', '.gif']))
-                            <img src="{{ $existingReceiptUrl }}" alt="Expense Receipt"
+                            <img src="{{ $existingReceiptUrl }}" alt="{{ __('views_front.forms.expense_receipt') }}"
                                 class="rounded-lg shadow-md w-32 h-auto border dark:border-gray-700">
                         @endif
                         @if (Str::endsWith($existingReceiptUrl, ['.pdf']))
-                            <img src="{{ asset('/img/receipt icon.jpg') }}" alt="Expense Receipt"
+                            <img src="{{ asset('/img/receipt icon.jpg') }}" alt="{{ __('views_front.forms.expense_receipt') }}"
                                 class="rounded-lg shadow-md w-32 h-auto border dark:border-gray-700">
                         @endif
                     </div>

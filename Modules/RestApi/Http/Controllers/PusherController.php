@@ -137,6 +137,7 @@ class PusherController extends Controller
                 ]
             ]);
         } catch (\Exception $e) {
+            report($e);
             return response()->json([
                 'message' => 'Error retrieving Pusher Beams settings',
                 'error' => $e->getMessage()
@@ -245,12 +246,14 @@ class PusherController extends Controller
                     'auth' => $auth
                 ]);
             } catch (\Exception $e) {
+                report($e);
                 return response()->json([
                     'message' => 'Failed to authorize channel',
                     'error' => $e->getMessage()
                 ], 500);
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json([
                 'message' => 'Error authorizing channel',
                 'error' => $e->getMessage()
@@ -295,12 +298,14 @@ class PusherController extends Controller
                     'count' => count($response['users'] ?? [])
                 ]);
             } catch (\Exception $e) {
+                report($e);
                 return response()->json([
                     'message' => 'Error retrieving presence channel members',
                     'error' => $e->getMessage()
                 ], 500);
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json([
                 'message' => 'Error getting presence channel members',
                 'error' => $e->getMessage()
@@ -325,6 +330,7 @@ class PusherController extends Controller
             $tableExists = Schema::hasTable('pusher_settings');
             $diagnostics['table_exists'] = $tableExists;
         } catch (\Exception $e) {
+            report($e);
             $diagnostics['table_exists'] = false;
             $diagnostics['table_check_error'] = $e->getMessage();
         }
@@ -334,6 +340,7 @@ class PusherController extends Controller
             $count = DB::table('pusher_settings')->count();
             $diagnostics['record_count'] = $count;
         } catch (\Exception $e) {
+            report($e);
             $diagnostics['record_count'] = null;
             $diagnostics['count_error'] = $e->getMessage();
         }
@@ -360,6 +367,7 @@ class PusherController extends Controller
                 $diagnostics['id_1_message'] = 'No record with ID 1 found';
             }
         } catch (\Exception $e) {
+            report($e);
             $diagnostics['id_1_exists'] = false;
             $diagnostics['id_1_error'] = $e->getMessage();
         }

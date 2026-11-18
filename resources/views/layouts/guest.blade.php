@@ -147,7 +147,7 @@
 
             <div class="form-row">
                 <label for="card-element">
-                    Credit or debit card
+                    @lang('views_admin.guest_payment.card_label')
                 </label>
                 <div id="card-element">
                     <!-- A Stripe Element will be inserted here. -->
@@ -157,7 +157,7 @@
                 <div id="card-errors" role="alert"></div>
             </div>
 
-            <button>Submit Payment</button>
+            <button>@lang('views_admin.guest_payment.submit')</button>
         </form>
 
 

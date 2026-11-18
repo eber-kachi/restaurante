@@ -276,6 +276,7 @@ class PlanList extends Component
                 return $this->processSubscription($apiKey, $api, $plan, $restaurantId, $currencyCode, $type);
             }
         } catch (\Exception $e) {
+            report($e);
             return $this->showError($e->getMessage());
         }
     }
@@ -483,6 +484,7 @@ class PlanList extends Component
             session()->flash('flash.link', route('settings.index', ['tab' => 'billing']));
             return $this->redirect(route('dashboard'), navigate: true);
         } catch (\Exception $e) {
+            report($e);
             DB::rollBack(); // Rollback on error
             session()->put('error', $e->getMessage());
             return Reply::redirect(route('pricing.plan'));

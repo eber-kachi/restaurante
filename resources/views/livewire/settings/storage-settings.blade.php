@@ -6,7 +6,7 @@
     <x-alert type="secondary">
         <ul>
             <li class="py-2"> &bull;
-                <b>Local</b> @lang('modules.settings.localStorageNote')</li>
+                <b>@lang('views_admin.storage_settings.local')</b> @lang('modules.settings.localStorageNote')</li>
             <li> &bull; @lang('modules.settings.storageSuggestion')</li>
         </ul>
     </x-alert>
@@ -41,7 +41,7 @@
                             <div class="flex flex-col items-center gap-3">
                                 <div class="flex justify-end w-full -mb-2">
                                     <a href="https://digitalocean.pxf.io/froiden" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
-                                        Docs
+                                        @lang('views_admin.storage_settings.docs')
                                             <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                                 <polyline points="15 3 21 3 21 9"></polyline>
@@ -64,7 +64,7 @@
                             <div class="flex flex-col items-center gap-3">
                                 <div class="flex justify-end w-full -mb-2">
                                     <a href="https://aws.amazon.com/s3" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
-                                        Docs
+                                        @lang('views_admin.storage_settings.docs')
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                             <polyline points="15 3 21 3 21 9"></polyline>
@@ -118,7 +118,7 @@
                             <div class="flex flex-col items-center gap-3">
                                 <div class="flex justify-end w-full -mb-2">
                                     <a href="https://wasabi.com" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
-                                        Docs
+                                        @lang('views_admin.storage_settings.docs')
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                             <polyline points="15 3 21 3 21 9"></polyline>
@@ -141,7 +141,7 @@
                             <div class="flex flex-col items-center gap-3">
                                 <div class="flex justify-end w-full -mb-2">
                                     <a href="https://min.io/docs/minio/linux/index.html" target="_blank" class="text-xs text-blue-500 hover:underline flex items-center gap-1">
-                                        Docs
+                                        @lang('views_admin.storage_settings.docs')
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                             <polyline points="15 3 21 3 21 9"></polyline>

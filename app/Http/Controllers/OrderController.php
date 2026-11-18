@@ -121,6 +121,7 @@ class OrderController extends Controller
                 ->fullWidth() // Dynamically adjust height based on content
                 ->save($absolutePath);
         } catch (\Exception $e) {
+            report($e);
         }
         return $filename;
     }

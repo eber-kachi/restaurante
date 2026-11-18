@@ -4,7 +4,7 @@
         <button
             @click="showMenu = !showMenu"
             class="fixed bottom-6 right-6 z-50 md:hidden bg-skin-base text-white rounded-full shadow-lg p-4 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-skin-base transition"
-            aria-label="Toggle Menu"
+            aria-label="{{ __('views_front.common.toggle_menu') }}"
             type="button"
         >
             <svg x-show="!showMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -21,7 +21,7 @@
             <div class="flex items-center justify-between gap-3">
                 <div class="flex-1">
                     <form action="#" method="GET">
-                        <label for="products-search" class="sr-only">Search</label>
+                        <label for="products-search" class="sr-only">@lang('app.search')</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -153,7 +153,7 @@
                                         {{ $item->item_name }}
                                     </h5>
                                     @if (!$item->in_stock)
-                                        <div class="text-red-500">Out of stock</div>
+                                        <div class="text-red-500">@lang('views_front.shop.out_of_stock')</div>
                                     @else
 
                                     <div class="mt-1 flex items-center justify-between gap-2">

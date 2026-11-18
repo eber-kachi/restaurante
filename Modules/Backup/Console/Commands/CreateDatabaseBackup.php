@@ -852,6 +852,7 @@ class CreateDatabaseBackup extends Command
 
             return ['path' => $cloudPath, 'storage' => $storageSetting->filesystem];
         } catch (\Exception $e) {
+            report($e);
             $this->warn("Failed to upload to cloud storage: " . $e->getMessage());
             $this->warn("Keeping backup in local storage");
             return ['path' => $localFilePath, 'storage' => 'local'];
@@ -932,6 +933,7 @@ class CreateDatabaseBackup extends Command
                 return $this->createZipBackup($filesBackupPath, $backupDir, $exclusions);
             }
         } catch (\Exception $e) {
+            report($e);
             $this->error("Failed to create application backup: " . $e->getMessage());
             return null;
         }
@@ -1192,6 +1194,7 @@ class CreateDatabaseBackup extends Command
 
             return $combinedPath;
         } catch (\Exception $e) {
+            report($e);
             $this->error("Failed to create combined backup: " . $e->getMessage());
             return null;
         }
@@ -1236,6 +1239,7 @@ class CreateDatabaseBackup extends Command
             $this->info("Database backup compressed successfully: " . basename($gzipPath));
             return $gzipPath;
         } catch (\Exception $e) {
+            report($e);
             $this->warn("Failed to compress database backup: " . $e->getMessage());
             return null;
         }

@@ -83,6 +83,7 @@ class BulkImportPage extends Component
                 $this->selectedKitchenId = $this->availableKitchens->first()->id;
             }
         } catch (\Exception $e) {
+            report($e);
             $this->availableCategories = [];
             $this->availableMenus = [];
             $this->availableKitchens = collect();
@@ -130,6 +131,7 @@ class BulkImportPage extends Component
             $this->uploadStage = 'preview';
             $this->parseCsvFile();
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('app.errorParsingFile') . ': ' . $e->getMessage());
             $this->uploadStage = 'idle';
         }
@@ -262,6 +264,7 @@ class BulkImportPage extends Component
                 $this->validateCsvContent();
             }
         } catch (\Exception $e) {
+            report($e);
             $this->uploadFile = null;
             $this->alert('error', 'Security validation failed: ' . $e->getMessage());
             return;
@@ -593,6 +596,7 @@ class BulkImportPage extends Component
 
             $this->alert('success', __('modules.menu.importCompleted') . '! ' . $this->uploadResults['success'] . ' ' . __('modules.menu.allMenuItems') . ' ' . __('app.added') . '.');
         } catch (\Exception $e) {
+            report($e);
             $this->uploadStage = 'failed';
             $this->uploadErrors = [$e->getMessage()];
             $this->uploadSuccess = false;
@@ -621,6 +625,7 @@ class BulkImportPage extends Component
             $sampleCategory = !empty($categories) ? $categories[0] : 'Starters';
             $sampleMenu = !empty($menus) ? $menus[0] : 'Main Menu';
         } catch (\Exception $e) {
+            report($e);
             $sampleCategory = 'Starters';
             $sampleMenu = 'Main Menu';
         }

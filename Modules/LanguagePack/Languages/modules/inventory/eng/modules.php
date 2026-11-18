@@ -276,6 +276,22 @@ return [
         'search_placeholder' => 'Search by menu item or ingredient...',
     ],
     'purchaseOrder' => [
+        'pdf' => [
+            'status_label' => 'Status',
+            'title' => 'Purchase Order #:number',
+            'heading' => 'PURCHASE ORDER',
+            'phone' => 'Phone',
+            'email' => 'Email',
+            'not_specified' => 'Not specified',
+            'item' => 'Item',
+            'unit' => 'Unit',
+            'total_amount' => 'Total Amount',
+            'prepared_by' => 'Prepared by',
+            'approved_by' => 'Approved by',
+            'received_by' => 'Received by',
+            'footer_note' => 'This is a computer-generated document. No signature is required.',
+            'generated_on' => 'Generated on :date',
+        ],
         'purchase_order' => 'Purchase Order',
         'created_by' => 'Created By',
         'created_at' => 'Created At',
@@ -415,6 +431,8 @@ return [
         ]
     ],
     'reports' => [
+        'tabs_label' => 'Reports',
+        'batch_tabs_label' => 'Batch Reports',
         'title' => 'Inventory Reports',
         'tabs' => [
             'usage' => 'Usage Trends',

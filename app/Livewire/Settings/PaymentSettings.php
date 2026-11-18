@@ -368,6 +368,7 @@ class PaymentSettings extends Component
 
             $this->addError('razorpayKey', 'Invalid Razorpay key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $this->addError('razorpayKey', 'Error: ' . $e->getMessage());
         }
 
@@ -399,6 +400,7 @@ class PaymentSettings extends Component
 
             $this->addError('stripeKey', 'Invalid Stripe key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $this->addError('stripeKey', 'Error: ' . $e->getMessage());
         }
 
@@ -473,6 +475,7 @@ class PaymentSettings extends Component
                 __('validation.InvalidFlutterwaveKeyOrSecret')
             );
         } catch (\Exception $e) {
+            report($e);
             $this->addError('flutterwaveKey', 'Error: ' . $e->getMessage());
         }
 
@@ -538,6 +541,7 @@ class PaymentSettings extends Component
 
             $this->addError('paypalKey', 'Invalid Paypal key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $this->addError('paypalKey', 'Error: ' . $e->getMessage());
         }
 
@@ -589,6 +593,7 @@ class PaymentSettings extends Component
 
             return 0;
         } catch (\Exception $e) {
+            report($e);
             $this->addError('payfastKey', 'Error saving Payfast settings: ' . $e->getMessage());
             return 1;
         }
@@ -650,6 +655,7 @@ class PaymentSettings extends Component
 
             $this->addError('paystackKey', 'Invalid Paystack key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $this->addError('paystackKey', 'Error: ' . $e->getMessage());
         }
 
@@ -714,6 +720,7 @@ class PaymentSettings extends Component
             $field = $this->xenditMode === 'live' ? 'liveXenditPublicKey' : 'testXenditPublicKey';
             $this->addError($field, 'Invalid Xendit key or secret.');
         } catch (\Exception $e) {
+            report($e);
             $field = $this->xenditMode === 'live' ? 'liveXenditPublicKey' : 'testXenditPublicKey';
             $this->addError($field, 'Error: ' . $e->getMessage());
         }

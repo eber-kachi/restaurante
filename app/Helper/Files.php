@@ -39,6 +39,7 @@ class Files
         try {
             self::validateUploadedFile($uploadedFile);
         } catch (Exception $e) {
+            report($e);
             dd($e->getMessage());
         }
 
@@ -202,6 +203,7 @@ class Files
         try {
             self::validateUploadedFile($uploadedFile);
         } catch (Exception $e) {
+            report($e);
             dd($e->getMessage());
         }
 
@@ -392,6 +394,7 @@ class Files
                 // File::delete($filePath);
                 return true;
             } catch (\Exception $e) {
+                report($e);
                 info($e->getMessage());
             }
         }

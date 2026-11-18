@@ -58,7 +58,7 @@
         <!-- Search mobile -->
         <button id="toggleSidebarMobileSearch" type="button"
           class="p-2 text-gray-500 rounded-lg hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-          <span class="sr-only">Search</span>
+          <span class="sr-only">@lang('app.search')</span>
           <!-- Search icon -->
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
@@ -102,7 +102,7 @@
 
         <div id="fullscreen-tooltip-toggle" role="tooltip"
           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-          View in Fullscreen
+          @lang('views_admin.navigation.view_fullscreen')
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
@@ -122,7 +122,7 @@
 
         <div id="tooltip-toggle" role="tooltip"
           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-          Toggle dark mode
+          @lang('views_admin.navigation.toggle_dark_mode')
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
@@ -133,8 +133,8 @@
             <button type="button"
               class="inline-flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
-              <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->profile_photo_path ? asset_url_local_s3(auth()->user()->profile_photo_path):auth()->user()->profile_photo_url }}" alt="user photo">
+              <span class="sr-only">@lang('views_admin.navigation.open_user_menu')</span>
+              <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->profile_photo_path ? asset_url_local_s3(auth()->user()->profile_photo_path):auth()->user()->profile_photo_url }}" alt="{{ __('views_admin.navigation.user_photo') }}">
             </button>
           </div>
           <!-- Dropdown menu -->
@@ -184,7 +184,7 @@
             <button type="button"
               class="inline-flex items-center justify-center w-10 h-10 text-gray-500 bg-gray-100 rounded-full hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-600"
               id="user-menu-button-3" aria-expanded="false" data-dropdown-toggle="dropdown-3" data-dropdown-placement="left-end">
-              <span class="sr-only">Open user menu</span>
+              <span class="sr-only">@lang('views_admin.navigation.open_user_menu')</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" viewBox="0 0 512 512" xml:space="preserve"><path d="M112 441.328h288v32H112zM0 38.672v352h200v34.656h112v-34.656h200v-352zm216 323.25v-16h80v16zm248-35.25H48v-240h416z" style="fill:currentColor"/></svg>
 
             </button>

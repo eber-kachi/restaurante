@@ -94,7 +94,7 @@
                         <div class="flex flex-col items-end gap-1">
                             @if($taxMode === 'item' && $restaurant?->tax_inclusive && $item->tax_amount > 0)
                                 <div class="text-xs text-gray-500 dark:text-gray-400">
-                                    {{ currency_format(($item->price + $item->modifierOptions->sum('price')) - ($item->tax_amount / $item->quantity), $restaurant->currency_id) }} + tax
+                                    {{ currency_format(($item->price + $item->modifierOptions->sum('price')) - ($item->tax_amount / $item->quantity), $restaurant->currency_id) }} @lang('views_front.order.plus_tax')
                                 </div>
                             @endif
                             <p class="text-lg font-medium leading-tight text-gray-900 dark:text-white">

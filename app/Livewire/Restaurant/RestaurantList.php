@@ -60,6 +60,7 @@ class RestaurantList extends Component
                 $branch->generateQrCode();
             }
         } catch (\Exception $e) {
+            report($e);
             echo $e->getMessage();
         }
 

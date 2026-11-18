@@ -60,7 +60,7 @@
             <div class="mt-4">
                 <x-label for="variationId" :value="__('Variation (Optional)')" />
                 <x-select id="variationId" class="mt-1 block w-full" wire:model="variationId">
-                    <option value="">None (Apply to base item)</option>
+                    <option value="">@lang('views_admin.modifier_form.none_base_item')</option>
                     @foreach ($variations as $variation)
                     <option value="{{ $variation->id }}">{{ $variation->variation }}</option>
                     @endforeach

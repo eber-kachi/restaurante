@@ -207,14 +207,14 @@
                                                         @elseif($selectedCount <= 2)
                                                             {{ implode(', ', $selectedVarNames) }}
                                                         @else
-                                                            {{ $selectedCount }} variations
+                                                            {{ __('views_admin.modifier_group_form.variations_count', ['count' => $selectedCount]) }}
                                                         @endif
                                                     </span>
                                                 @endif
                                             @endif
                                             <button type="button" wire:click="toggleSelectItem({ id: {{ $item->id }}, item_name: '{{ addslashes($item->item_name) }}' })" class="inline-flex items-center p-1 ms-2 text-sm text-red-500 bg-transparent rounded-xs hover:bg-red-200 hover:text-red-900 dark:hover:bg-red-800 dark:hover:text-red-300">
                                                 <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5 5m0 0 6 6M7 7l6-6M7 7l-6 6"/></svg>
-                                                <span class="sr-only">Remove badge</span>
+                                                <span class="sr-only">@lang('views_admin.modifier_group_form.remove_badge')</span>
                                             </button>
                                         </span>
                                     @empty
@@ -223,7 +223,7 @@
 
                                     @if($allMenuItems->whereIn('id', $selectedMenuItems)->count() > 5)
                                         <span class="px-2 py-0.5 text-xs text-gray-500 bg-gray-100 border border-gray-200 rounded dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">
-                                            +{{ $allMenuItems->whereIn('id', $selectedMenuItems)->count() - 5 }} more
+                                            +{{ __('views_admin.modifier_group_form.more', ['count' => $allMenuItems->whereIn('id', $selectedMenuItems)->count() - 5]) }}
                                         </span>
                                     @endif
                                 </div>
@@ -326,7 +326,7 @@
                                                             @elseif(count($selectedVarNames) <= 2)
                                                                 {{ implode(', ', $selectedVarNames) }}
                                                             @else
-                                                                {{ count($selectedVarNames) }} {{ __('variations') }}
+                                                                {{ __('views_admin.modifier_group_form.variations_count', ['count' => count($selectedVarNames)]) }}
                                                             @endif
                                                         </span>
                                                     @else

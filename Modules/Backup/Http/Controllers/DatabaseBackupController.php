@@ -56,6 +56,7 @@ class DatabaseBackupController extends Controller
                     'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
                 ]);
             } catch (\Exception $e) {
+                report($e);
                 abort(500, 'Failed to download from cloud storage: ' . $e->getMessage());
             }
         } else {
@@ -109,6 +110,7 @@ class DatabaseBackupController extends Controller
                 'message' => 'Backup deleted successfully.'
             ]);
         } catch (\Exception $e) {
+            report($e);
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to delete backup: ' . $e->getMessage()
@@ -139,6 +141,7 @@ class DatabaseBackupController extends Controller
                 'results' => $results
             ]);
         } catch (\Exception $e) {
+            report($e);
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to sync backups: ' . $e->getMessage()
@@ -222,6 +225,7 @@ class DatabaseBackupController extends Controller
                     }
                 }
             } catch (\Exception $e) {
+                report($e);
                 $results['errors'][] = "Error processing $filename: " . $e->getMessage();
             }
         }
@@ -316,10 +320,12 @@ class DatabaseBackupController extends Controller
                         }
                     }
                 } catch (\Exception $e) {
+                    report($e);
                     $results['errors'][] = "Error processing $filename: " . $e->getMessage();
                 }
             }
         } catch (\Exception $e) {
+            report($e);
             $results['errors'][] = "Cloud storage error: " . $e->getMessage();
         }
 
@@ -363,6 +369,7 @@ class DatabaseBackupController extends Controller
                     $results['deleted']++;
                 }
             } catch (\Exception $e) {
+                report($e);
                 $results['errors'][] = "Error checking backup {$backup->filename}: " . $e->getMessage();
             }
         }
@@ -505,6 +512,7 @@ class DatabaseBackupController extends Controller
                     $issues[] = "File size mismatch for {$backup->filename}: DB={$backup->file_size}, File={$fileSize}";
                 }
             } catch (\Exception $e) {
+                report($e);
                 $issues[] = "Error checking {$backup->filename}: " . $e->getMessage();
             }
         }

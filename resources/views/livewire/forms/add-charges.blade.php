@@ -11,14 +11,14 @@
         @csrf
         <div>
             <x-label for="charge_name" value="{{ __('modules.settings.chargeName') }}" />
-            <x-input id="charge_name" class="block mt-1 w-full" type="text" wire:model="chargeName" placeholder="e.g. Service Charge" />
+            <x-input id="charge_name" class="block mt-1 w-full" type="text" wire:model="chargeName" placeholder="{{ __('views_front.forms.charge_name_placeholder') }}" />
             <x-input-error for="chargeName" class="mt-2" />
         </div>
 
         <div class="flex space-x-4">
             <div class="w-2/3">
             <x-label for="charge_value" value="{{ __('modules.settings.rate') }}" />
-            <x-input id="charge_value" type="number" step="0.01" class="block mt-1 w-full" wire:model="chargeValue" placeholder="e.g. 10" />
+            <x-input id="charge_value" type="number" step="0.01" class="block mt-1 w-full" wire:model="chargeValue" placeholder="{{ __('views_front.forms.charge_value_placeholder') }}" />
             <x-input-error for="chargeValue" class="mt-2" />
             </div>
 

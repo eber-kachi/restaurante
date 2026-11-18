@@ -15,9 +15,9 @@
                 <div class="bg-white border-b border-gray-200 pb-6 mb-6">
                     <div class="flex items-center justify-between mb-6">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-900">Menu</h1>
+                            <h1 class="text-3xl font-bold text-gray-900">{{ __('kiosk::modules.menu.title') }}</h1>
                             <p class="text-gray-600 mt-1 text-lg" 
-                               x-text="orderType === 'dine-in' ? 'Table ' + tableNumber : (orderType === 'takeaway' ? 'Take Away' : 'Delivery')"></p>
+                               x-text="orderType === 'dine-in' ? @js(__('kiosk::modules.menu.table')) + ' ' + tableNumber : (orderType === 'takeaway' ? @js(__('kiosk::modules.order_type.takeaway')) : @js(__('kiosk::modules.menu.order_type.delivery')))"></p>
                         </div>
                         <button @click="showCart = true" class="relative bg-skin-base p-4 rounded-lg hover:bg-skin-base transition-all duration-200">
                             <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@
                         <input type="text" 
                                x-model="searchQuery"
                                class="block w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-skin-base focus:border-skin-base text-lg"
-                               placeholder="Search menu items...">
+                               placeholder="{{ __('kiosk::placeholders.search_menu_items') }}">
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@
                                 <div class="absolute inset-0 p-6 flex flex-col justify-between">
                                     <div>
                                         <span class="inline-block px-3 py-1 bg-skin-base text-white text-sm font-bold rounded-full mb-3">
-                                            Limited Time
+                                            {{ __('kiosk::modules.menu.limited_time') }}
                                         </span>
                                         <h2 class="text-2xl font-bold text-white mb-2" x-text="offer.title"></h2>
                                         <p class="text-white/90 text-sm mb-3" x-text="offer.description"></p>
@@ -106,7 +106,7 @@
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <button class="bg-skin-base hover:bg-skin-base text-white px-6 py-3 rounded-lg text-sm font-bold transition-all duration-200">
-                                            Add to Cart
+                                            {{ __('kiosk::modules.customisation.add_to_cart') }}
                                         </button>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                 
                                 <button @click="selectItem(item)"
                                         class="w-full bg-skin-base text-white py-3 rounded-lg font-bold hover:bg-skin-base transition-all duration-200">
-                                    Select Item
+                                    {{ __('kiosk::modules.menu.select_item') }}
                                 </button>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                  x-transition:leave-end="opacity-0 translate-x-full"
                  class="lg:w-96 w-full lg:border-l border-t lg:border-t-0 border-gray-200 p-6 lg:relative fixed bottom-0 left-0 right-0 lg:h-auto h-[60vh] bg-white lg:rounded-none rounded-t-xl z-50 lg:shadow-none shadow-lg">
                 <div class="flex items-center justify-between mb-4 sm:mb-6">
-                    <h2 class="text-lg sm:text-xl font-semibold text-slate-900">Your Order</h2>
+                    <h2 class="text-lg sm:text-xl font-semibold text-slate-900">{{ __('kiosk::modules.menu.your_order') }}</h2>
                     <button @click="showCart = false" class="text-slate-400 hover:text-slate-600">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -216,15 +216,15 @@
                 <!-- Order Summary -->
                 <div class="border-t border-slate-200 pt-4">
                     <div class="flex justify-between mb-2 text-sm sm:text-base">
-                        <span class="text-slate-600">Subtotal</span>
+                        <span class="text-slate-600">{{ __('kiosk::modules.cart.subtotal') }}</span>
                         <span class="font-medium" x-text="'$' + subtotal"></span>
                     </div>
                     <div class="flex justify-between mb-2 text-sm sm:text-base">
-                        <span class="text-slate-600">Tax (8%)</span>
+                        <span class="text-slate-600">{{ __('kiosk::modules.cart.tax_percent') }}</span>
                         <span class="font-medium" x-text="'$' + tax"></span>
                     </div>
                     <div class="flex justify-between mb-4 sm:mb-6 text-sm sm:text-base">
-                        <span class="text-slate-600">Total</span>
+                        <span class="text-slate-600">{{ __('kiosk::modules.cart.total') }}</span>
                         <span class="font-semibold text-lg sm:text-xl text-slate-900" x-text="'$' + total"></span>
                     </div>
                 </div>
@@ -235,7 +235,7 @@
                             :disabled="cart.length === 0"
                             :class="{'opacity-50 cursor-not-allowed': cart.length === 0}"
                             class="w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:bg-slate-800 text-sm sm:text-base">
-                        Proceed to Checkout
+                        {{ __('kiosk::modules.menu.proceed_to_checkout') }}
                     </button>
                 </div>
             </div>

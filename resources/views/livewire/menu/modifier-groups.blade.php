@@ -7,7 +7,7 @@
             <div class="items-center justify-between block sm:flex md:divide-x md:divide-gray-100 dark:divide-gray-700">
                 <div class="flex items-center mb-4 sm:mb-0">
                     <form class="sm:pr-3" action="#" method="GET">
-                        <label for="products-search" class="sr-only">Search</label>
+                        <label for="products-search" class="sr-only">@lang('app.search')</label>
                         <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
                             <x-input id="menu_name" class="block mt-1 w-full" type="text" placeholder="{{ __('placeholders.searchItemCategory') }}" wire:model.live.debounce.500ms="search" />
                         </div>

@@ -159,6 +159,7 @@ class ApprovalsList extends Component
                 $this->dateFrom = $parsed->toDateString();
                 break;
             } catch (\Exception $e) {
+                report($e);
                 continue;
             }
         }
@@ -175,6 +176,7 @@ class ApprovalsList extends Component
                 $this->dateTo = $parsed->toDateString();
                 break;
             } catch (\Exception $e) {
+                report($e);
                 continue;
             }
         }
@@ -258,6 +260,7 @@ class ApprovalsList extends Component
                     
                     break;
                 } catch (\Exception $e) {
+                    report($e);
                     continue;
                 }
             }

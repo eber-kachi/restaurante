@@ -372,6 +372,7 @@ class OrderDetail extends Component
                 return redirect()->route('paystack.failed');
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
@@ -434,6 +435,7 @@ class OrderDetail extends Component
                 return redirect()->route('xendit.failed');
             }
         } catch (\Exception $e) {
+            report($e);
             session()->flash('error', 'Xendit payment error: ' . $e->getMessage());
             return redirect()->route('xendit.failed');
         }
@@ -582,6 +584,7 @@ class OrderDetail extends Component
                 return redirect()->route('flutterwave.failed')->withErrors(['error' => 'Payment initiation failed', 'message' => $responseData]);
             }
         } catch (\Exception $e) {
+            report($e);
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }

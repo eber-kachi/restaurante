@@ -20,6 +20,7 @@ return array(
     'areaUpdated' => 'Area updated successfully!',
     'areaDeleted' => 'Area deleted successfully!',
     'noTableadded' => 'No table is added.',
+    'noTablesFound' => 'No tables found',
     'tableAdded' => 'Table added successfully!',
     'tableUpdated' => 'Table updated successfully!',
     'tableDeleted' => 'Table deleted successfully!',

@@ -31,6 +31,7 @@ class DirectPrint extends Component
             $this->alert('success', __('modules.kot.print_success'));
         }
         catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('modules.kot.print_failed', ['error' => $e->getMessage()]));
         }
     }

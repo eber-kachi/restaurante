@@ -157,6 +157,7 @@ class ItemCustomisation extends Component
             }
             
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', 'An error occurred while adding item to cart: ' . $e->getMessage());
         }
     }

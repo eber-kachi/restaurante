@@ -33,10 +33,10 @@
                         <div class="flex items-center justify-center">
                             <div class="text-center">
                                 <div class="w-16 h-16 flex items-center justify-center mx-auto mb-3">
-                                    <img src="{{ asset('img/icon.png') }}" alt="TableTrack Desktop App" class="w-14 h-14 object-contain">
+                                    <img src="{{ asset('img/icon.png') }}" alt="{{ __('views_admin.desktop_app.app_alt') }}" class="w-14 h-14 object-contain">
                                 </div>
-                                <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100">TableTrack Desktop Application</h3>
-                                <p class="text-xs text-gray-600 dark:text-gray-400">Download the official TableTrack desktop app for enhanced functionality</p>
+                                <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100">@lang('views_admin.desktop_app.title')</h3>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">@lang('views_admin.desktop_app.subtitle')</p>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="mb-6 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800">
                         <div class="text-center mb-4">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">@lang('superadmin.desktopAppDemo')</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Watch how the TableTrack desktop application works</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">@lang('views_admin.desktop_app.watch_intro')</p>
                         </div>
                         <div class="flex justify-center">
                             <a href="https://www.youtube.com/watch?v=KKla4E_e_tY"
@@ -56,7 +56,7 @@
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                                 </svg>
-                                Watch Demo on YouTube
+                                @lang('views_admin.desktop_app.watch_demo')
                             </a>
                         </div>
                     </div>

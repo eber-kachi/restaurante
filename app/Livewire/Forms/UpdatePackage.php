@@ -187,6 +187,7 @@ class UpdatePackage extends Component
                 'cancelButtonText' => __('app.close'),
             ]);
         } catch (\Throwable $th) {
+            report($th);
             info($th);
         }
     }

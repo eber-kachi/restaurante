@@ -41,7 +41,7 @@
                         <button type="button"
                             class="p-1 text-gray-400 hover:text-red-500 dark:hover:text-red-300 transition-colors rounded-full hover:bg-red-100 dark:hover:bg-red-800"
                             wire:click="removeTranslation('{{ $lang }}')"
-                            title="Remove translation">
+                            title="{{ __('views_admin.forms.remove_translation') }}">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>

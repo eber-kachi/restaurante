@@ -1,10 +1,10 @@
 <?php 
 return [
-  'moduleInfo' => 'This module is part of UniversalBundle Module.',
-  'installBundleModules' => 'Install Modules from UniversalBundle',
-  'installModuleConfirm' => 'Are you sure you want to install this :module module?',
-  'moduleIsNotAvailable' => ':module module is not available.',
-  'moduleIsInstalled' => ':module module is installed.',
-  'moduleIsInstalling' => ':module module is installing. Please wait...',
-  'purchaseCodeRequired' => 'Please enter purchase code of UniversalBundle module.',
+  'moduleInfo' => 'Este módulo forma parte del módulo UniversalBundle.',
+  'installBundleModules' => 'Instalar módulos de UniversalBundle',
+  'installModuleConfirm' => '¿Estás seguro de que deseas instalar el módulo :module?',
+  'moduleIsNotAvailable' => 'El módulo :module no está disponible.',
+  'moduleIsInstalled' => 'El módulo :module está instalado.',
+  'moduleIsInstalling' => 'El módulo :module se está instalando. Espera un momento...',
+  'purchaseCodeRequired' => 'Ingresa el código de compra del módulo UniversalBundle.',
 ];

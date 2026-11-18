@@ -10,7 +10,7 @@
                 @endif
                 @if($qrCodeImageUrl)
                     <div class="flex flex-col items-center mt-6">
-                        <img src="{{ $qrCodeImageUrl }}" alt="QR Code" class="h-40 w-40 object-contain rounded shadow border border-gray-200 bg-white">
+                        <img src="{{ $qrCodeImageUrl }}" alt="{{ __('views_front.common.qr_code') }}" class="h-40 w-40 object-contain rounded shadow border border-gray-200 bg-white">
                         <div class="text-sm text-gray-500 mt-2">@lang('modules.billing.paybyQr')</div>
                     </div>
                 @endif

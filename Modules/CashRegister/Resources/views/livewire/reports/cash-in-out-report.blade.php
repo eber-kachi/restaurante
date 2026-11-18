@@ -190,7 +190,7 @@
                                     {{ $transaction->created_at->timezone(timezone())->format('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $transaction->session->cashier->name ?? 'N/A' }}
+                                    {{ $transaction->session->cashier->name ?? __('cashregister::app.notAvailable') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-center">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium

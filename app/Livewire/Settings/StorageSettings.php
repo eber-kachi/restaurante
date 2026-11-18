@@ -61,6 +61,7 @@ class StorageSettings extends Component
                 $this->awsSecretKey = $this->awsKeys->secret_key;
                 $this->awsAccessKey = $this->awsKeys->access_key;
             } catch (\Exception $e) {
+            report($e);
 
                 $this->awsCredentials->auth_keys = null;
                 $this->awsCredentials->save();
@@ -75,6 +76,7 @@ class StorageSettings extends Component
                 $this->digitaloceanBucket = $this->digitaloceanKeys->bucket;
                 $this->digitaloceanRegion = $this->digitaloceanKeys->region;
             } catch (\Exception $e) {
+                report($e);
                 $this->digitalOceanCredentials->auth_keys = null;
                 $this->digitalOceanCredentials->save();
             }
@@ -88,6 +90,7 @@ class StorageSettings extends Component
                 $this->wasabiBucket = $this->wasabiKeys->bucket;
                 $this->wasabiRegion = $this->wasabiKeys->region;
             } catch (\Exception $e) {
+                report($e);
                 $this->wasabiCredentials->auth_keys = null;
                 $this->wasabiCredentials->save();
             }
@@ -102,6 +105,7 @@ class StorageSettings extends Component
                 $this->minioRegion = $this->minioKeys->region;
                 $this->minioEndpoint = $this->minioKeys->endpoint;
             } catch (\Exception $e) {
+                report($e);
                 $this->minioCredentials->auth_keys = null;
                 $this->minioCredentials->save();
             }

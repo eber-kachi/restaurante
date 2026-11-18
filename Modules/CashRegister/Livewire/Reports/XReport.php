@@ -149,6 +149,7 @@ class XReport extends Component
                 
                 break;
             } catch (\Exception $e) {
+                report($e);
                 continue;
             }
         }

@@ -157,6 +157,7 @@ final class DenominationsForm extends Component
             $this->dispatch('refreshTable');
 
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('cashregister::messages.errorOccurred'), [
                 'toast' => true,
                 'position' => 'top-end',

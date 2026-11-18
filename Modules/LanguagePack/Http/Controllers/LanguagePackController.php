@@ -20,6 +20,7 @@ class LanguagePackController extends Controller
                 $this->publishLanguage($language->language_code);
             }
         } catch (\Throwable $th) {
+            report($th);
             return Reply::error($th->getMessage());
         }
 
@@ -31,6 +32,7 @@ class LanguagePackController extends Controller
         try {
             $this->publishLanguage($request->languageCode);
         } catch (\Throwable $th) {
+            report($th);
             return Reply::error($th->getMessage());
         }
         return Reply::success(__('languagepack::messages.languagePublished'));

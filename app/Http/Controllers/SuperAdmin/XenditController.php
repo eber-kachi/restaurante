@@ -205,6 +205,7 @@ class XenditController extends Controller
                     }
 
                 } catch (\Exception $e) {
+                    report($e);
                     return redirect()->route('dashboard')->with([
                         'flash.banner' => 'Xendit payment initiation failed: ' . $e->getMessage(),
                         'flash.bannerStyle' => 'danger'

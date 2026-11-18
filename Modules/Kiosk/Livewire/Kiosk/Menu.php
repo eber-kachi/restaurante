@@ -85,6 +85,7 @@ class Menu extends Component
             }
             
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('kiosk::modules.alerts.add_to_cart_error', ['message' => $e->getMessage()]));
         }
     }

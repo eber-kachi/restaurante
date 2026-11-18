@@ -26,6 +26,7 @@ class GlobalSettingController extends Controller
                 $databaseType = 'Maria Version';
             }
         } catch (\Exception $e) {
+            report($e);
             $mysql_version = null;
             $databaseType = 'MySQL Version';
         }
@@ -41,6 +42,7 @@ class GlobalSettingController extends Controller
                 $serverOs = 'Unavailable (php_uname disabled)';
             }
         } catch (\Exception $e) {
+            report($e);
             $serverOs = 'Unknown';
         }
 

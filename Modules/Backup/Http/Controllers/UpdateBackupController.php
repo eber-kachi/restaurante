@@ -38,6 +38,7 @@ class UpdateBackupController extends Controller
                 return Reply::error('Failed to create backup. Please try again.');
             }
         } catch (\Exception $e) {
+            report($e);
             return Reply::error('Error creating backup: ' . $e->getMessage());
         }
     }

@@ -469,9 +469,9 @@
                         }
                     @endphp
                     @if ($qrCodeBase64)
-                        <img class="qr-code-img" src="{{ $qrCodeBase64 }}" alt="QR Code">
+                        <img class="qr-code-img" src="{{ $qrCodeBase64 }}" alt="{{ __('views_front.common.qr_code') }}">
                     @else
-                        <img class="qr-code-img" src="{{ $receiptSettings->payment_qr_code_url }}" alt="QR Code">
+                        <img class="qr-code-img" src="{{ $receiptSettings->payment_qr_code_url }}" alt="{{ __('views_front.common.qr_code') }}">
                     @endif
                     <p class="">@lang('modules.settings.scanQrCode')</p>
                 @endif

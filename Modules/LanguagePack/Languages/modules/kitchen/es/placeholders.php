@@ -1,7 +1,7 @@
 <?php 
 return [
-  'enterKitchenName' => 'Enter Kitchen Name',
-  'enterKitchenDescription' => 'Enter Kitchen Description',
-  'select' => 'Select',
-  'kitchens' => 'Kitchens',
+  'enterKitchenName' => 'Ingresa el nombre de la cocina',
+  'enterKitchenDescription' => 'Ingresa la descripción de la cocina',
+  'select' => 'Seleccionar',
+  'kitchens' => 'Cocinas',
 ];

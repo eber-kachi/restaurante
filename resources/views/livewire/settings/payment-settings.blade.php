@@ -461,7 +461,7 @@
                             <div class="flex items-center">
                                 <x-input id="webhook-url" class="block w-full" type="text" value="{{ $webhookUrl }}" readonly />
                                 <button id="copy-button" type="button" onclick="copyWebhookUrl()" class="px-3 py-2 ml-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700">
-                                    Copy
+                                    @lang('views_admin.payment_settings.copy')
                                 </button>
                             </div>
 
@@ -628,7 +628,7 @@
                     <div class="flex items-center">
                         <x-input id="webhook-url" class="block w-full" type="text" value="{{ $webhookUrl }}" readonly/>
                         <button id="copy-button" type="button" onclick="copyWebhookUrl()" class="px-3 py-2 ml-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700">
-                            Copy
+                            @lang('views_admin.payment_settings.copy')
                         </button>
                     </div>
                 </div>
@@ -761,7 +761,7 @@
                                             wire:model="paymentDetails"
                                             class="block w-full"
                                             rows="4"
-                                            placeholder="Enter bank account details, payment instructions, or any other relevant information..."
+                                            placeholder="{{ __('views_admin.payment_settings.bank_details_placeholder') }}"
                                             required
                                         ></x-textarea>
                                         <x-input-error for="paymentDetails" class="mt-2" />
@@ -817,11 +817,11 @@
                                                 <div class="relative w-32 h-32">
                                                     @if ($qrCodeImage && is_object($qrCodeImage))
                                                         <img src="{{ $qrCodeImage->temporaryUrl() }}"
-                                                             alt="QR Code Preview"
+                                                             alt="{{ __('views_admin.payment_settings.qr_preview') }}"
                                                              class="object-cover w-32 h-32 border border-gray-200 rounded-lg dark:border-gray-700">
                                                     @elseif (isset($qrCodeImage) && $qrCodeImage)
                                                         <img src="{{ $qrCodeImage }}"
-                                                             alt="Existing QR Code"
+                                                             alt="{{ __('views_admin.payment_settings.qr_existing') }}"
                                                              class="object-cover w-32 h-32 border border-gray-200 rounded-lg dark:border-gray-700">
                                                     @else
                                                         <div class="flex items-center justify-center w-32 h-32 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600">
@@ -959,11 +959,11 @@
                 document.body.removeChild(tempTextArea);
 
                 // Change button text to "Copied!"
-                copyButton.innerText = "Copied!";
+                copyButton.innerText = @js(__('views_admin.payment_settings.copied'));
 
                 // Revert text back to original after 2 seconds
                 setTimeout(() => {
-                    copyButton.innerText = "Copy";
+                    copyButton.innerText = @js(__('views_admin.payment_settings.copy'));
                 }, 2000);
             }
     </script>

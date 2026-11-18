@@ -452,7 +452,7 @@
 
                 <div>
                     <h3 class="text-xl font-bold text-gray-900 dark:text-white">@lang('modules.order.cancelOrder')</h3>
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">This action cannot be undone</p>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">@lang('views_front.order.cannot_undo')</p>
                 </div>
             </div>
         </x-slot>
@@ -467,7 +467,7 @@
                         </svg>
                         <div>
                             <p class="text-sm font-semibold text-amber-800 dark:text-amber-200">@lang('modules.order.cancelOrderMessage')</p>
-                            <p class="mt-1 text-sm text-amber-700 dark:text-amber-300">Please select a reason for cancellation</p>
+                            <p class="mt-1 text-sm text-amber-700 dark:text-amber-300">@lang('views_front.order.select_cancel_reason')</p>
                         </div>
                     </div>
                 </div>

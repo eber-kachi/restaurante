@@ -237,6 +237,7 @@ class DatabaseBackupSettings extends Component
                 ];
             }
         } catch (\Exception $e) {
+            report($e);
         }
     }
 
@@ -512,6 +513,7 @@ class DatabaseBackupSettings extends Component
             // Return the download URL for the browser to handle
             return redirect($backup->download_url);
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', 'Failed to download backup: ' . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',
@@ -545,6 +547,7 @@ class DatabaseBackupSettings extends Component
 
                 $this->dispatch('refreshBackups');
             } catch (\Exception $e) {
+                report($e);
                 $this->alert('error', __('backup::app.failedToDeleteBackup') . $e->getMessage(), [
                     'toast' => true,
                     'position' => 'top-end',
@@ -660,6 +663,7 @@ class DatabaseBackupSettings extends Component
                 ]);
             }
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', 'Failed to run health check: ' . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',
@@ -710,6 +714,7 @@ class DatabaseBackupSettings extends Component
                 ]);
             }
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', 'Failed to sync backups: ' . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',
@@ -749,6 +754,7 @@ class DatabaseBackupSettings extends Component
                 ]);
             }
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', 'Failed to cleanup orphaned backups: ' . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',

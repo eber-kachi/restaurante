@@ -194,7 +194,7 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                            Reset Branch Key
+                            @lang('views_admin.printer_setting.reset_branch_key')
                         </button>
                     </div>
                 </div>
@@ -237,7 +237,7 @@
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                                 </svg>
-                                Your Device
+                                @lang('views_admin.printer_setting.your_device')
                             </span>
                         @endif
                     </div>
@@ -263,7 +263,7 @@
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                                 </svg>
-                                Your Device
+                                @lang('views_admin.printer_setting.your_device')
                             </span>
                         @endif
                     </div>
@@ -288,7 +288,7 @@
                 <!-- Close Button -->
                 <button wire:click="closeModal"
                     class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold focus:outline-none"
-                    aria-label="Close">
+                    aria-label="{{ __('app.close') }}">
                     &times;
                 </button>
                 <!-- Modal Title -->
@@ -518,7 +518,7 @@
         <x-slot name="title">@lang('modules.printerSetting.deletePrinter')?</x-slot>
         <x-slot name="content">@lang('modules.printerSetting.deletePritnerConfirm')</x-slot>
         <x-slot name="footer">
-            <x-secondary-button wire:click="$toggle('confrimDeletePrinter')" wire:loading.attr="disabled">{{ __('Cancel') }}</x-secondary-button>
+            <x-secondary-button wire:click="$toggle('confrimDeletePrinter')" wire:loading.attr="disabled">{{ __('app.cancel') }}</x-secondary-button>
             @if ($printer)
                 <x-danger-button class="ml-3" wire:click='confirmdeletePrinter' wire:loading.attr="disabled">{{ __('Delete') }}</x-danger-button>
             @endif
@@ -528,11 +528,11 @@
     <!-- Modal for Reset Branch Key Confirmation -->
 <div id="resetBranchKeyModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-md w-full">
-        <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Confirm Reset Branch Key</h3>
-        <p class="mb-6 text-gray-700 dark:text-gray-300">Are you sure you want to reset the branch key? This action cannot be undone.</p>
+        <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">@lang('views_admin.printer_setting.confirm_reset_title')</h3>
+        <p class="mb-6 text-gray-700 dark:text-gray-300">@lang('views_admin.printer_setting.confirm_reset_text')</p>
         <div class="flex justify-end gap-2">
-            <button type="button" onclick="closeResetBranchKeyModal()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:bg-gray-700 dark:text-gray-200 rounded">Cancel</button>
-            <button type="button" wire:click="resetBranchKey" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded">Reset</button>
+            <button type="button" onclick="closeResetBranchKeyModal()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:bg-gray-700 dark:text-gray-200 rounded">@lang('app.cancel')</button>
+            <button type="button" wire:click="resetBranchKey" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded">@lang('app.reset')</button>
         </div>
     </div>
 </div>
@@ -570,7 +570,7 @@
         button.classList.add('bg-green-600');
         const toast = document.createElement('div');
         toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-        toast.textContent = 'Copied to clipboard!';
+        toast.textContent = @js(__('views_admin.printer_setting.copied'));
         document.body.appendChild(toast);
         setTimeout(() => {
             button.innerHTML = originalText;
@@ -585,7 +585,7 @@
         button.classList.add('bg-red-600');
         const toast = document.createElement('div');
         toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-        toast.textContent = 'Failed to copy. Please select and copy manually.';
+        toast.textContent = @js(__('views_admin.printer_setting.copy_failed'));
         document.body.appendChild(toast);
         setTimeout(() => {
             button.innerHTML = originalText;

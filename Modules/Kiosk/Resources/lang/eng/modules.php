@@ -5,6 +5,8 @@ return [
         'kioskSettings' => 'Kiosk Settings',
     ],
     'menu' => [
+        'table' => 'Table',
+        'limited_time' => 'Limited Time',
         'kiosk' => 'Kiosk',
         'title' => 'Menu',
         'order_type' => [
@@ -26,6 +28,8 @@ return [
         'start_order' => 'Start Order',
     ],
     'order_type' => [
+        'delivery' => 'Delivery',
+        'delivery_desc' => 'Get it delivered to your door',
         'heading' => 'How would you like to order?',
         'subheading' => 'Choose your dining preference',
         'dine_in' => 'Dine-In',
@@ -35,6 +39,10 @@ return [
         'back' => 'Back',
     ],
     'customisation' => [
+        'choose_size' => 'Choose Size',
+        'add_ons' => 'Add-ons',
+        'remove_ingredients' => 'Remove ingredients',
+        'no_extra_cost' => 'No extra cost',
         'back_to_menu' => 'Back to Menu',
         'customize_item' => 'Customize Your Item',
         'quantity' => 'Quantity',
@@ -43,6 +51,9 @@ return [
         'cancel' => 'Cancel',
     ],
     'cart' => [
+        'tax_percent' => 'Tax (8%)',
+        'minutes_count' => ':count minutes',
+        'cart_label' => 'Cart',
         'order_summary' => 'Order Summary',
         'order_summary_help' => 'Review your order and provide your information',
         'your_order' => 'Your Order',
@@ -65,6 +76,9 @@ return [
         'back_to_menu' => 'Back to Menu',
     ],
     'payment' => [
+        'card' => 'Credit/Debit Card',
+        'wallet_desc' => 'App balance & rewards',
+        'pay_now' => 'Pay Now',
         'heading' => 'Payment Method',
         'subheading' => 'Choose your preferred payment method',
         'order_summary' => 'Order Summary',
@@ -78,6 +92,12 @@ return [
         'empty' => 'Your cart is empty',
     ],
     'confirmation' => [
+        'thank_you' => 'Thank you for your order.',
+        'whats_next' => 'What\'s Next?',
+        'next_sent_to_kitchen' => 'Your order has been sent to the kitchen',
+        'next_updates' => 'You\'ll receive SMS/WhatsApp updates',
+        'next_wait_number' => 'Please wait for your order number to be called',
+        'next_receipt' => 'Receipt will be printed at the counter',
         'title' => 'Order Confirmed!',
         'order_number_prefix' => 'Your order number is',
         'order_details' => 'Order Details',
@@ -91,5 +111,12 @@ return [
         'add_to_cart_success' => 'Item added to cart successfully!',
         'add_to_cart_failed' => 'Failed to add item to cart. Please try again.',
         'add_to_cart_error' => 'An error occurred while adding item to cart: :message',
+    ],
+    'select_table' => [
+        'heading' => 'Enter Table Number',
+        'subheading' => 'Please enter your table number to continue',
+        'scan_qr' => 'Scan Table QR',
+        'manual_entry' => 'Or enter table number manually',
+        'continue' => 'Continue',
     ],
 ];

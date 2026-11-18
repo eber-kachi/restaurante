@@ -29,7 +29,7 @@
                 </span>
 
                 <p class="ms-3 font-medium text-sm text-white truncate" x-text="message"></p>
-                <a x-show="link" :href="link" wire:navigate class="ml-2 text-sm font-semibold text-white underline hover:no-underline">View</a>
+                <a x-show="link" :href="link" wire:navigate class="ml-2 text-sm font-semibold text-white underline hover:no-underline">@lang('app.view')</a>
             </div>
 
             <div class="shrink-0 sm:ms-3">
@@ -37,7 +37,7 @@
                     type="button"
                     class="-me-1 flex p-2 rounded-md focus:outline-none sm:-me-2 transition"
                     :class="{ 'hover:bg-green-600 focus:bg-green-600': style == 'success', 'hover:bg-red-600 focus:bg-red-600': style == 'danger', 'hover:bg-yellow-600 focus:bg-yellow-600': style == 'warning'}"
-                    aria-label="Dismiss"
+                    aria-label="{{ __('views_front.common.dismiss') }}"
                     x-on:click="show = false">
                     <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />

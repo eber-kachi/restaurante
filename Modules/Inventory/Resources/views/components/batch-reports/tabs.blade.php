@@ -1,5 +1,5 @@
 <div class="border-b border-gray-200 dark:border-gray-700 mb-6">
-    <nav class="-mb-px flex space-x-4" aria-label="Batch Reports">
+    <nav class="-mb-px flex space-x-4" aria-label="{{ __('inventory::modules.reports.batch_tabs_label') }}">
         <a href="{{ route('inventory.batch-reports.production') }}"
            class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-xs {{ request()->routeIs('inventory.batch-reports.production')
                 ? 'border-skin-base text-skin-base dark:text-skin-base'

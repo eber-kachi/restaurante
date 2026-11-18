@@ -81,11 +81,11 @@
                         @foreach($sessions as $s)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">#{{ $s->id }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $s->branch?->name ?? 'N/A' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $s->branch?->name ?? __('cashregister::app.notAvailable') }}</td>
                                 @php
                                     $cashierName = $s->cashier?->name ?? optional(\App\Models\User::find($s->opened_by))->name;
                                 @endphp
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $cashierName ?? 'N/A' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $cashierName ?? __('cashregister::app.notAvailable') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ optional($s->closed_at)->timezone(timezone())->format('d M Y, h:i A') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                     <button wire:click="selectSession({{ $s->id }})" class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -114,21 +114,21 @@
                             @lang('cashregister::app.zReportHeader')
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            Generated: {{ $reportData['generated_at']->timezone(timezone())->format('d M Y, h:i A') }}
+                            @lang('cashregister::app.generated'): {{ $reportData['generated_at']->timezone(timezone())->format('d M Y, h:i A') }}
                         </p>
                     </div>
                     <div class="text-right">
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Branch: {{ $reportData['session']->branch?->name ?? 'N/A' }}
+                            @lang('cashregister::app.branch') {{ $reportData['session']->branch?->name ?? __('cashregister::app.notAvailable') }}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Register: {{ $reportData['session']->register->name ?? 'N/A' }}
+                            @lang('cashregister::app.register') {{ $reportData['session']->register->name ?? __('cashregister::app.notAvailable') }}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Cashier: {{ $reportData['session']->cashier->name ?? 'N/A' }}
+                            @lang('cashregister::app.cashier') {{ $reportData['session']->cashier->name ?? __('cashregister::app.notAvailable') }}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Closed: {{ $reportData['session']->closed_at->timezone(timezone())->format('d M Y, h:i A') }}
+                            @lang('cashregister::app.closed') {{ $reportData['session']->closed_at->timezone(timezone())->format('d M Y, h:i A') }}
                         </p>
                     </div>
                 </div>
@@ -289,19 +289,19 @@
                         <div>
                             <h4 class="text-md font-semibold text-gray-900 dark:text-white">@lang('cashregister::app.discrepancySummary')</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                                Expected: {{ currency_format($reportData['expected_cash'], restaurant()->currency_id) }} | 
-                                Counted: {{ currency_format($reportData['counted_cash'], restaurant()->currency_id) }}
+                                @lang('cashregister::app.expected'): {{ currency_format($reportData['expected_cash'], restaurant()->currency_id) }} | 
+                                @lang('cashregister::app.counted'): {{ currency_format($reportData['counted_cash'], restaurant()->currency_id) }}
                             </p>
                         </div>
                         <div class="text-right">
                             <p class="text-lg font-bold {{ $reportData['discrepancy'] >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400' }}">
                                 {{ $reportData['discrepancy'] >= 0 ? '+' : '' }}{{ currency_format($reportData['discrepancy'], restaurant()->currency_id) }}
                                 @if($reportData['discrepancy'] > 0)
-                                    (Over)
+                                    (@lang('cashregister::app.over'))
                                 @elseif($reportData['discrepancy'] < 0)
-                                    (Short)
+                                    (@lang('cashregister::app.short'))
                                 @else
-                                    (Exact)
+                                    (@lang('cashregister::app.exact'))
                                 @endif
                             </p>
                         </div>
@@ -332,7 +332,7 @@
                     </p>
                     @if($reportData['session']->approved_by)
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            Approved By: {{ $reportData['session']->closer->name ?? 'Manager' }}
+                            @lang('cashregister::app.approvedBy'): {{ $reportData['session']->closer->name ?? __('cashregister::app.manager') }}
                         </p>
                     @endif
                 </div>
@@ -356,7 +356,7 @@
                 </div>
                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">@lang('cashregister::app.noDataAvailable')</h3>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    No closed cash register sessions found for the selected criteria.
+                    @lang('cashregister::app.noClosedSessions')
                 </p>
             </div>
         </div>

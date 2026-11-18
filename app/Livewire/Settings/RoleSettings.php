@@ -181,6 +181,7 @@ class RoleSettings extends Component
             $this->inlineEditingRoleName = '';
 
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('messages.errorUpdatingRole') . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',
@@ -260,6 +261,7 @@ class RoleSettings extends Component
             $this->resetRoleForm();
 
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('messages.errorCreatingRole') . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',
@@ -341,6 +343,7 @@ class RoleSettings extends Component
             $this->resetDeleteForm();
 
         } catch (\Exception $e) {
+            report($e);
             $this->alert('error', __('messages.errorDeletingRole') . $e->getMessage(), [
                 'toast' => true,
                 'position' => 'top-end',

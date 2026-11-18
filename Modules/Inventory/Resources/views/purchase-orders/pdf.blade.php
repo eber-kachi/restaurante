@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Purchase Order #{{ $purchaseOrder->po_number }}</title>
+    <title>{{ __('inventory::modules.purchaseOrder.pdf.title', ['number' => $purchaseOrder->po_number]) }}</title>
     <style>
         @font-face {
             font-family: 'NotoSans';
@@ -73,23 +73,23 @@
         <div>{{ $purchaseOrder->branch->address }}</div>
     </div>
 
-    <h1 style="text-align: center;">PURCHASE ORDER</h1>
+    <h1 style="text-align: center;">{{ __('inventory::modules.purchaseOrder.pdf.heading') }}</h1>
 
     <div class="po-details">
         <table>
             <tr>
                 <td width="50%">
-                    <strong>Supplier:</strong><br>
+                    <strong>{{ __('inventory::modules.purchaseOrder.supplier') }}:</strong><br>
                     {{ $purchaseOrder->supplier->name }}<br>
                     {{ $purchaseOrder->supplier->address }}<br>
-                    Phone: {{ $purchaseOrder->supplier->phone }}<br>
-                    Email: {{ $purchaseOrder->supplier->email }}
+                    {{ __('inventory::modules.purchaseOrder.pdf.phone') }}: {{ $purchaseOrder->supplier->phone }}<br>
+                    {{ __('inventory::modules.purchaseOrder.pdf.email') }}: {{ $purchaseOrder->supplier->email }}
                 </td>
                 <td width="50%" style="text-align: right;">
-                    <strong>PO Number:</strong> {{ $purchaseOrder->po_number }}<br>
-                    <strong>Order Date:</strong> {{ $purchaseOrder->order_date->format('M d, Y') }}<br>
-                    <strong>Expected Delivery:</strong> {{ $purchaseOrder->expected_delivery_date?->format('M d, Y') ?? 'Not specified' }}<br>
-                    <strong>Status:</strong> {{ ucfirst($purchaseOrder->status) }}
+                    <strong>{{ __('inventory::modules.purchaseOrder.po_number') }}:</strong> {{ $purchaseOrder->po_number }}<br>
+                    <strong>{{ __('inventory::modules.purchaseOrder.order_date') }}:</strong> {{ $purchaseOrder->order_date->format('M d, Y') }}<br>
+                    <strong>{{ __('inventory::modules.purchaseOrder.expected_delivery_date') }}:</strong> {{ $purchaseOrder->expected_delivery_date?->format('M d, Y') ?? __('inventory::modules.purchaseOrder.pdf.not_specified') }}<br>
+                    <strong>{{ __('inventory::modules.purchaseOrder.pdf.status_label') }}:</strong> {{ __('inventory::modules.purchaseOrder.status.' . $purchaseOrder->status) }}
                 </td>
             </tr>
         </table>
@@ -99,11 +99,11 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Item</th>
-                <th>Unit</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Subtotal</th>
+                <th>{{ __('inventory::modules.purchaseOrder.pdf.item') }}</th>
+                <th>{{ __('inventory::modules.purchaseOrder.pdf.unit') }}</th>
+                <th>{{ __('inventory::modules.purchaseOrder.quantity') }}</th>
+                <th>{{ __('inventory::modules.purchaseOrder.unit_price') }}</th>
+                <th>{{ __('inventory::modules.purchaseOrder.subtotal') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -120,7 +120,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5" style="text-align: right;"><strong>Total Amount:</strong></td>
+                <td colspan="5" style="text-align: right;"><strong>{{ __('inventory::modules.purchaseOrder.pdf.total_amount') }}:</strong></td>
                 <td><strong>{{ number_format($purchaseOrder->total_amount, 2) }}</strong></td>
             </tr>
         </tfoot>
@@ -128,7 +128,7 @@
 
     @if($purchaseOrder->notes)
         <div style="margin-bottom: 30px;">
-            <strong>Notes:</strong><br>
+            <strong>{{ __('inventory::modules.purchaseOrder.notes') }}:</strong><br>
             {{ $purchaseOrder->notes }}
         </div>
     @endif
@@ -138,23 +138,23 @@
             <tr>
                 <td style="width: 33%; text-align: center;">
                     _______________________<br>
-                    Prepared by<br>
+                    {{ __('inventory::modules.purchaseOrder.pdf.prepared_by') }}<br>
                     {{ $purchaseOrder->createdBy->name }}
                 </td>
                 <td style="width: 33%; text-align: center;">
                     _______________________<br>
-                    Approved by
+                    {{ __('inventory::modules.purchaseOrder.pdf.approved_by') }}
                 </td>
                 <td style="width: 33%; text-align: center;">
                     _______________________<br>
-                    Received by
+                    {{ __('inventory::modules.purchaseOrder.pdf.received_by') }}
                 </td>
             </tr>
         </table>
     </div>
 
     <div class="footer">
-        <p>This is a computer-generated document. No signature is required.</p>
+        <p>{{ __('inventory::modules.purchaseOrder.pdf.footer_note') }}</p>
     </div>
 </body>
 </html> 
