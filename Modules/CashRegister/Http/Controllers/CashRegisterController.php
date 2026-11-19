@@ -186,7 +186,19 @@ class CashRegisterController extends Controller
 
         $filename = 'cash_ledger_' . now()->format('Ymd_His') . '.csv';
         return $this->streamCsv($filename, function ($handle) use ($request) {
-            fputcsv($handle, ['Date', 'Branch', 'Cashier', 'Opening Float', 'Cash Sales', 'Cash In', 'Cash Out', 'Safe Drops', 'Expected', 'Counted', 'Discrepancy']);
+            fputcsv($handle, [
+                __('cashregister::app.date'),
+                __('cashregister::app.branchCol'),
+                __('cashregister::app.cashierCol'),
+                __('cashregister::app.openingFloatCol'),
+                __('cashregister::app.cashSalesLabel'),
+                __('cashregister::app.cashIn'),
+                __('cashregister::app.cashOutLabel'),
+                __('cashregister::app.safeDrops'),
+                __('cashregister::app.expectedCashCol'),
+                __('cashregister::app.countedCash'),
+                __('cashregister::app.discrepancyCol'),
+            ]);
 
             $component = app(\Modules\CashRegister\Livewire\Reports\CashLedgerReport::class);
             $component->startDate = $request->query('start');
