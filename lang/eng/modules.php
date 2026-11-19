@@ -276,7 +276,7 @@ return [
         'todayOrder' => 'Today\'s Orders',
         'dine_in' => 'Dine In',
         'delivery' => 'Delivery',
-        'pickup' => 'Recoger en tienda',
+        'pickup' => 'Pickup',
         'pickupAt' => 'Recoger en',
         'out_for_delivery' => 'Out For Delivery',
         'infoout_for_delivery' => 'Order is out for delivery',

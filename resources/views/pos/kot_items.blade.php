@@ -12,7 +12,7 @@
                         class="w-4 h-4 accent-skin-base border-gray-300 focus:ring-skin-base dark:focus:ring-skin-base dark:bg-gray-600 dark:border-gray-500">
                     <label for="order-type-{{ $type->slug }}"
                         class="w-full py-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer select-none">
-                        {{ Str::headline($type->order_type_name) }}
+                        {{ in_array($type->slug, ['dine_in', 'delivery', 'pickup'], true) ? __('modules.order.' . $type->slug) : Str::headline($type->order_type_name) }}
                     </label>
                 </div>
             @endforeach
