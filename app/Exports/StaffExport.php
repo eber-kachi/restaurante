@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\User;
 use App\Scopes\BranchScope;
+use Illuminate\Support\Facades\Lang;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -29,10 +30,13 @@ class StaffExport implements WithMapping, FromCollection, WithHeadings, WithStyl
 
     public function map($customer): array
     {
+        $roleName = $customer->roles->first()?->display_name ?? '';
+        $roleTranslationKey = 'modules.staff.' . $roleName;
+
         return [
             $customer->name,
             $customer->email,
-            $customer->getRoleNames()->first()
+            Lang::has($roleTranslationKey) ? __($roleTranslationKey) : $roleName
         ];
     }
 

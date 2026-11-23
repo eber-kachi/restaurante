@@ -188,9 +188,21 @@ class CashRegisterController extends Controller
         return $this->streamCsv($filename, function ($handle) use ($request) {
             $showSafeDrop = config('cashregister.safe_drop_enabled', false);
             fputcsv($handle, array_merge(
-                ['Fecha', 'Sucursal', 'Cajero', 'Fondo de apertura', 'Ventas en efectivo', 'Ingresos de efectivo', 'Retiros de efectivo'],
-                $showSafeDrop ? ['Depósitos en caja fuerte'] : [],
-                ['Esperado', 'Contado', 'Diferencia']
+                [
+                    __('cashregister::app.date'),
+                    __('cashregister::app.branchCol'),
+                    __('cashregister::app.cashierCol'),
+                    __('cashregister::app.openingFloatCol'),
+                    __('cashregister::app.cashSalesLabel'),
+                    __('cashregister::app.cashIn'),
+                    __('cashregister::app.cashOutLabel'),
+                ],
+                $showSafeDrop ? [__('cashregister::app.safeDrops')] : [],
+                [
+                    __('cashregister::app.expectedCashCol'),
+                    __('cashregister::app.countedCash'),
+                    __('cashregister::app.discrepancyCol'),
+                ]
             ));
 
             $component = app(\Modules\CashRegister\Livewire\Reports\CashLedgerReport::class);

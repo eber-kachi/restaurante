@@ -34,9 +34,9 @@ class ExpenseSummaryReportExport implements WithMapping, FromCollection, WithHea
         return [
             [__('modules.expenses.reports.expenseSummaryReport') . ' ' . $this->startDate .' - ' . $this->endDate],
             [
-                'Category',
-                'Total Expense',
-                'Percentage of Total',
+                __('modules.expenses.category'),
+                __('modules.expenses.total_expense'),
+                __('modules.expenses.percentage_of_total'),
             ]
         ];
     }
