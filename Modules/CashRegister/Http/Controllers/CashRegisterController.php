@@ -156,7 +156,7 @@ class CashRegisterController extends Controller
         $filename = 'discrepancy_report_' . now()->format('Ymd_His') . '.csv';
         return $this->streamCsv($filename, function ($handle) use ($request) {
             // Header
-            fputcsv($handle, ['Date', 'Branch', 'Cashier', 'Expected', 'Counted', 'Discrepancy', 'Status', 'Manager Note']);
+            fputcsv($handle, ['Fecha', 'Sucursal', 'Cajero', 'Esperado', 'Contado', 'Diferencia', 'Estado', 'Nota del gerente']);
 
             $component = app(\Modules\CashRegister\Livewire\Reports\DiscrepancyReport::class);
             $component->startDate = $request->query('start');
@@ -169,12 +169,12 @@ class CashRegisterController extends Controller
             foreach ($component->sessions as $s) {
                 fputcsv($handle, [
                     optional($s->closed_at)->timezone(timezone())->format('d M Y, h:i A'),
-                    $s->branch->name ?? 'N/A',
-                    $s->cashier->name ?? 'N/A',
+                    $s->branch->name ?? 'N/D',
+                    $s->cashier->name ?? 'N/D',
                     $s->expected_cash,
                     $s->counted_cash,
                     $s->discrepancy,
-                    $s->status,
+                    __('app.' . $s->status),
                     $s->closing_reason,
                 ]);
             }
@@ -186,7 +186,12 @@ class CashRegisterController extends Controller
 
         $filename = 'cash_ledger_' . now()->format('Ymd_His') . '.csv';
         return $this->streamCsv($filename, function ($handle) use ($request) {
-            fputcsv($handle, ['Date', 'Branch', 'Cashier', 'Opening Float', 'Cash Sales', 'Cash In', 'Cash Out', 'Safe Drops', 'Expected', 'Counted', 'Discrepancy']);
+            $showSafeDrop = config('cashregister.safe_drop_enabled', false);
+            fputcsv($handle, array_merge(
+                ['Fecha', 'Sucursal', 'Cajero', 'Fondo de apertura', 'Ventas en efectivo', 'Ingresos de efectivo', 'Retiros de efectivo'],
+                $showSafeDrop ? ['Depósitos en caja fuerte'] : [],
+                ['Esperado', 'Contado', 'Diferencia']
+            ));
 
             $component = app(\Modules\CashRegister\Livewire\Reports\CashLedgerReport::class);
             $component->startDate = $request->query('start');
@@ -200,13 +205,13 @@ class CashRegisterController extends Controller
                 $transactions = \Modules\CashRegister\Entities\CashRegisterTransaction::where('cash_register_session_id', $s->id)->get();
                 fputcsv($handle, [
                     optional($s->opened_at)->timezone(timezone())->format('d M Y, h:i A'),
-                    $s->branch->name ?? 'N/A',
-                    $s->cashier->name ?? 'N/A',
+                    $s->branch->name ?? 'N/D',
+                    $s->cashier->name ?? 'N/D',
                     $s->opening_float,
                     $transactions->where('type', 'cash_sale')->sum('amount'),
                     $transactions->where('type', 'cash_in')->sum('amount'),
                     $transactions->where('type', 'cash_out')->sum('amount'),
-                    $transactions->where('type', 'safe_drop')->sum('amount'),
+                    ...($showSafeDrop ? [$transactions->where('type', 'safe_drop')->sum('amount')] : []),
                     $s->expected_cash,
                     $s->counted_cash,
                     $s->discrepancy,
@@ -220,7 +225,7 @@ class CashRegisterController extends Controller
 
         $filename = 'cash_in_out_' . now()->format('Ymd_His') . '.csv';
         return $this->streamCsv($filename, function ($handle) use ($request) {
-            fputcsv($handle, ['Date & Time', 'Branch', 'Cashier', 'Type', 'Amount', 'Reason']);
+            fputcsv($handle, ['Fecha y hora', 'Sucursal', 'Cajero', 'Tipo', 'Monto', 'Motivo']);
 
             $component = app(\Modules\CashRegister\Livewire\Reports\CashInOutReport::class);
             $component->startDate = $request->query('start');
@@ -240,8 +245,8 @@ class CashRegisterController extends Controller
 
                 fputcsv($handle, [
                     optional($t->created_at)->timezone(timezone())->format('d M Y, h:i A'),
-                    $t->session->branch->name ?? 'N/A',
-                    $t->session->cashier->name ?? 'N/A',
+                    $t->session->branch->name ?? 'N/D',
+                    $t->session->cashier->name ?? 'N/D',
                     $typeLabel,
                     $t->amount,
                     $t->reason,
@@ -255,7 +260,7 @@ class CashRegisterController extends Controller
 
         $filename = 'session_summary_' . now()->format('Ymd_His') . '.csv';
         return $this->streamCsv($filename, function ($handle) use ($request) {
-            fputcsv($handle, ['Opened', 'Branch', 'Cashier', 'Session Type', 'Duration', 'Opening Float', 'Expected', 'Counted', 'Discrepancy', 'Status']);
+            fputcsv($handle, ['Apertura', 'Sucursal', 'Cajero', 'Tipo de sesión', 'Duración', 'Fondo de apertura', 'Esperado', 'Contado', 'Diferencia', 'Estado']);
 
             $component = app(\Modules\CashRegister\Livewire\Reports\ShiftSummaryReport::class);
             $component->startDate = $request->query('start');
@@ -268,15 +273,15 @@ class CashRegisterController extends Controller
             foreach ($component->shifts as $s) {
                 fputcsv($handle, [
                     optional($s->opened_at)->timezone(timezone())->format('d M Y, h:i A'),
-                    $s->branch->name ?? 'N/A',
-                    $s->cashier->name ?? 'N/A',
+                    $s->branch->name ?? 'N/D',
+                    $s->cashier->name ?? 'N/D',
                     app(\Modules\CashRegister\Livewire\Reports\ShiftSummaryReport::class)->getSessionType($s),
                     app(\Modules\CashRegister\Livewire\Reports\ShiftSummaryReport::class)->getSessionDuration($s),
                     $s->opening_float,
                     $s->expected_cash,
                     $s->counted_cash,
                     $s->discrepancy,
-                    $s->status,
+                    __('app.' . $s->status),
                 ]);
             }
         });

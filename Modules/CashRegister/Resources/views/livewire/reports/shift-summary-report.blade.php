@@ -119,7 +119,7 @@
                                 {{ $summary['completed_shifts'] }}
                             </p>
                             <p class="text-xs text-green-500 dark:text-green-300">
-                                {{ round($summary['completion_rate'], 1) }}% completion
+                                {{ round($summary['completion_rate'], 1) }}% de finalización
                             </p>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.averageSessionDuration')</p>
                     <p class="text-lg font-semibold text-gray-900 dark:text-white">
                         @if($summary['average_duration_minutes'] > 0)
-                            {{ floor($summary['average_duration_minutes'] / 60) }}h {{ $summary['average_duration_minutes'] % 60 }}m
+                            {{ floor($summary['average_duration_minutes'] / 60) }} h {{ $summary['average_duration_minutes'] % 60 }} min
                         @else
                             @lang('cashregister::app.openSession')
                         @endif
@@ -228,7 +228,7 @@
                         @foreach($shifts as $shift)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $shift->opened_at->timezone(timezone())->format('d M Y') }}
+                                    {{ $shift->opened_at->timezone(timezone())->translatedFormat('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                     {{ $shift->cashier->name ?? __('cashregister::app.notAvailable') }}
@@ -288,7 +288,7 @@
                             @foreach($sessionTypes as $type => $sessionsOfType)
                                 <div class="flex justify-between">
                                     <span class="text-gray-600 dark:text-gray-400">{{ $type }}:</span>
-                                    <span class="font-medium text-gray-900 dark:text-white">{{ $sessionsOfType->count() }} sessions</span>
+                                    <span class="font-medium text-gray-900 dark:text-white">{{ $sessionsOfType->count() }} sesiones</span>
                                 </div>
                             @endforeach
                         </div>
@@ -304,8 +304,8 @@
                                     $cashier = $sessionsOfCashier->first()->cashier;
                                 @endphp
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600 dark:text-gray-400">{{ $cashier->name ?? 'Unknown' }}:</span>
-                                    <span class="font-medium text-gray-900 dark:text-white">{{ $sessionsOfCashier->count() }} sessions</span>
+                                    <span class="text-gray-600 dark:text-gray-400">{{ $cashier->name ?? 'Desconocido' }}:</span>
+                                    <span class="font-medium text-gray-900 dark:text-white">{{ $sessionsOfCashier->count() }} sesiones</span>
                                 </div>
                             @endforeach
                         </div>

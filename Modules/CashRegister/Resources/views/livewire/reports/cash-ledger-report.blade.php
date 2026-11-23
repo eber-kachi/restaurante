@@ -175,9 +175,11 @@
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                 @lang('cashregister::app.cashOutLabel')
                             </th>
+@if(config('cashregister.safe_drop_enabled', false))
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                 @lang('cashregister::app.safeDrops')
                             </th>
+@endif
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                 @lang('cashregister::app.expectedCashCol')
                             </th>
@@ -203,7 +205,7 @@
                             @endphp
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $session->opened_at->timezone(timezone())->format('d M Y') }}
+                                    {{ $session->opened_at->timezone(timezone())->translatedFormat('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                     {{ $session->cashier->name ?? __('cashregister::app.notAvailable') }}
@@ -220,9 +222,11 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                     {{ currency_format($cashOut, restaurant()->currency_id) }}
                                 </td>
+@if(config('cashregister.safe_drop_enabled', false))
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-400 text-right">
                                     {{ currency_format($safeDrops, restaurant()->currency_id) }}
                                 </td>
+@endif
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                     {{ currency_format($session->expected_cash, restaurant()->currency_id) }}
                                 </td>

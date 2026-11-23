@@ -168,7 +168,7 @@
                         @foreach($sessions as $session)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $session->closed_at->timezone(timezone())->format('d M Y') }}
+                                    {{ $session->closed_at->timezone(timezone())->translatedFormat('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                     {{ $session->cashier->name ?? __('cashregister::app.notAvailable') }}

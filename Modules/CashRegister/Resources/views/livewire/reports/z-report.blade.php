@@ -86,7 +86,7 @@
                                     $cashierName = $s->cashier?->name ?? optional(\App\Models\User::find($s->opened_by))->name;
                                 @endphp
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $cashierName ?? __('cashregister::app.notAvailable') }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ optional($s->closed_at)->timezone(timezone())->format('d M Y, h:i A') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ optional($s->closed_at)->timezone(timezone())->translatedFormat('d M Y, h:i A') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white text-right">
                                     <button wire:click="selectSession({{ $s->id }})" class="inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
                                         @lang('cashregister::app.viewZReport')
@@ -114,7 +114,7 @@
                             @lang('cashregister::app.zReportHeader')
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                            @lang('cashregister::app.generated'): {{ $reportData['generated_at']->timezone(timezone())->format('d M Y, h:i A') }}
+                            @lang('cashregister::app.generated'): {{ $reportData['generated_at']->timezone(timezone())->translatedFormat('d M Y, h:i A') }}
                         </p>
                     </div>
                     <div class="text-right">
@@ -128,7 +128,7 @@
                             @lang('cashregister::app.cashier') {{ $reportData['session']->cashier->name ?? __('cashregister::app.notAvailable') }}
                         </p>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            @lang('cashregister::app.closed') {{ $reportData['session']->closed_at->timezone(timezone())->format('d M Y, h:i A') }}
+                            @lang('cashregister::app.closed') {{ $reportData['session']->closed_at->timezone(timezone())->translatedFormat('d M Y, h:i A') }}
                         </p>
                     </div>
                 </div>
@@ -190,6 +190,7 @@
                                     -{{ currency_format($reportData['cash_out'], restaurant()->currency_id) }}
                                 </td>
                             </tr>
+@if(config('cashregister.safe_drop_enabled', false))
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                                     @lang('cashregister::app.safeDrops')
@@ -198,6 +199,7 @@
                                     -{{ currency_format($reportData['safe_drops'], restaurant()->currency_id) }}
                                 </td>
                             </tr>
+@endif
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                                     @lang('cashregister::app.refundsCash')
@@ -327,7 +329,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         @lang('cashregister::app.status'):
                         <span class="font-medium text-gray-900 dark:text-white capitalize">
-                            {{ $reportData['session']->status }}
+                            @lang('app.' . $reportData['session']->status)
                         </span>
                     </p>
                     @if($reportData['session']->approved_by)

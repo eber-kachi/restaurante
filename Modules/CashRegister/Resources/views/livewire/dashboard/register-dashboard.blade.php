@@ -29,6 +29,7 @@
         </div>
 
         <!-- Safe Drops Today -->
+@if(config('cashregister.safe_drop_enabled', false))
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-center justify-between">
                 <div>
@@ -45,6 +46,7 @@
                 </div>
             </div>
         </div>
+@endif
 
         <!-- Sessions with Discrepancy -->
         <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">

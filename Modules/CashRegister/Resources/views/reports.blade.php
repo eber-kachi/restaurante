@@ -17,7 +17,7 @@
                 <button @click="tab='z'" :class="tab==='z' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.zReportTab')</button>
                 <button @click="tab='disc'" :class="tab==='disc' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.discrepancyTab')</button>
                 <button @click="tab='ledger'" :class="tab==='ledger' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.cashLedgerTab')</button>
-                <button @click="tab='summary'" :class="tab==='summary' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.cashInOutSafeDropTab')</button>
+                <button @click="tab='summary'" :class="tab==='summary' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">{{ config('cashregister.safe_drop_enabled', false) ? __('cashregister::app.cashInOutSafeDropTab') : __('cashregister::app.cashInOutTab') }}</button>
                 <button @click="tab='shift'" :class="tab==='shift' ? 'border-b-2 border-skin-base text-skin-base' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'" class="px-3 py-2 text-sm font-medium">@lang('cashregister::app.sessionSummaryTab')</button>
             </nav>
         </div>

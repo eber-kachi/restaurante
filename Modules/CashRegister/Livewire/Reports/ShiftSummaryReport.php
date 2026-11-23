@@ -200,7 +200,7 @@ class ShiftSummaryReport extends Component
     public function getSessionDuration($session)
     {
         if (!$session->closed_at || !$session->opened_at) {
-            return 'Ongoing';
+            return 'En curso';
         }
         
         $minutes = $session->opened_at->diffInMinutes($session->closed_at);
@@ -208,28 +208,28 @@ class ShiftSummaryReport extends Component
         $remainingMinutes = $minutes % 60;
         
         if ($hours > 0) {
-            return $hours . 'h ' . $remainingMinutes . 'm';
+            return $hours . ' h ' . $remainingMinutes . ' min';
         }
         
-        return $remainingMinutes . 'm';
+        return $remainingMinutes . ' min';
     }
 
     public function getSessionType($session)
     {
         if (!$session->opened_at) {
-            return 'Unknown';
+            return 'Desconocido';
         }        
         // Apply timezone to get the correct local hour
         $hour = $session->opened_at->timezone(timezone())->hour;
         
         if ($hour >= 6 && $hour < 12) {
-            return 'Morning';
+            return 'Mañana';
         } elseif ($hour >= 12 && $hour < 18) {
-            return 'Afternoon';
+            return 'Tarde';
         } elseif ($hour >= 18 && $hour < 24) {
-            return 'Evening';
+            return 'Noche';
         } else {
-            return 'Night';
+            return 'Madrugada';
         }
     }
 

@@ -26,7 +26,7 @@
                     </div>
                     <div class="text-sm text-gray-600 dark:text-gray-400">
                         <div class="mb-1">@lang('cashregister::app.openedAt')</div>
-                        <div class="font-medium text-gray-900 dark:text-white">{{ $session->opened_at?->timezone(timezone())?->format('d M Y, h:i A') }}</div>
+                        <div class="font-medium text-gray-900 dark:text-white">{{ $session->opened_at?->timezone(timezone())?->translatedFormat('d M Y, h:i A') }}</div>
                     </div>
                     <div class="text-sm text-gray-600 dark:text-gray-400">
                         <div class="mb-1">@lang('cashregister::app.expectedCash')</div>
@@ -95,10 +95,12 @@
                             <div class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.cashOutLabel')</div>
                             <div class="text-xl font-bold text-red-600">-{{ currency_format((float) $cashOut, restaurant()->currency_id) }}</div>
                         </div>
+@if(config('cashregister.safe_drop_enabled', false))
                         <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                             <div class="text-sm text-gray-600 dark:text-gray-400">@lang('cashregister::app.safeDropLabel')</div>
                             <div class="text-xl font-bold text-blue-600">-{{ currency_format((float) $safeDrop, restaurant()->currency_id) }}</div>
                         </div>
+@endif
                     </div>
                     
                     <div class="mt-4 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-lg p-4 border border-indigo-200 dark:border-indigo-800">
@@ -142,7 +144,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <x-button type="button" wire:click="confirmCashIn" class="w-full">@lang('cashregister::app.cashIn')</x-button>
                             <x-button type="button" wire:click="confirmCashOut" class="w-full">@lang('cashregister::app.cashOutLabel')</x-button>
+@if(config('cashregister.safe_drop_enabled', false))
                             <x-button type="button" wire:click="confirmSafeDrop" class="w-full">@lang('cashregister::app.safeDropLabel')</x-button>
+@endif
                         </div>
                     </div>
                 </div>
@@ -264,7 +268,7 @@
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                             @foreach($txns as $t)
                                 <tr>
-                                    <td class="px-4 py-2 text-gray-900 dark:text-white">{{ $t->happened_at?->timezone(timezone())?->format('d M Y, h:i A') }}</td>
+                                    <td class="px-4 py-2 text-gray-900 dark:text-white">{{ $t->happened_at?->timezone(timezone())?->translatedFormat('d M Y, h:i A') }}</td>
                                     <td class="px-4 py-2">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium @if($t->type==='cash_in' || $t->type==='cash_sale') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 @elseif($t->type==='cash_out') bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 @else bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 @endif">
                                             @lang('app.' . $t->type)

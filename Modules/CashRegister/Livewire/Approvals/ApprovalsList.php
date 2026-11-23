@@ -199,7 +199,7 @@ class ApprovalsList extends Component
             ->findOrFail($sessionId);
 
         if ($session->status !== 'pending_approval') {
-            $this->alert('error', 'Session is not pending approval');
+            $this->alert('error', 'La sesión no está pendiente de aprobación');
             return;
         }
 
@@ -208,7 +208,7 @@ class ApprovalsList extends Component
         $session->approved_at = now();
         $session->save();
 
-        $this->alert('success', 'Session approved');
+        $this->alert('success', 'Sesión aprobada');
     }
 
     public function reject(int $sessionId): void
@@ -221,7 +221,7 @@ class ApprovalsList extends Component
             ->findOrFail($sessionId);
 
         if ($session->status !== 'pending_approval') {
-            $this->alert('error', 'Session is not pending approval');
+            $this->alert('error', 'La sesión no está pendiente de aprobación');
             return;
         }
 
@@ -230,7 +230,7 @@ class ApprovalsList extends Component
         $session->approved_at = null;
         $session->save();
 
-        $this->alert('success', 'Session sent back to cashier');
+        $this->alert('success', 'Sesión devuelta al cajero');
     }
 
     public function render()

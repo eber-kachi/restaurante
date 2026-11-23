@@ -267,7 +267,7 @@ class XReport extends Component
     public function printReport()
     {
         if (!$this->reportData) {
-            $this->alert('error', 'No report data available to print.');
+            $this->alert('error', 'No hay datos del informe para imprimir.');
             return;
         }
 

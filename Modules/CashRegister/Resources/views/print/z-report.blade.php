@@ -152,10 +152,12 @@
                 <span>@lang('cashregister::app.cashOut')</span>
                 <span>{{ currency_format($reportData['cash_out'], restaurant()->currency_id) }}</span>
             </div>
+@if(config('cashregister.safe_drop_enabled', false))
             <div class="financial-line">
                 <span>@lang('cashregister::app.safeDrops')</span>
                 <span>{{ currency_format($reportData['safe_drops'], restaurant()->currency_id) }}</span>
             </div>
+@endif
             <div class="financial-line">
                 <span>@lang('cashregister::app.refunds')</span>
                 <span>{{ currency_format($reportData['refunds'], restaurant()->currency_id) }}</span>

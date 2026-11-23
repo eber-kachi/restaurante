@@ -143,7 +143,7 @@ class CashierWidget extends Component
 
         // Permission check
         if (!user_can('Open Cash Register')) {
-            session()->flash('message', __('You do not have permission to open the register.'));
+            session()->flash('message', __('cashregister::app.noPermissionOpenRegister'));
             // return null;
         }
 
@@ -183,7 +183,7 @@ class CashierWidget extends Component
     public function doCashIn(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
@@ -201,20 +201,20 @@ class CashierWidget extends Component
         // Refresh the totals to reflect the new cash_in transaction
         $this->refreshTotals();
         $this->reset(['amount', 'reason']);
-        session()->flash('message', 'Cash In recorded.');
+        session()->flash('message', __('cashregister::app.cashInRecorded'));
     }
 
     public function doCashOut(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
         $amount = (float) $this->amount;
         // Prevent overdraft beyond expected cash
         if ($amount > (float) $this->expectedCash) {
-            $this->addError('amount', 'Amount exceeds expected cash.');
+            $this->addError('amount', __('cashregister::app.amountExceedsExpected'));
             return;
         }
         CashRegisterTransaction::create([
@@ -229,20 +229,20 @@ class CashierWidget extends Component
         ]);
         $this->refreshTotals();
         $this->reset(['amount', 'reason']);
-        session()->flash('message', 'Cash Out recorded.');
+        session()->flash('message', __('cashregister::app.cashOutRecorded'));
     }
 
     public function doSafeDrop(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
         $amount = (float) $this->amount;
         // Prevent overdraft beyond expected cash
         if ($amount > (float) $this->expectedCash) {
-            $this->addError('amount', 'Amount exceeds expected cash.');
+            $this->addError('amount', __('cashregister::app.amountExceedsExpected'));
             return;
         }
         CashRegisterTransaction::create([
@@ -257,58 +257,58 @@ class CashierWidget extends Component
         ]);
         $this->refreshTotals();
         $this->reset(['amount', 'reason']);
-        session()->flash('message', 'Safe Drop recorded.');
+        session()->flash('message', __('cashregister::app.safeDropRecorded'));
     }
 
     // Confirmation flows
     public function confirmCashIn(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
         $this->confirmAction = 'cash_in';
-        $this->confirmTitle = 'Confirm Cash In';
-        $this->confirmMessage = 'Are you sure you want to record this Cash In?';
+        $this->confirmTitle = __('cashregister::app.confirmCashInTitle');
+        $this->confirmMessage = __('cashregister::app.confirmCashInMessage');
         $this->confirming = true;
     }
 
     public function confirmCashOut(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
         $this->confirmAction = 'cash_out';
-        $this->confirmTitle = 'Confirm Cash Out';
-        $this->confirmMessage = 'Are you sure you want to record this Cash Out?';
+        $this->confirmTitle = __('cashregister::app.confirmCashOutTitle');
+        $this->confirmMessage = __('cashregister::app.confirmCashOutMessage');
         $this->confirming = true;
     }
 
     public function confirmSafeDrop(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->validate();
         $this->confirmAction = 'safe_drop';
-        $this->confirmTitle = 'Confirm Safe Drop';
-        $this->confirmMessage = 'Are you sure you want to record this Safe Drop?';
+        $this->confirmTitle = __('cashregister::app.confirmSafeDropTitle');
+        $this->confirmMessage = __('cashregister::app.confirmSafeDropMessage');
         $this->confirming = true;
     }
 
     public function confirmSubmitClosing(): void
     {
         if (!$this->session) {
-            session()->flash('message', 'Open the register first.');
+            session()->flash('message', __('cashregister::app.openRegisterFirst'));
             return;
         }
         $this->confirmAction = 'submit_closing';
-        $this->confirmTitle = 'Submit Closing for Approval';
-        $this->confirmMessage = 'Are you sure you want to submit this closing for approval?';
+        $this->confirmTitle = __('cashregister::app.submitClosingTitle');
+        $this->confirmMessage = __('cashregister::app.submitClosingMessage');
         $this->confirming = true;
     }
 
@@ -368,7 +368,7 @@ class CashierWidget extends Component
             ->toArray();
 
         if (empty($this->denoms)) {
-            $this->alert('error', 'No denominations configured. Please configure denominations in settings.');
+            $this->alert('error', __('cashregister::app.noDenominationsConfigured'));
             return;
         }
     }
@@ -401,7 +401,7 @@ class CashierWidget extends Component
             ->exists();
 
         if (!$denominationsExist) {
-            $this->alert('error', 'No denominations configured. Please configure denominations in settings before closing the register.');
+            $this->alert('error', __('cashregister::app.noDenominationsConfiguredForClosing'));
             return;
         }
 
@@ -440,6 +440,6 @@ class CashierWidget extends Component
         $this->cashOut = 0;
         $this->safeDrop = 0;
         $this->session = null;
-        session()->flash('message', 'Closing submitted for approval. Register is now closed.');
+        session()->flash('message', __('cashregister::app.closingSubmitted'));
     }
 }

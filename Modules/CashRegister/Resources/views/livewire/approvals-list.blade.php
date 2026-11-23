@@ -84,7 +84,7 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                     @forelse($sessions as $s)
                         <tr class="text-gray-900 dark:text-gray-100">
-                            <td class="py-2 pr-4">{{ $s->closed_at?->timezone(timezone())?->format('d M Y, h:i A') }}</td>
+                            <td class="py-2 pr-4">{{ $s->closed_at?->timezone(timezone())?->translatedFormat('d M Y, h:i A') }}</td>
                             <td class="py-2 pr-4">{{ $s->register?->name ?? '—' }}</td>
                             <td class="py-2 pr-4">{{ $s->cashier?->name ?? '—' }}</td>
                             <td class="py-2 pr-4 text-right">₹{{ number_format($s->expected_cash ?? 0, 2) }}</td>

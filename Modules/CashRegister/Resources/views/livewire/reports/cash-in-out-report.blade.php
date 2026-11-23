@@ -48,7 +48,9 @@
                         <option value="">@lang('cashregister::app.type')</option>
                         <option value="cash_in">@lang('app.cash_in')</option>
                         <option value="cash_out">@lang('app.cash_out')</option>
+@if(config('cashregister.safe_drop_enabled', false))
                         <option value="safe_drop">@lang('cashregister::app.safeDropLabel')</option>
+@endif
                     </x-select>
                     {{-- <x-select class="text-sm w-full" wire:model.live='registerId'>
                         <option value="">@lang('cashregister::app.allRegisters')</option>
@@ -76,7 +78,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 items-start">
                     <div class="md:col-span-1">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            @lang('cashregister::app.cashInOutSummary')
+                            {{ config('cashregister.safe_drop_enabled', false) ? __('cashregister::app.cashInOutSummary') : __('cashregister::app.cashInOutTab') }}
                         </h3>
                         <a href="{{ route('cashregister.export.cash-in-out', ['start' => $startDate, 'end' => $endDate, 'branch' => $branchId, 'register' => $registerId, 'cashier' => $cashierId, 'type' => $type]) }}" class="mt-1 inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">@lang('cashregister::app.exportCsv')</a>
                     </div>
@@ -125,6 +127,7 @@
                     </div>
                 </div>                
                 
+@if(config('cashregister.safe_drop_enabled', false))
                 <div class="bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded-lg">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
@@ -143,6 +146,7 @@
                         </div>
                     </div>
                 </div>
+@endif
 
                 <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
                     <div class="flex items-center">
@@ -187,7 +191,7 @@
                         @foreach($transactions as $transaction)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                    {{ $transaction->created_at->timezone(timezone())->format('d M Y') }}
+                                    {{ $transaction->created_at->timezone(timezone())->translatedFormat('d M Y') }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                     {{ $transaction->session->cashier->name ?? __('cashregister::app.notAvailable') }}
